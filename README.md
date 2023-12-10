@@ -1,3 +1,2 @@
-## Quarto website repository
-
-https://rroyaute.pages.mia.inra.fr/rroyaute-website
+## Website
+[https://rroyaute.github.io/](https://rroyaute.github.io/)
