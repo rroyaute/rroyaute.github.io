@@ -1,0 +1,24 @@
+---
+title: "Raphaël Royauté"
+image: Photo2.jpg
+affiliation: INRAE
+about:
+  template: trestles
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/RRoyaute
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com/rroyaute
+---
+
+## About me
+
+I am a researcher at INRAE. My primary interest lie in linking ecotoxicological and evolutionary approaches to understand how the soil fauna responds to exposure to contaminants. I am interested in using a variety of modeling tools in order to link contaminant exposure to its effects on organisms' life-history and its consequences on population, community dynamics and soil functions.
+
+## What's on this blog?
+This blog is an opportunity for me to explore these different classes of models in the open and hopefully provide some useful tools to the research commununity.

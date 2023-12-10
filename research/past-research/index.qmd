@@ -1,0 +1,19 @@
+---
+title: "Past Research"
+page-layout: full
+---
+
+### Effects of Contaminants on Behavioral Variation
+During my PhD, I examined behavioral syndrome structure and personality variation in regards to development, sex differences, and effects of human disturbances (e.g. pesticide application) on syndromes and personalities. I showed evidence for changes in behavioral correlations between jumping spider populations from an insecticide-exposed and insecticide-free orchard ([Ethology 2014](https://doi.org/10.1111/eth.12185)) and that direct exposure to a sublethal dose of organophosphate can have a profound effect on personality differences related to activity and prey capture ([Functional Ecology 2015](https://doi.org/10.1111/1365-2435.12413)). Finally, I provided a conceptual framework by which effects of contaminant on behavioral variation in wildlife can be better understood ([Animal Behavior 2014](https://doi.org/10.1016/j.anbehav.2013.11.018)).
+
+### Phenotypic Integration among Behavior, Physiology and Life-History Traits
+As a postdoctoral researcher at [NDSU](https://www.ndsu.edu/biology/), I focused on how strongly behavior correlates with other trait categories such as metabolic rate ([Animal Behavior 2015](https://dx.doi.org/10.1016/j.anbehav.2015.09.027)) or animal constructions ([J. Evol. Biol. 2018](https://dx.doi.org/10.1111/jeb.13259)). Using meta-analyses, I showed that behavioral traits are heritable ([J. Heredity 2019](https://dx.doi.org/10.1093/jhered/esz023)) but fail to conform to predictions of a "slow-fast" pace-of-life axis ([Behav. Ecol. Sociobiol. 2018](https://dx.doi.org/10.1007/s00265-018-2472-z)). I also showed that environmental factors such as diet quality have the potential to profoundly reshape the strength and direction of correlations between behaviors and life-history ([Behav. Ecol. 2017](https://doi.org/10.1093/beheco/arw164); [Anim. Behav. 2019](https://dx.doi.org/10.1016/j.anbehav.2018.11.013))
+
+###  Quantitative Genetics and Evolutionary Constraints of Behavioral Syndromes
+With collaborators Ned Dochtermann ([NDSU](https://www.neddochtermann.com/)) and Ann Hedrick ([UC Davis](https://biology.ucdavis.edu/people/ann-hedrick)), we investigated how behavioral correlations arise and are maintained in Western Field crickets. We showed that genetic variation in behavior is strongly aligned among isolated populations ([Proc. B](https://doi.org/10.1098/rspb.2020.0183)) and even within different species ([J. Evol. Biol.](https://doi.org/10.1111/jeb.13935)). 
+
+
+### Movement Ecology and Species Interactions
+Since 2020, I have initiated collaborations with movement ecologists to better understand how individual differences in activity are expressed under natural conditions. These collaborations have shown a high degree of individual differences in the predictability of brown bears ([J. Animal Ecol. 2021](https://doi.org/10.32942/osf.io/ze8ty)) and in how ungulate negotiate fence crossing in human-altered landscapes ([J. Animal Ecol. 2023](https://doi.org/10.1111/1365-2656.13879)). I was also involved with the Nature 4.0 project as a postdoctoral researcher at the [Senckenberg Institute](https://www.senckenberg.de/en/institutes/sbik-f/movement-ecology/team-movement-ecology/). There, I focused on methods for classifying daily activity in bats and forest birds using novel approaches for VHF tracking of vertebrate communities ([Methods Ecol. Evol. 2023](https://doi.org/10.1111/2041-210X.14037)).
+
+

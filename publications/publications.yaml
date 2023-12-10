@@ -1,0 +1,354 @@
+
+
+- title: "Sex-specific behavioral syndromes allow the independent evolution of behavioral dimorphism"
+  type: "Preprints"
+  author: 
+    -  "<b>Raphaël Royauté</b>"
+    - Anne V Hedrick
+    - Ned A Dochtermann
+  year: 2021
+  preprint: "https://doi.org/10.32942/osf.io/4abp6"
+  osf: "https://osf.io/pnug5/"
+
+- title: "Integration of intra-and inter-sexual selection signaling"
+  type: "Preprints"
+  author: 
+    - Courtney R Garrison
+    -  "<b>Raphaël Royauté</b>"
+    - Ned A Dochtermann
+  year: 2020
+  preprint: "https://doi.org/10.1101/2020.05.14.088518"
+
+- title: "Drift on holey landscapes as a dominant evolutionary process (<i>Accepted</i>)"
+  type: "Published"
+  author:
+    - Ned A Dochtermann
+    - Brady Klock
+    - Derek A Roff
+    - "<b>Raphaël Royauté</b>"
+  year: 2023
+  journal: "<b>Proceedings of the National Academy of Sciences</b>"
+  preprint: "https://doi.org/10.32942/X2CG64"
+  github: "https://github.com/DochtermannLab/Wright_vs_Holey"
+
+- title: "Nature 4.0: A networked sensor system for integrated biodiversity monitoring (<i>Accepted</i>)"
+  type: "Published"
+  author: 
+    - Dirk Zeuss
+    - Lisa Bald
+    - Jannis Gottwald
+    - Marcel Becker
+    - Hicham Bellafkir
+    - Jörg Bendix
+    - Phillip Bengel
+    - Larissa T. Beumer
+    - Roland Brandl
+    - Martin Brändle
+    - Stephan Dahlke
+    - Nina Farwig
+    - Bernd Freisleben
+    - Nicolas Friess
+    - Lea Heidrich
+    - Sven Heue
+    - Jonas Höchst
+    - Hajo Holzmann
+    - Patrick Lampe
+    - Martin Leberecht
+    - Kim Lindner
+    - Juan F. Masello
+    - Jonas Mielke Möglich
+    - Markus  Mühling
+    - Thomas Müller
+    - Alexey Noskov
+    - Lars Opgenoorth
+    - Carina Peter
+    - Petra Quillfeldt
+    - Sascha Rösner
+    - "<b>Raphaël Royauté</b>"
+    - Christian M. Runge
+    - Dana Schabo
+    - Daniel Schneider
+    - Bernhard Seeger
+    - Elliot Shayle
+    - Ralf Steinmetz
+    - Pavel Tafo
+    - Markus Vogelbacher
+    - Stephan Wöllauer
+    - Sohaib Younis
+    - Julian Zobe
+    - Thomas Nauss
+  year: 2023
+  journal: "<b>Global Change Biology</b>"
+  pubopen: "https://doi.org/10.1111/GCB.17056"
+  
+- title: "Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology"
+  type: "Published"
+  author:
+    - Edward Richard Ivimey-Cook
+    - Joel L Pick
+    - Kevin Bairos-Novak
+    - Antica Culina
+    - Elliot Gould
+    - Matthew Grainger
+    - Benjamin Marshall
+    - David Moreau
+    - Matthieu Paquet
+    - "<b>Raphaël Royauté</b>"
+    - Alfredo Sanchez-Tojar
+    - Inês Silva
+    - Saras Windecker
+  year: 2023
+  journal: "<b>Journal of Evolutionary Biology</b>"
+  pubopen: "https://doi.org/10.1111/jeb.14230"
+  preprint: "https://doi.org/10.32942/X2CG64"
+  review: "https://doi.org/10.24072/pci.ecology.100541"
+  
+- title: "Fencing amplifies individual differences in movement with implications on survival for two migratory ungulates"
+  type: "Published"
+  author: 
+    - Wenjing Xu
+    - Laura C Gigliotti
+    - "<b>Raphaël Royauté</b>"
+    - Hall Sawyer
+    - Arthur D. Middleton
+  year: 2023
+  journal: "<b>Journal of Animal Ecology</b>"
+  pubclosed: "https://doi.org/10.1111/1365-2656.13879"
+  
+- title: "Classifying the activity states of small vertebrates using automated VHF telemetry"
+  type: "Published"
+  author: 
+    - Jannis Gottwald
+    - "<b>Raphaël Royauté</b>"
+    - Marcel Becker
+    - Tobias Geitz
+    - Jonas Höchst
+    - Patrick Lampe
+    - Lea Leister
+    - Kim Lindner
+    - Julia Maier
+    - Sascha Rösner
+    - Dana G Schabo
+    - Bernd Freisleben
+    - Roland Brandl
+    - Thomas Müller
+    - Nina Farwig
+    - Thomas Nauss
+  year: 2023
+  journal: "<b>Methods in Ecology and Evolution</b>"
+  pubopen: "https://doi.org/10.1111/2041-210X.14037"
+  data: "https://data.uni-marburg.de/handle/dataumr/147"
+  github: "https://github.com/Nature40/tRackIT"
+
+
+- title: "Moving away from repeatability: a comment on Stuber et al."
+  type: "Published"
+  author: 
+    - Niels J Dingemanse
+    - Anne G Hertel,
+    - "<b>Raphaël Royauté</b>"
+  year: 2022
+  journal: "<b>Behavioral Ecology</b>"
+  pubclosed: "https://doi.org/10.1093/beheco/arac006"
+  pubopen: "https://hal.inrae.fr/hal-03955530"
+  
+- title: " Phylogenetic conservation of behavioural variation and behavioural syndromes"
+  type: "Published"
+  author: 
+    - Jeremy Dalos, 
+    - "<b>Raphaël Royauté</b>"
+    - Ann V Hedrick
+    - Ned A Dochtermann
+  year: 2022
+  journal: "<b>Journal of Evolutionary Biology</b>"
+  pubclosed: "https://doi.org/10.1111/jeb.13935"
+  preprint: "https://doi.org/10.32942/osf.io/ze8ty"
+  osf: "https://osf.io/q23ud/"
+  correction: "https://onlinelibrary.wiley.com/doi/10.1111/jeb.14021"
+
+- title: "Biologging reveals individual variation in behavioural predictability in the wild"
+  type: "Published"
+  author: 
+    - Anne G Hertel
+    - "<b>Raphaël Royauté</b>"
+    - Andreas Zedrosser
+    - Thomas Mueller
+  year: 2021
+  journal: "<b>Journal of Animal Ecology</b>"
+  pubopen: "https://doi.org/10.32942/osf.io/ze8ty"
+  osf: "https://osf.io/65djr/"
+
+- title: "Comparing ecological and evolutionary variability within datasets"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Ned A Dochtermann
+  year: 2021
+  journal: "<b>Behavioral Ecology and Sociobiology</b>"
+  pubclosed: "https://doi.org/10.1007/s00265-021-03068-3"
+  preprint: "https://ecoevorxiv.org/repository/view/4399/"
+  osf: "https://osf.io/5aw42/"
+  
+- title: "Behavioural syndromes shape evolutionary trajectories via conserved genetic architecture"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Anne V Hedrick
+    - Ned A Dochtermann
+  year: 2020
+  journal: "<b>Proceedings of the Royal Society B</b>"
+  pubclosed: "https://doi.org/10.1098/rspb.2020.0183"
+  preprint: "https://www.biorxiv.org/content/10.1101/619411v3"
+  github: "https://github.com/DochtermannLab/G-PopComparison"
+  data: "https://doi.org/10.5061/dryad.5mkkwh730"
+
+- title: "The heritability of behavior: a meta-analysis"
+  type: "Published"
+  author: 
+    - Ned A Dochtermann
+    - Tori Schwab
+    - Monica A Berdal
+    - Jeremy Dalos
+    - "<b>Raphaël Royauté</b>"
+  year: 2019
+  journal: "<b>]Journal of Heredity</b>"
+  pubopen: "https://doi.org/10.1093/jhered/esz023"
+  github: "https://github.com/DochtermannLab/BehavioralHeritability"
+  data: "https://doi.org/10.5061/dryad.b38k42m"
+
+- title: "The mean matters: going beyond repeatability to interpret behavioural variation"
+  type: "Published"
+  author: 
+    - Ned A Dochtermann
+    - "<b>Raphaël Royauté</b>"
+  year: 2019
+  journal: "<b>Animal Behaviour</b>"
+  pubclosed: "https://doi.org/10.1016/j.anbehav.2019.05.012"
+  pubopen: "https://hal.inrae.fr/hal-03955462"
+
+- title: "Current energy state interacts with the developmental environment to influence behavioural plasticity]"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Courtney Garrison
+    - Jeremy Dalos
+    - Monica A Berdal
+    - Ned A Dochtermann
+  year: 2019
+  journal: "<b>Animal Behaviour</b>"
+  pubclosed: "https://doi.org/10.1016/j.anbehav.2018.11.013"
+  pubopen: "https://hal.inrae.fr/hal-03955488"
+
+- title: "Paceless life? A meta-analysis of the pace-of-life syndrome hypothesis"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Monica A Berdal
+    - Courtney R Garrison 
+    - Ned A Dochtermann 
+  year: 2018
+  journal: "<b>Behavioral Ecology and Sociobiology</b>"
+  pubclosed: "hhttps://doi.org/10.1007/s00265-018-2472-z"
+  pubopen: "https://hal.inrae.fr/hal-03955414"
+  data: "https://doi.org/10.5061/dryad.m74c8nj"
+
+- title: "Phenotypic integration in an extended phenotype: among‐individual variation in nest‐building traits of the alfalfa leafcutting bee (<i>Megachile rotundata</i>)"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Elisabeth S Wilson
+    - Bryan R Helm
+    - Rachel E Mallinger
+    - Jarrad Prasifka
+    - Kendra J Greenlee
+    - Julia H Bowsher
+  year: 2018
+  journal: "<b>Journal of Evolutionary Biology</b>"
+  pubclosed: "https://doi.org/10.1111/jeb.13259"
+  pubopen: "https://hal.inrae.fr/hal-03955517"
+  data: "https://doi.org/10.5061/dryad.n925d21"
+
+- title: "When the mean no longer matters: Developmental diet affects behavioral variation but not population averages in the house cricket (<i>Acheta domesticus</i>)"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Ned A Dochtermann
+  year: 2017
+  journal: "<b>Behavioral Ecology</b>"
+  pubclosed: "https://doi.org/10.1093/beheco/arw164"
+  pubopen: "https://hal.inrae.fr/hal-03955457"
+  data: "http://dx.doi.org/10.5061/dryad.nv835"
+
+- title: "Genetic conservation and management of the California endemic  Torrey pine (*Pinus torreyana* Parry): Implications of genetic rescue in a genetically depauperate species"
+  type: "Published"
+  author: 
+    - Jill A Hamilton
+    - "<b>Raphaël Royauté</b>"
+    - Jessica W Wright
+    - Paul Hodgskiss
+    - F Thomas Ledig
+  year: 2017
+  journal: "<b>]Ecology and Evolution</b>"
+  pubopen: "http://dx.doi.org/10.1002/ece3.3306"
+  
+- title: "Under the influence: sublethal exposure to an insecticide affects personality expression in a jumping spider"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Christopher M Buddle
+    - Charles Vincent
+  year: 2015
+  journal: "<b>Functional Ecology</b>"
+  pubclosed: "http://dx.doi.org/10.1111/1365-2435.12413"
+  pubopen: "https://hal.inrae.fr/hal-03955445"
+  data: "http://dx.doi.org/10.5061/dryad.4s90s"
+
+- title: "Behaviour  metabolism and size: phenotypic modularity or integration in <i>Acheta domesticus</i>?"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Kendra Greenlee
+    - Maxwell Baldwin
+    - Ned A Dochtermann
+  year: 2015
+  journal: "<b> Animal Behaviour</b>"
+  pubclosed: "http://dx.doi.org/10.1016/j.anbehav.2015.09.027"
+  pubopen: "https://hal.inrae.fr/hal-03955451"
+  
+- title: "Contaminants as a neglected source of behavioural variation"
+  type: "Published"
+  author: 
+    - Pierre-Olivier Montiglio
+    - "<b>Raphaël Royauté</b>"
+  year: 2014
+  journal: "<b>Animal Behaviour</b>"
+  pubclosed: "http://dx.doi.org/10.1016/j.anbehav.2013.11.018"
+  pubopen: "https://hal.inrae.fr/hal-03955428"
+
+- title: "Interpopulation variations in behavioral syndromes of a jumping spider from insecticide‐treated and insecticide‐free orchards"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Christopher M Buddle
+    - Charles Vincent
+  year: 2014
+  journal: "<b>Ethology</b>"
+  pubclosed: "https://onlinelibrary.wiley.com/doi/10.1111/eth.12185"
+  pubopen: "https://hal.inrae.fr/hal-03955434"
+
+- title: "Colonization dynamics of agroecosystem spider assemblages after snow-melt in Quebec (Canada)"
+  type: "Published"
+  author: 
+    - "<b>Raphaël Royauté</b>"
+    - Christopher M Buddle
+  year: 2012
+  journal: "<b>Journal of Arachnology</b>"
+  pubclosed: "http://dx.doi.org/10.1636/P11-16.1"
+  pubopen: "https://hal.science/hal-03853617"
+
+- title: "Factors influencing behavioural variation in apple orchard populations of the jumping spider <i>Eris militaris</i> (Araneae: Salticidae)"
+  type: "Thesis"
+  author: 
+    - "<b>Raphaël J Royauté</b>"
+  year: 2014
+  pubopen: "https://hal.science/tel-03840936"

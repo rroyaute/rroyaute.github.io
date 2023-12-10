@@ -1,0 +1,85 @@
+---
+title: "Scientific Publications"
+page-layout: full
+description: "" 
+listing:
+  - id: in-review
+    include:
+      type: "In Review"
+    contents: publications.yaml
+    template: publications.ejs
+    filter-ui: false
+    sort: false
+    sort-ui: false
+    categories: false
+  - id: preprints
+    include: 
+      type: "Preprints"
+    contents: publications.yaml
+    template: publications.ejs
+    filter-ui: false
+    sort: false
+    sort-ui: false
+    categories: false
+  - id: reviewed-preprints
+    include: 
+      type: "Reviewed Preprints"
+    contents: publications.yaml
+    template: publications.ejs
+    filter-ui: false
+    sort: "date desc"
+    sort-ui: false
+    categories: false
+  # - id: accepted-articles
+  #   include: 
+  #     type: "Accepted"
+  #   contents: publications.yaml
+  #   template: publications.ejs
+  #   filter-ui: false
+  #   sort: "date desc"
+  #   sort-ui: false
+  #   categories: false
+  - id: published-articles
+    include: 
+      type: "Published"
+    contents: publications.yaml
+    template: publications.ejs
+    filter-ui: false
+    sort: "date desc"
+    sort-ui: false
+    categories: false
+  - id: thesis
+    include: 
+      type: "Thesis"
+    contents: publications.yaml
+    template: publications.ejs
+    filter-ui: false
+    sort: "date desc"
+    sort-ui: false
+    categories: false  
+
+---
+
+You can also find my papers on [Google Scholar](https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&hl=en), my [ORCID](https://orcid.org/0000-0002-5837-633X) page or on [HAL](https://cv.hal.science/raphael-royaute).
+
+## In Review/Preprints (2)
+:::{#in-review}
+:::
+
+
+:::{#preprints}
+:::
+
+## Published Articles (22)
+
+:::{#published-articles}
+:::
+
+## Thesis
+
+:::{#thesis}
+:::
+
+
+
+

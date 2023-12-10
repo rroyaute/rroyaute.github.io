@@ -1,0 +1,127 @@
+---
+title: "People"
+toc-location: right
+page-layout: full
+---
+<br /> 
+
+## Principal Investigator
+
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/rroyaute-round.jpg)
+:::
+
+::: {#second-column}
+### Raphaël Royauté
+Background: Behavioral Ecology, Evolutionary Ecology, Ecotoxicology
+
+Position: Researcher in Ecotoxicological Modeling
+
+Links:
+[INRAE Website](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/ROYAUTE-Raphael), 
+[GitHub](https://github.com/rroyaute), 
+[GitLab](https://forgemia.inra.fr/rroyaute), 
+[Email](mailto:raphael.royaute@inrae.fr)
+:::
+::::
+
+---
+
+<br /> 
+
+## Current students
+
+
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/LisaGollot-round.jpg)
+:::
+
+::: {#second-column}
+### Lisa Gollot
+Lisa has a background in environmental chemistry and agronomy. Within the course of her MSc studies in ecotoxicology at [AgroParisTech](https://www.agroparistech.fr/en), she joined our team for a 6-month internship focusing on the modeling of individual differences in earthworm growth under different pesticide exposure regimes.  She has just started her PhD with us in October 2023 on similar topics.
+
+Background: Analytical Chemistry, Ecotoxicology
+
+Project: [Eco-evolutionary dynamics](../projects#EEWORMS) 
+
+Co-supervisors: [Rémy Beaudouin (INERIS)](https://umr-sebio.fr/personnel/remy-beaudouin), [Juliette Faburé (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-par-ordre-alphabetique/F/FABURE-Juliette)
+:::
+::::
+
+---
+
+<br /> 
+
+## Technical staff
+:::: {layout="[ 40, 60 ]"}
+::: {first-column}
+![](../images/AntoineBamiere-round.jpg)
+:::
+
+::: {second-column}
+### Antoine Bamière
+Antoine is an Assistant Engineer in soil fauna and is in charge of arthropod rearing in our research unit. He also assists with fieldwork and experimental projects dedicated to the ecotoxicology of soil organisms.
+
+Links: [INRAE Website](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Ingenieurs-Sol-Tox/BAMIERE-Antoine)
+
+:::
+::::
+---
+
+:::: {layout="[ 40, 60 ]"}
+::: {first-column}
+![](../images/VeroniqueEtieveant-round.jpg)
+:::
+
+::: {second-column}
+### Véronique Etiévant
+Véronique is Technician in soil fauna and is in charge of is in charge of earthworm rearing in our research unit. She also assists with fieldwork and experimental projects dedicated to the ecotoxicology of soil organisms.
+
+Links: [INRAE Website](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Techniciens-Sol-Tox/ETIEVANT-Veronique)
+:::
+::::
+---
+
+<br /> 
+
+## Past students
+
+:::: {layout="[ 40, 60 ]"}
+::: {first-column}
+![](../images/PerrineLegrand-round.jpg)
+:::
+
+::: {second-column}
+### Perrine Legrand
+
+Perrine is a first-year MSc student in evolutionary biology at [Université de Lille](). She  focused on developing methods for evaluating the effects of pesticide exposure on soil fauna in a simplified trophic network.
+
+Background: Biodiversity, Ecology and Evolution
+
+Project: [Effect of pesticides in simplified soil trophic networks](../projects#EPIC) 
+:::
+
+::::
+---
+
+:::: {layout="[ 40, 60 ]"}
+::: {first-column}
+![](../images/MagaliDahirel-round.jpg)
+:::
+
+::: {second-column}
+### Magali Dahirel
+Magali completed her MSc. in ecological modeling at [Université de Rennes 1](https://formations.univ-rennes.fr/master-mention-biodiversite-ecologie-evolution-parcours-modelisation-en-ecologie-mode). She worked with us on an agent-based model of aphid-ladybeetle dynamics under pesticide exposure.
+
+Background: Biodiversity, Ecology and Evolution
+
+Project: [TRAVERSéES](https://ecophytopic.fr/recherche-innovation/concevoir-son-systeme/projet-traversees)
+
+Co-supervisors: [Corinne Robert (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Eco-Phy/Scientifiques-Eco-Phy/ROBERT-Corinne), [Pierre-Antoine Précigout (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Eco-Phy/Scientifiques-Eco-Phy/PRECIGOUT-Pierre-Antoine), [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
+:::
+::::
+
+
+

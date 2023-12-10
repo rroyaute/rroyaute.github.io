@@ -1,0 +1,26 @@
+# options specified here will apply to all posts in this folder
+
+# Date format
+date: last-modified
+date-format:  "dddd, MMMM D, YYYY"
+
+# Default for table of contents
+toc: true
+toc-title: Contents
+toc-location: left
+
+# Default knitr options
+execute:
+  echo: true
+  message: true
+  warning: true
+  freeze: auto
+
+# Enable banner style title blocks
+title-block-banner: true
+
+# Default author
+author:
+  - name: Raphaël Royauté
+    url: https://www.raphaelroyaute.com/
+    orcid: 0000-0002-5837-633X

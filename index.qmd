@@ -1,0 +1,27 @@
+---
+title: "Raphaël Royauté"
+comments: false
+page-layout: full
+format:
+  html: 
+    margin-top: 0em
+    margin-bottom: 0em
+aliases:
+  - /about
+image-shape: rounded  
+---
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-3}
+![](images/rroyaute-bird.jpg){}
+:::
+
+::: {.g-col-12 .g-col-md-9}
+
+### Behavioral and Evolutionary Ecotoxicology
+
+I am a behavioral ecologist interested in how animals cope with environmental changes resulting from human activities. I am currently a researcher at the National Research Institute for Agriculture, Food and Environment ([INRAE](https://www.inrae.fr/)) within the [EcoSys](https://www6.versailles-grignon.inrae.fr/ecosys/) research unit and the [Sol&Tox](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/ROYAUTE-Raphael) team. I focus on how the soil fauna responds to contaminant exposure using a combination of modeling and laboratory experiments. My goal is to develop eco-evolutionary models allowing to understand how soil organisms cope with contaminant exposure and at what costs for soil functions.
+
+:::
+:::

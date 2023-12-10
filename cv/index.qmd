@@ -1,0 +1,15 @@
+---
+title: "About me"
+toc: false
+page-layout: full
+---
+
+You can download my CV [here](rroyaute-cv-short-en.pdf)
+
+I am currently a researcher at [INRAE](https://www.inrae.fr/) within the [EcoSys research unit](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/ROYAUTE-Raphael) where I focus on building eco-evolutionary models of the soil fauna under contamination stress.
+
+I am a broadly trained behavioral ecologist who uses a combination of empirical, theoretical and statistical approaches to understand how behavioral variation responds to environmental cues and under which conditions such variation impact higher order processes at the population and community levels. A primary interest of my research program is to use theoretical foundations in the field of animal personality to understand the processes by which individuals cope with the increasing pressures resulting from human activities.
+
+After obtaining my Master's degree in Environmental Sciences at the [École Nationale Supérieure Agronomique de Toulouse](https://www.ensat.fr/fr/index.html) in France, I set sail for [McGill University](https://www.mcgill.ca/nrs/academic-0/buddle) in Montréal, Canada where I studied how behavioral variation is impacted by insecticide exposure in jumping spiders during my PhD. 
+
+I held several postdoctoral position previously, which fed my broad interests in evolutionary ecology. Past projects included determining the role of the genetics and environmental sources of variation that shape the integration between phenotypic traits (collab. [NDSU](https://www.neddochtermann.com/), [UC Davis](https://biology.ucdavis.edu/people/ann-hedrick)) and understanding the role of variation in animal movement in ecological processes (collab. [SBiK-F](https://www.senckenberg.de/en/institutes/sbik-f/movement-ecology-and-biodiversity-conservation/), [Marburg University](https://www.uni-marburg.de/en/fb19/natur40), [LMU Munich](https://www.behavioural-ecology.bio.lmu.de/)). 

@@ -1,0 +1,66 @@
+project:
+  type: website
+  output-dir: docs
+  resources: data
+
+website:
+  title: "Raphaël Royauté"
+  image: images/rroyaute-bird
+  search: 
+    location: navbar
+    type: textbox
+  navbar:
+    background: primary
+    pinned: true
+    left:
+      # - text: Home
+      #   href: index.qmd
+      - text: Research
+        menu:
+          - text: Current Research
+            href: research/current-research/index.qmd
+          - text: Past Research
+            href: research/past-research/index.qmd
+      - text: People
+        href: people/index.qmd
+      - text: Projects
+        href: projects/index.qmd  
+      - text: Publications
+        href: publications/index.qmd 
+      - text: CV
+        href: cv/index.qmd    
+      - text: Blog
+        href: blog/index.qmd
+    right:
+    - icon: envelope
+      aria-label: email
+      href: "mailto:raphael.royaute@inrae.fr"
+    - icon: github
+      href: https://github.com/rroyaute
+    - text: "{{< fa brands gitlab >}}"
+      href: https://https://forgemia.inra.fr/raphael.royaute
+    - icon: google
+      href: https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&hl=en
+    - icon: twitter
+      href: https://twitter.com/RRoyaute
+  page-footer: 
+    left: |
+      <span class="faux-block"> Copyright 2023, Raphaël Royauté </span>
+    center: |
+      <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}}) </span>
+    right: |
+      <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
+      <span class="faux-block">[View the source at {{< fa brands gitlab >}} GitLab]({{< var gitlab-url >}})</span>
+format:
+  html:
+    theme: 
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    footnotes-hover: true
+    highlight-style: monokai
+    background: light
+
+editor: source
+

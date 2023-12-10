@@ -1,0 +1,98 @@
+---
+title: "Projects"
+toc-location: right
+page-layout: full
+---
+
+## Funded projects
+### Effect of pesticides in simplified soil trophic networks {#EPIC}
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/epic-trophic.png)
+:::
+
+::: {#second-column}
+Soil functions are under threat due to the generalized used of pesticides in agriculture. These functions are underpinned by a complex network of interactions between soil organisms. In addition, soil organisms are frequently exposed to a cocktail of pesticide molecules rather than a unique compound. 
+:::
+::::
+
+Understanding how pesticides affect these organisms therefore requires studying how complex trophic interactions (predation, competition, mutualism) may be reshaped in presence of pesticide mixtures. To do so, new experimental approaches are needed in order allowing to evaluate pesticide bioaccumulation in soil communities and to measure its effects on species interactions. The EPIC project (Effets des Pesticides sur les Interaction interspécifiques au sein d’une Chaîne trophique simplifiée) aims to: **(1)** Establish new protocols for comparing pesticide bioaccumulation in mono- vs. multi-species mesocosms, **(2)** Determine the direct and indirect effects of pesticide mixtures on soil organisms and **(3)** Generate a mechanistic model of species interactions in response to pesticide stress. 
+
+Students: [Perrine Legrand](../people#perrine-legrand)
+
+Collaborators: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette) (co-PI), [Juliette Faburé (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-par-ordre-alphabetique/F/FABURE-Juliette), [Sophie Joimel (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys_eng/Staff/Photos-and-CV/B/BOULANGER-JOIMEL-Sophie), [Sylvie Nélieu (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys_eng/Staff/Photos-and-CV/N/NELIEU-Sylvie)
+
+Funders: [INRAE - Département AgroEcoSystemes](https://www.inrae.fr/departements/agroecosystem)
+
+Funding Period: 2023 -- 2024
+
+---
+
+### Eco-evolutionary dynamics in earthworms exposed to pesticide mixtures {#EEWORM}
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/eworm-ecoevodyn.png)
+:::
+
+::: {#second-column}
+Soil biodiversity is an important reservoir of ecosystem services and is threatened by the wide-scale use of pesticides. Evolution plays a central role in how populations persist because ecological change and evolutionary processes interact in eco-evolutionary feedbacks. These feedbacks can decrease extinction risk by allowing rapid adaptation to environmental stressors but depend on the population density and its genetic makeup.
+:::
+
+::::
+Despite evidence that soil fauna can adapt to pesticide exposure, key questions on the speed at which adaptation occurs and the costs for ecosystem functions remain unanswered. EEWORM (Eco-Evolutionary dynamics  in earthWORMs exposed to pesticide mixtures) will investigate eco-evolutionary dynamics in populations of the earthworm *Aporrectodea caliginosa*, a major soil engineer in agricultural systems, exposed to a pesticide mixture representative of French agricultural soils. Our specific aims are to **(1)** Test whether a pesticide mixture affects life-history trait variation – a required condition for evolution to occur, **(2)** Estimate the relative  influence of selective pressures vs. transgenerational plasticity induced by a pesticide mixture and **(3)** Generate an individual-based model accounting for eco-evolutionary dynamics in agricultural soils and derive their consequences for soil functions.
+
+Students: [Lisa Gollot](../people#lisa-gollot)
+
+Collaborators: [Juliette Faburé (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-par-ordre-alphabetique/F/FABURE-Juliette), [Sylvie Nélieu (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys_eng/Staff/Photos-and-CV/N/NELIEU-Sylvie), [Rémy Beaudouin (INERIS)](https://umr-sebio.fr/personnel/remy-beaudouin), [Jérôme Mathieu (iEES)](https://iees-paris.fr/annuaire/jerome-mathieu/), [Lise Dupont (iEES)](https://iees-paris.fr/annuaire/dupont-lise/)
+
+Funders: [Agence Nationale pour la Recherche (ANR)](https://anr.fr/)
+
+Funding Period: 2024 -- 2027
+---
+
+## Other projects and collaborations
+### Measuring the effects of selection using ecotoxicological assays {#DEB-Evo}
+
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/ecotox-selection.png)
+:::
+
+::: {#second-column}
+Evolutionary effects are frequently unaccounted for in ecotoxicological studies. As a result, we have a poor understanding on how fast wild population may adapt and at what costs on their growth and reproduction. Quantitative genetic approaches allow to determine the strength and shape of selection acting on phenotypes via the estimation of selection gradients. 
+:::
+::::
+Yet, these approaches are rarely used in ecotoxicological assays due to the difficulty of measuring individual fitness in ecotoxicological assays. Using historical data on nematode adaptation to Uranium exposure, we aim to better understand how contaminant exposure may alter evolutionary trajectories.
+
+Collaborators: [Rémy Beaudouin (INERIS)](https://umr-sebio.fr/personnel/remy-beaudouin), [Benoit Goussen (IBACON)](https://www.ibacon.com/company/staff/dr-benoit-goussen)
+
+---
+
+### Behavioral ecotoxicology of carabid beetles in agroecosystems {#BehavEcotox}
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![Carabid beetles activity](../images/carabid-activity.png)
+:::
+
+::: {#second-column}
+Although effects on growth, reproduction and survival are the most commonly evaluated traits in ecotoxicology, pesticides' impact on wildlife is not limited to these endpoints alone. By acting on neuro-endocrine systems, pesticides can also alter how individuals perceive their environment and deeply alter their physiology or behavior. 
+:::
+::::
+Using automated-tracking technology, I aim to build better mechanistic models accounting for the effects of pesticides on behavior using a generalist carabid predator as a model system.
+
+Collaborators: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
+
+---
+
+### Spatially-explicit modeling of pesticide fate {#SpatialTox}
+A major limitation of current risk assessment for pesticide products is its reliance on a substance-by-substance assessment while neglecting the risk posed by pesticide mixtures. A further complication is that pesticides are typically applied at the landscape scale and successively within and across years. To improve on current environmental risk assessment,  new exposure modelling approaches are needed that can better account for the fate of pesticides at the landscape scale and the likelihood of exposure given the ecological characteristics of each species (modes of exposure, dispersal, mobility between different habitats). Spatially-explicit models are powerful tools for achieving this vision as they can help identifying landscape features that are more likely to accumulate pesticide residues and can help infer species or groups of species that are most at risk in a given landscape context according to their ecological characteristics. The aim of this project is to determine how pesticides spread in typical vineyard landscapes accounting for how different the exposure risk for functional groups of organisms (e.g., detritivores, herbivores, insectivores...). We will soon hire a postdoctoral researcher to collaborate with us on these topics.
+
+Collaborators: [Cécile Dagès (LISAH)](https://www.umr-lisah.fr/?q=fr/content/c-dages), [Marc Votlz (LISAH)](https://www.umr-lisah.fr/?q=fr/content/m-voltz), [Carole Bedos (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys_eng/Staff/Personnel-Eco-Phy/Scientifiques-Eco-Phy/BEDOS-Carole), [Pierre Benoit (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys_eng/Staff/Photos-and-CV/B/BENOIT-Pierre), [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette), 
+[Olivier Crouzet (OFB)](), 
+[Pierre-François Staub (OFB)]()
+
+Funders: [Horizon Europe - European Partnership for the Assessment of Risks from Chemicals(PARC) - WP6.4.4: Quantify effects of PPP and other stressors through landscape risk assessment informing on environmental impacts](https://www.eu-parc.eu/)
+
+Funding Period: 2024 -- 2026
+
+

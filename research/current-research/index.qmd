@@ -1,0 +1,77 @@
+---
+title: "Current Research"
+toc-location: right
+page-layout: full
+---
+
+As a newly-recruited researcher at INRAE, I aim to model the response of soil fauna to various anthropogenic contaminants with a strong emphasis on pesticide mixtures in agroecosystems. 
+
+### Eco-evolutionary dynamics in soil arthropods exposed to pesticide mixtures {#EcoEvoTox}
+Current risk assessment protocols rely heavily on the assumption that ecotoxicological parameters are fixed at the species level. However, individual differences in critical endpoints and in sensitivity to exposure exist and can influence evolutionary responses. Evidence for altered evolutionary trajectories mostly comes from aquatic systems and studies on model organisms. However, we have much less information in terrestrial systems. The results of such evolutionary processes and their feedbacks on ecosystem services such as carbon recycling represent a major gap in our knowledge. By merging current approaches for bioenergetic modeling for pesticide effects with evolutionary theory, I hope to provide insights on a pressing question regarding the risk assessment of pesticides: How fast can soil organisms adapt to pesticide exposure and at what costs for soil functions?
+
+Projects: [EEWORM](../../projects#EEWORM)
+
+---
+
+### Direct and indirect effects of pesticides in soil trophic networks {#TrophicTox}
+Soil functions are sustained by a complex network of organisms and biological interactions. Understanding the effects of pesticide use on soil biodiversity requires taking into account the different modalities by which organisms are exposed (contact with soil, ingestion of soil particle or contaminated prey) but also determining the consequences of exposure on the stability of trophic network. This means that testing the consequences of pesticide exposure on soil organisms should emphasize testing procedures with interacting communities of organisms rather than relying on a one-species-at-a-time approach. I aim to explore these issues by comparing bioaccumulation of pesticides in simplified soil trophic networks using a combination of predator (carabid bettles) and detritivores (earthworm, enchytraeids, collembola) species. 
+
+
+Projects: [EPIC](../../projects#EPIC)
+
+---
+
+### Behavioral ecotoxicology of soil invertebrates {#BehavTox}
+The rise of behavioral ecotoxicology as a discipline has shown that the effects of contaminants on organisms’ behaviors are ubiquitous across terrestrial and aquatic ecosystems. Many contaminants act on the nervous system and can reshape how individuals perceive their environment. This means that classical ecotoxicological assays are limited as they tend to focus on growth and reproduction while ignoring subtle effects on social interactions, predator avoidance or feeding strategies. A further complication is the current integration of so-called “animal personalities” within ecotoxicological assays. Simply put, there is tremendous variation in individual responses to the same pesticide exposure as shown in several studies, including in my own research. This means that extracting population averages for key traits (growth, reproduction, no effect concentrations) may result in predictions that poorly reflect how populations cope with contaminants, especially when taking into account evolutionary effects. By merging behavioral endpoints with current theory on the modeling of contaminant effects on organisms, I hope to provide better tools to understand the long-term effects of contaminants on soil organisms and their ecological functions.
+
+
+---
+
+</br>
+
+### Model organisms
+
+#### *Apporectodea caliginosa*
+
+:::: {layout="[ 40, 60 ]"}
+
+::: {#first-column}
+![](../current-research/images/a-caliginosa.jpg)
+:::
+
+::: {#second-column}
+*A. caliginosa* is an endogeic earthworm common in agroecosystem. They are good models for understanding the effects of pesticide use on soils due to their burrowing behaviors and their key role in organic matter decomposition and soil structuration.
+:::
+
+::::
+
+#### *Poecilus cupreus*
+
+:::: {layout="[ 40, 60 ]"}
+
+::: {#first-column}
+![](../current-research/images/p-cupreus.jpg)
+:::
+
+::: {#second-column}
+*P. cupreus* is carabid bettle and an important generalist predator in agroecosystem. It feeds on aphids but also on many soil arthropods, including earthworms. 
+:::
+
+::::
+
+#### *Enchytraeus albidus*
+
+:::: {layout="[ 40, 60 ]"}
+
+::: {#first-column}
+![](../current-research/images/e-albidus.jpg)
+:::
+
+::: {#second-column}
+*E. albidus* is a small annelid worm common in coastal sand dunes. They contribute to soil organic matter decomposition and soil structuration through their burrowing behaviors. 
+:::
+
+::::
+
+
+
