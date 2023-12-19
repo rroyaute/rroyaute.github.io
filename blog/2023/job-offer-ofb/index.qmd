@@ -1,0 +1,17 @@
+---
+title: "Postdoctoral Position in Ecotoxicological Modeling"
+categories: [job, modeling, ecotoxicology, postdocs]
+---
+
+We are recruiting a Postdoctoral Researcher in Ecotoxicology to work on models of pesticide fate and their impact on biodiversity in vineyard landscapes. The position is a 24-month fixed-term contract with an expected start date of April 1, 2024 with a joint partnership between two INRAE teams (EcoSys and Lisah) and the French Biodiversity Agency ([OFB](https://www.ofb.gouv.fr/en)). You may find the full job description [here](20231010_OFB Fiche de poste_Post-Doc_EN.pdf) ([French version](20231010_OFB Fiche de poste_Post-Doc_VF.pdf)).
+
+## Job Description
+A major limitation of current risk assessment for pesticide products is its reliance on a substance-by-substance assessment while neglecting the risk posed by pesticide mixtures. A further complication is that emission sources and contamination routes may accumulate at the landscape scale through successive applications within and across years. To improve on current environmental risk assessment, reference scenarios of biodiversity exposure at the landscape scale are needed. Spatially-explicit models are powerful tools for linking pesticide fate in the environment to species or groups of species that are most at risk in a given landscape context according to their ecological characteristics.Models for pesticide fate in vineyard agroecosystems are under active development at INRAE and allow to simulate the temporal and spatial variation in pesticide concentration in the air, soil and surface water within heterogeneous farmed catchment considering main landscape elements (farmed plot, hydrographic network, some field margins). The aim of this position is to mobilize these tools to determine how pesticides spread in typical vineyard landscapes when accounting for agricultural practices and landscape configuration. These scenarios will be crossed with agent-based models accounting for how different functional groups of organisms (e.g., detritivores, herbivores, insectivores and pollinators) disperse and move in the landscape as exampled in [ALMaSS]() approaches (Animal, Landscape and Man Simulation System). 
+
+
+## Working conditions
+You will be supervised by [Carole Bedos](https://ecosys.versailles-grignon.hub.inrae.fr/vie-du-labo/qui-sommes-nous/personnel-par-ordre-alphabetique/b/bedos-carole) and I within [UMR EcoSys](https://ecosys.versailles-grignon.hub.inrae.fr/), with frequent interactions and short-term missions with [UMR Lisah](https://www.umr-lisah.fr/en/). 
+
+## Application
+Do not hesitate to reach out to us for any questions! Y
+Please submit your CV and cover letter by *January 31, 2024*  through the [OFB Portal](https://ofb.gestmax.fr/1714/1/cdd-charge-de-recherches-en-ecotoxicologie-h-f).
