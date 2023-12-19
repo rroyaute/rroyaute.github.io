@@ -4,6 +4,7 @@
 .Ruserdata
 
 /.quarto/
+/_site/
 
 /R/
 /public/

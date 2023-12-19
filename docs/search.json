@@ -70,39 +70,53 @@
     "text": "You can download my CV here\nI am currently a researcher at INRAE within the EcoSys research unit where I focus on building eco-evolutionary models of the soil fauna under contamination stress.\nI am a broadly trained behavioral ecologist who uses a combination of empirical, theoretical and statistical approaches to understand how behavioral variation responds to environmental cues and under which conditions such variation impact higher order processes at the population and community levels. A primary interest of my research program is to use theoretical foundations in the field of animal personality to understand the processes by which individuals cope with the increasing pressures resulting from human activities.\nAfter obtaining my Master’s degree in Environmental Sciences at the École Nationale Supérieure Agronomique de Toulouse in France, I set sail for McGill University in Montréal, Canada where I studied how behavioral variation is impacted by insecticide exposure in jumping spiders during my PhD.\nI held several postdoctoral position previously, which fed my broad interests in evolutionary ecology. Past projects included determining the role of the genetics and environmental sources of variation that shape the integration between phenotypic traits (collab. NDSU, UC Davis) and understanding the role of variation in animal movement in ecological processes (collab. SBiK-F, Marburg University, LMU Munich)."
   },
   {
-    "objectID": "blog/about.html",
-    "href": "blog/about.html",
-    "title": "Raphaël Royauté",
+    "objectID": "blog/2023/job-offer-ofb/index.html",
+    "href": "blog/2023/job-offer-ofb/index.html",
+    "title": "Postdoctoral Position in Ecotoxicological Modeling",
     "section": "",
-    "text": "I am a researcher at INRAE. My primary interest lie in linking ecotoxicological and evolutionary approaches to understand how the soil fauna responds to exposure to contaminants. I am interested in using a variety of modeling tools in order to link contaminant exposure to its effects on organisms’ life-history and its consequences on population, community dynamics and soil functions."
+    "text": "We are recruiting a Postdoctoral Researcher in Ecotoxicology to work on models of pesticide fate and their impact on biodiversity in vineyard landscapes. The position is a 24-month fixed-term contract with an expected start date of April 1, 2024 with a joint partnership between two INRAE teams (EcoSys and Lisah) and the French Biodiversity Agency (OFB). You may find the full job description here (French version)."
   },
   {
-    "objectID": "blog/about.html#about-me",
-    "href": "blog/about.html#about-me",
-    "title": "Raphaël Royauté",
-    "section": "",
-    "text": "I am a researcher at INRAE. My primary interest lie in linking ecotoxicological and evolutionary approaches to understand how the soil fauna responds to exposure to contaminants. I am interested in using a variety of modeling tools in order to link contaminant exposure to its effects on organisms’ life-history and its consequences on population, community dynamics and soil functions."
+    "objectID": "blog/2023/job-offer-ofb/index.html#job-description",
+    "href": "blog/2023/job-offer-ofb/index.html#job-description",
+    "title": "Postdoctoral Position in Ecotoxicological Modeling",
+    "section": "Job Description",
+    "text": "Job Description\nA major limitation of current risk assessment for pesticide products is its reliance on a substance-by-substance assessment while neglecting the risk posed by pesticide mixtures. A further complication is that emission sources and contamination routes may accumulate at the landscape scale through successive applications within and across years. To improve on current environmental risk assessment, reference scenarios of biodiversity exposure at the landscape scale are needed. Spatially-explicit models are powerful tools for linking pesticide fate in the environment to species or groups of species that are most at risk in a given landscape context according to their ecological characteristics.Models for pesticide fate in vineyard agroecosystems are under active development at INRAE and allow to simulate the temporal and spatial variation in pesticide concentration in the air, soil and surface water within heterogeneous farmed catchment considering main landscape elements (farmed plot, hydrographic network, some field margins). The aim of this position is to mobilize these tools to determine how pesticides spread in typical vineyard landscapes when accounting for agricultural practices and landscape configuration. These scenarios will be crossed with agent-based models accounting for how different functional groups of organisms (e.g., detritivores, herbivores, insectivores and pollinators) disperse and move in the landscape as exampled in ALMaSS approaches (Animal, Landscape and Man Simulation System)."
   },
   {
-    "objectID": "blog/about.html#whats-on-this-blog",
-    "href": "blog/about.html#whats-on-this-blog",
-    "title": "Raphaël Royauté",
-    "section": "What’s on this blog?",
-    "text": "What’s on this blog?\nThis blog is an opportunity for me to explore these different classes of models in the open and hopefully provide some useful tools to the research commununity."
+    "objectID": "blog/2023/job-offer-ofb/index.html#working-conditions",
+    "href": "blog/2023/job-offer-ofb/index.html#working-conditions",
+    "title": "Postdoctoral Position in Ecotoxicological Modeling",
+    "section": "Working conditions",
+    "text": "Working conditions\nYou will be supervised by Carole Bedos and I within UMR EcoSys, with frequent interactions and short-term missions with UMR Lisah."
   },
   {
-    "objectID": "blog/2023/welcome/index.html",
-    "href": "blog/2023/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "objectID": "blog/2023/job-offer-ofb/index.html#application",
+    "href": "blog/2023/job-offer-ofb/index.html#application",
+    "title": "Postdoctoral Position in Ecotoxicological Modeling",
+    "section": "Application",
+    "text": "Application\nDo not hesitate to reach out to us for any questions! Y Please submit your CV and cover letter by January 31, 2024 through the OFB Portal."
   },
   {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
     "title": "Home",
     "section": "",
-    "text": "No matching items"
+    "text": "This blog is an opportunity for me to explore these different classes of models in the open and hopefully provide some useful tools to the research community. I’ll also post about job opportunities and ongoing projects."
+  },
+  {
+    "objectID": "blog/index.html#whats-on-this-blog",
+    "href": "blog/index.html#whats-on-this-blog",
+    "title": "Home",
+    "section": "",
+    "text": "This blog is an opportunity for me to explore these different classes of models in the open and hopefully provide some useful tools to the research community. I’ll also post about job opportunities and ongoing projects."
+  },
+  {
+    "objectID": "blog/index.html#section",
+    "href": "blog/index.html#section",
+    "title": "Home",
+    "section": "2023",
+    "text": "2023\n\n\n\n\n  \n\n\n\n\nPostdoctoral Position in Ecotoxicological Modeling\n\n\n\n\n\n\n\njob\n\n\nmodeling\n\n\necotoxicology\n\n\npostdocs\n\n\n\n\n\n\n\n\n\n\n\nTuesday, December 19, 2023\n\n\nRaphaël Royauté\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",

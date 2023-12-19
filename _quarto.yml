@@ -50,7 +50,7 @@ website:
       <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}}) </span>
     right: |
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
-      <span class="faux-block">[View the source at {{< fa brands gitlab >}} GitLab]({{< var gitlab-url >}})</span>
+      <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]({{< var github-repo-url >}})</span>
 format:
   html:
     theme: 
@@ -63,4 +63,7 @@ format:
     background: light
 
 editor: source
+
+execute:
+  freeze: auto
 

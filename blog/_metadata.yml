@@ -4,7 +4,13 @@
 date: last-modified
 date-format:  "dddd, MMMM D, YYYY"
 
-# Default for table of contents
+listing:
+  - id: posts_2023
+    contents: "2023/**/index.qmd"
+    sort: "date desc"
+    # template: ../html/blog/listing.ejs
+    categories: true
+
 toc: true
 toc-title: Contents
 toc-location: left
@@ -14,7 +20,7 @@ execute:
   echo: true
   message: true
   warning: true
-  freeze: auto
+  freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
@@ -22,5 +28,5 @@ title-block-banner: true
 # Default author
 author:
   - name: Raphaël Royauté
-    url: https://www.raphaelroyaute.com/
+    url: githu-url
     orcid: 0000-0002-5837-633X
