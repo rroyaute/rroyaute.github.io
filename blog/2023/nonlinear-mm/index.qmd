@@ -174,7 +174,7 @@ fig.title
 ```{r}
 #| echo: false
 # Store figure as icon for blog
-ggsave(filename = "blog/2023/nonlinear-mm/figs/fig.title.png", 
+ggsave(filename = "figs/fig.title.png", 
        fig.title, width = 4, height = 4)
 ```
 
@@ -614,7 +614,8 @@ df %>%
                      args = list(Linf = Linf_mu, L0 = L0_mu, alpha = alpha_mu),
                      color = "red", size = 1) +
   ylim(0, 1600) +
-  labs(x = "Hours since hatching", y = "Body-length (mum)")
+  labs(x = "Hours since hatching", 
+       y = expression(paste("Body-length (", mu, "m)")))
 
 ```
 
