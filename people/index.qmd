@@ -52,7 +52,7 @@ Co-supervisors: [Rémy Beaudouin (INERIS)](https://umr-sebio.fr/personnel/remy-b
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
-![](../images/LisaGollot-round.jpg)
+![](../images/AlbanRoyne-round.png){height=144}
 :::
 
 ::: {#second-column}
