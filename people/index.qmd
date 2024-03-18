@@ -50,6 +50,23 @@ Co-supervisors: [Rémy Beaudouin (INERIS)](https://umr-sebio.fr/personnel/remy-b
 :::
 ::::
 
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/LisaGollot-round.jpg)
+:::
+
+::: {#second-column}
+### Alban Royné
+Alban is a second-year Master's student from [Université des Sciences de Bordeaux](https://www.u-bordeaux.fr/). He will be working on trophic interactions between carabids and detritivores exposed to pesticide mixtures.
+
+Background: Ecotoxicology and Environmental Chemistry
+
+Project: [Effect of pesticides in simplified soil trophic networks](../projects#EPIC) 
+
+Co-supervisor: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
+:::
+::::
+
 ---
 
 <br /> 
@@ -122,6 +139,3 @@ Project: [TRAVERSéES](https://ecophytopic.fr/recherche-innovation/concevoir-son
 Co-supervisors: [Corinne Robert (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Eco-Phy/Scientifiques-Eco-Phy/ROBERT-Corinne), [Pierre-Antoine Précigout (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Eco-Phy/Scientifiques-Eco-Phy/PRECIGOUT-Pierre-Antoine), [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
 :::
 ::::
-
-
-

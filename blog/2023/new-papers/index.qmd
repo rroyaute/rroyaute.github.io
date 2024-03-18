@@ -1,6 +1,0 @@
----
-title: "New papers out!"
-draft: true
-categories: [publications, remote sensing, 'Nature 4.0', quantitative genetics, holey landscape]
----
-

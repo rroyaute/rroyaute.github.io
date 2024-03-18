@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.309">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -50,9 +50,11 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
-    null
+    "f",
+    "/",
+    "s"
   ],
   "language": {
     "search-no-results-text": "No results",
@@ -62,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -212,6 +215,33 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -219,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
@@ -248,44 +278,50 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../people/index.html"><span class="menu-text">People</span></a>
+    <a class="nav-link" href="../people/index.html"> 
+<span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/index.html"><span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../publications/index.html" aria-current="page"><span class="menu-text">Publications</span></a>
+    <a class="nav-link active" href="../publications/index.html" aria-current="page"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv/index.html"><span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../cv/index.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog/index.html"><span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:raphael.royaute@inrae.fr" <i="" role="img" aria-label="email">
- 
-&gt;<span class="menu-text"></span></a>
+    <a class="nav-link" href="mailto:raphael.royaute@inrae.fr"> <i class="bi bi-envelope" role="img" aria-label="email">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rroyaute" <i="" role="img">
- 
-&gt;<span class="menu-text"></span></a>
+    <a class="nav-link" href="https://github.com/rroyaute"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://https://forgemia.inra.fr/raphael.royaute"><span class="menu-text"><i class="fa-brands fa-gitlab" aria-label="gitlab"></i></span></a>
+    <a class="nav-link" href="https://https://forgemia.inra.fr/raphael.royaute"> 
+<span class="menu-text"><i class="fa-brands fa-gitlab" aria-label="gitlab"></i></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&amp;hl=en" <i="" role="img">
- 
-&gt;<span class="menu-text"></span></a>
+    <a class="nav-link" href="https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&amp;hl=en"> <i class="bi bi-google" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/RRoyaute" <i="" role="img">
- 
-&gt;<span class="menu-text"></span></a>
+    <a class="nav-link" href="https://twitter.com/RRoyaute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -331,11 +367,14 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+
 <p>You can also find my papers on <a href="https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&amp;hl=en">Google Scholar</a>, my <a href="https://orcid.org/0000-0002-5837-633X">ORCID</a> page or on <a href="https://cv.hal.science/raphael-royaute">HAL</a>.</p>
 <section id="in-reviewpreprints-2" class="level2">
 <h2 class="anchored" data-anchor-id="in-reviewpreprints-2">In Review/Preprints (2)</h2>
 <div id="listing-in-review" class="quarto-listing quarto-listing-container-custom">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+
 <style>
   .btn-xs {
     padding: 1px 5px;
@@ -345,14 +384,19 @@ ul.task-list li input[type="checkbox"] {
     font-size: 1.2em;  /* Adjust as needed */
   }
 </style>
+
 <ul class="list">
+  
 </ul>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
 </div>
 <div id="listing-preprints" class="quarto-listing quarto-listing-container-custom">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+
 <style>
   .btn-xs {
     padding: 1px 5px;
@@ -362,45 +406,109 @@ No matching items
     font-size: 1.2em;  /* Adjust as needed */
   }
 </style>
+
 <ul class="list">
+  
     <li data-index="0">
       Sex-specific behavioral syndromes allow the independent evolution of behavioral dimorphism 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
         <small class="text-muted">
           2021. <b>Raphaël Royauté</b>, Anne V Hedrick, Ned A Dochtermann. .
         </small>
+      
+      
       <!-- paper info for published papers -->
+      
+      
       <br>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.32942/osf.io/4abp6" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-doi ai-lg"></i> Preprint 
         </a> 
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://osf.io/pnug5/" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-osf ai-lg"></i> OSF 
         </a>
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="1">
       Integration of intra-and inter-sexual selection signaling 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
         <small class="text-muted">
           2020. Courtney R Garrison, <b>Raphaël Royauté</b>, Ned A Dochtermann. .
         </small>
+      
+      
       <!-- paper info for published papers -->
+      
+      
       <br>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1101/2020.05.14.088518" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-doi ai-lg"></i> Preprint 
         </a> 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
 </ul>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -409,7 +517,9 @@ No matching items
 <section id="published-articles-22" class="level2">
 <h2 class="anchored" data-anchor-id="published-articles-22">Published Articles (22)</h2>
 <div id="listing-published-articles" class="quarto-listing quarto-listing-container-custom">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+
 <style>
   .btn-xs {
     padding: 1px 5px;
@@ -419,472 +529,1165 @@ No matching items
     font-size: 1.2em;  /* Adjust as needed */
   }
 </style>
+
 <ul class="list">
+  
     <li data-index="0">
       Drift on holey landscapes as a dominant evolutionary process (<i>Accepted</i>) 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2023. Ned A Dochtermann, Brady Klock, Derek A Roff, <b>Raphaël Royauté</b>. <b>Proceedings of the National Academy of Sciences</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.32942/X2CG64" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-doi ai-lg"></i> Preprint 
         </a> 
+      
+      
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://github.com/DochtermannLab/Wright_vs_Holey" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="bi bi-github ai-lg"></i> GitHub 
         </a>
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="1">
       Nature 4.0: A networked sensor system for integrated biodiversity monitoring (<i>Accepted</i>) 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2023. Dirk Zeuss, Lisa Bald, Jannis Gottwald, Marcel Becker, Hicham Bellafkir, Jörg Bendix, Phillip Bengel, Larissa T. Beumer, Roland Brandl, Martin Brändle, Stephan Dahlke, Nina Farwig, Bernd Freisleben, Nicolas Friess, Lea Heidrich, Sven Heue, Jonas Höchst, Hajo Holzmann, Patrick Lampe, Martin Leberecht, Kim Lindner, Juan F. Masello, Jonas Mielke Möglich, Markus  Mühling, Thomas Müller, Alexey Noskov, Lars Opgenoorth, Carina Peter, Petra Quillfeldt, Sascha Rösner, <b>Raphaël Royauté</b>, Christian M. Runge, Dana Schabo, Daniel Schneider, Bernhard Seeger, Elliot Shayle, Ralf Steinmetz, Pavel Tafo, Markus Vogelbacher, Stephan Wöllauer, Sohaib Younis, Julian Zobe, Thomas Nauss. <b>Global Change Biology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1111/GCB.17056" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="2">
       Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2023. Edward Richard Ivimey-Cook, Joel L Pick, Kevin Bairos-Novak, Antica Culina, Elliot Gould, Matthew Grainger, Benjamin Marshall, David Moreau, Matthieu Paquet, <b>Raphaël Royauté</b>, Alfredo Sanchez-Tojar, Inês Silva, Saras Windecker. <b>Journal of Evolutionary Biology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1111/jeb.14230" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.32942/X2CG64" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-doi ai-lg"></i> Preprint 
         </a> 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="3">
       Fencing amplifies individual differences in movement with implications on survival for two migratory ungulates 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2023. Wenjing Xu, Laura C Gigliotti, <b>Raphaël Royauté</b>, Hall Sawyer, Arthur D. Middleton. <b>Journal of Animal Ecology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1111/1365-2656.13879" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="4">
       Classifying the activity states of small vertebrates using automated VHF telemetry 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2023. Jannis Gottwald, <b>Raphaël Royauté</b>, Marcel Becker, Tobias Geitz, Jonas Höchst, Patrick Lampe, Lea Leister, Kim Lindner, Julia Maier, Sascha Rösner, Dana G Schabo, Bernd Freisleben, Roland Brandl, Thomas Müller, Nina Farwig, Thomas Nauss. <b>Methods in Ecology and Evolution</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1111/2041-210X.14037" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://data.uni-marburg.de/handle/dataumr/147" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-data ai-lg"></i> Data 
         </a>
+      
+      
+      
+      
+      
         <a role="button" href="https://github.com/Nature40/tRackIT" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="bi bi-github ai-lg"></i> GitHub 
         </a>
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="5">
       Moving away from repeatability: a comment on Stuber et al. 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2022. Niels J Dingemanse, Anne G Hertel,, <b>Raphaël Royauté</b>. <b>Behavioral Ecology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955530" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="https://doi.org/10.1093/beheco/arac006" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="6">
        Phylogenetic conservation of behavioural variation and behavioural syndromes 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2022. Jeremy Dalos,, <b>Raphaël Royauté</b>, Ann V Hedrick, Ned A Dochtermann. <b>Journal of Evolutionary Biology</b>.
         </small>
+      
+      
       <br>
+
+      
         <a role="button" href="https://onlinelibrary.wiley.com/doi/10.1111/jeb.14021" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="bi bi-exclamation-diamond ai-lg"></i> Correction
         </a> 
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1111/jeb.13935" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
         <a role="button" href="https://doi.org/10.32942/osf.io/ze8ty" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-doi ai-lg"></i> Preprint 
         </a> 
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://osf.io/q23ud/" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-osf ai-lg"></i> OSF 
         </a>
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="7">
       Biologging reveals individual variation in behavioural predictability in the wild 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2021. Anne G Hertel, <b>Raphaël Royauté</b>, Andreas Zedrosser, Thomas Mueller. <b>Journal of Animal Ecology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.32942/osf.io/ze8ty" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://osf.io/65djr/" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-osf ai-lg"></i> OSF 
         </a>
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="8">
       Comparing ecological and evolutionary variability within datasets 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2021. <b>Raphaël Royauté</b>, Ned A Dochtermann. <b>Behavioral Ecology and Sociobiology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1007/s00265-021-03068-3" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
         <a role="button" href="https://ecoevorxiv.org/repository/view/4399/" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-doi ai-lg"></i> Preprint 
         </a> 
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://osf.io/5aw42/" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-osf ai-lg"></i> OSF 
         </a>
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="9">
       Behavioural syndromes shape evolutionary trajectories via conserved genetic architecture 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2020. <b>Raphaël Royauté</b>, Anne V Hedrick, Ned A Dochtermann. <b>Proceedings of the Royal Society B</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1098/rspb.2020.0183" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
         <a role="button" href="https://www.biorxiv.org/content/10.1101/619411v3" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-doi ai-lg"></i> Preprint 
         </a> 
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.5061/dryad.5mkkwh730" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-data ai-lg"></i> Data 
         </a>
+      
+      
+      
+      
+      
         <a role="button" href="https://github.com/DochtermannLab/G-PopComparison" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="bi bi-github ai-lg"></i> GitHub 
         </a>
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="10">
       The heritability of behavior: a meta-analysis 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2019. Ned A Dochtermann, Tori Schwab, Monica A Berdal, Jeremy Dalos, <b>Raphaël Royauté</b>. <b>]Journal of Heredity</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.1093/jhered/esz023" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.5061/dryad.b38k42m" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-data ai-lg"></i> Data 
         </a>
+      
+      
+      
+      
+      
         <a role="button" href="https://github.com/DochtermannLab/BehavioralHeritability" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="bi bi-github ai-lg"></i> GitHub 
         </a>
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="11">
       The mean matters: going beyond repeatability to interpret behavioural variation 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2019. Ned A Dochtermann, <b>Raphaël Royauté</b>. <b>Animal Behaviour</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955462" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="https://doi.org/10.1016/j.anbehav.2019.05.012" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="12">
       Current energy state interacts with the developmental environment to influence behavioural plasticity] 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2019. <b>Raphaël Royauté</b>, Courtney Garrison, Jeremy Dalos, Monica A Berdal, Ned A Dochtermann. <b>Animal Behaviour</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955488" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="https://doi.org/10.1016/j.anbehav.2018.11.013" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="13">
       Paceless life? A meta-analysis of the pace-of-life syndrome hypothesis 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2018. <b>Raphaël Royauté</b>, Monica A Berdal, Courtney R Garrison, Ned A Dochtermann. <b>Behavioral Ecology and Sociobiology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955414" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="hhttps://doi.org/10.1007/s00265-018-2472-z" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.5061/dryad.m74c8nj" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-data ai-lg"></i> Data 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="14">
       Phenotypic integration in an extended phenotype: among‐individual variation in nest‐building traits of the alfalfa leafcutting bee (<i>Megachile rotundata</i>) 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2018. <b>Raphaël Royauté</b>, Elisabeth S Wilson, Bryan R Helm, Rachel E Mallinger, Jarrad Prasifka, Kendra J Greenlee, Julia H Bowsher. <b>Journal of Evolutionary Biology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955517" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="https://doi.org/10.1111/jeb.13259" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="https://doi.org/10.5061/dryad.n925d21" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-data ai-lg"></i> Data 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="15">
       When the mean no longer matters: Developmental diet affects behavioral variation but not population averages in the house cricket (<i>Acheta domesticus</i>) 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2017. <b>Raphaël Royauté</b>, Ned A Dochtermann. <b>Behavioral Ecology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955457" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="https://doi.org/10.1093/beheco/arw164" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="http://dx.doi.org/10.5061/dryad.nv835" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-data ai-lg"></i> Data 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="16">
       Genetic conservation and management of the California endemic  Torrey pine (*Pinus torreyana* Parry): Implications of genetic rescue in a genetically depauperate species 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2017. Jill A Hamilton, <b>Raphaël Royauté</b>, Jessica W Wright, Paul Hodgskiss, F Thomas Ledig. <b>]Ecology and Evolution</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="http://dx.doi.org/10.1002/ece3.3306" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="17">
       Under the influence: sublethal exposure to an insecticide affects personality expression in a jumping spider 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2015. <b>Raphaël Royauté</b>, Christopher M Buddle, Charles Vincent. <b>Functional Ecology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955445" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="http://dx.doi.org/10.1111/1365-2435.12413" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
         <a role="button" href="http://dx.doi.org/10.5061/dryad.4s90s" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-data ai-lg"></i> Data 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="18">
       Behaviour  metabolism and size: phenotypic modularity or integration in <i>Acheta domesticus</i>? 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2015. <b>Raphaël Royauté</b>, Kendra Greenlee, Maxwell Baldwin, Ned A Dochtermann. <b> Animal Behaviour</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955451" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="http://dx.doi.org/10.1016/j.anbehav.2015.09.027" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="19">
       Contaminants as a neglected source of behavioural variation 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2014. Pierre-Olivier Montiglio, <b>Raphaël Royauté</b>. <b>Animal Behaviour</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955428" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="http://dx.doi.org/10.1016/j.anbehav.2013.11.018" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="20">
       Interpopulation variations in behavioral syndromes of a jumping spider from insecticide‐treated and insecticide‐free orchards 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2014. <b>Raphaël Royauté</b>, Christopher M Buddle, Charles Vincent. <b>Ethology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.inrae.fr/hal-03955434" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="https://onlinelibrary.wiley.com/doi/10.1111/eth.12185" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
     <li data-index="21">
       Colonization dynamics of agroecosystem spider assemblages after snow-melt in Quebec (Canada) 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
+      
       <!-- paper info for published papers -->
+      
         <small class="text-muted">
           2012. <b>Raphaël Royauté</b>, Christopher M Buddle. <b>Journal of Arachnology</b>.
         </small>
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.science/hal-03853617" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
         <a role="button" href="http://dx.doi.org/10.1636/P11-16.1" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
 </ul>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -893,7 +1696,9 @@ No matching items
 <section id="thesis" class="level2">
 <h2 class="anchored" data-anchor-id="thesis">Thesis</h2>
 <div id="listing-thesis" class="quarto-listing quarto-listing-container-custom">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+
 <style>
   .btn-xs {
     padding: 1px 5px;
@@ -903,25 +1708,58 @@ No matching items
     font-size: 1.2em;  /* Adjust as needed */
   }
 </style>
+
 <ul class="list">
+  
     <li data-index="0">
       Factors influencing behavioural variation in apple orchard populations of the jumping spider <i>Eris militaris</i> (Araneae: Salticidae) 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
+      
         <small class="text-muted">
           2014. <b>Raphaël J Royauté</b>. .
         </small>
+      
+      
       <!-- paper info for published papers -->
+      
+      
       <br>
+
+      
+      
+      
+      
+      
         <a role="button" href="https://hal.science/tel-03840936" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-open-access ai-lg"></i> Open Access
         </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <br>
+      
+      
       </p>
       <hr>
     </li>
+  
 </ul>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -932,7 +1770,9 @@ No matching items
 </section>
 
 <div class="quarto-listing quarto-listing-container-custom" id="listing-reviewed-preprints">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+
 <style>
   .btn-xs {
     padding: 1px 5px;
@@ -942,8 +1782,11 @@ No matching items
     font-size: 1.2em;  /* Adjust as needed */
   }
 </style>
+
 <ul class="list">
+  
 </ul>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -1220,15 +2063,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1237,7 +2093,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1279,6 +2143,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -1354,7 +2241,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

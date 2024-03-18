@@ -4,12 +4,12 @@
 date: last-modified
 date-format:  "dddd, MMMM D, YYYY"
 
-listing:
-  - id: posts_2023
-    contents: "2023/**/index.qmd"
-    sort: "date desc"
-    # template: ../html/blog/listing.ejs
-    categories: true
+# listing:
+#   - id: posts_2023
+#     contents: "2023/**/index.qmd"
+#     sort: "date desc"
+#     template: ../html/blog/listing.ejs
+#     categories: true
 
 toc: true
 toc-title: Contents

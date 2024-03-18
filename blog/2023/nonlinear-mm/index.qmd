@@ -1,6 +1,7 @@
 ---
 title: "Nonlinear mixed-effect models for individual differences in growth"
 draft: false
+image: "blog/2023/nonlinear-mm/figs/fig.title.png"
 date: last-modified
 categories:
   - Gompertz growth
@@ -10,7 +11,7 @@ categories:
   - Bayesian
 format:
   html: 
-    code-fold: true
+    code-fold: false
     fig-cap-location: bottom
     shift-heading-level-by: 1
     embed-resources: true
@@ -26,33 +27,41 @@ editor:
     wrap: sentence
 ---
 
+(*Update 18/03/2024: Fixing minor formatting issues*)
+
+
 Load libraries
 
 ```{r}
 #| code-fold: false
 library(tidyverse); library(patchwork); library(tidybayes)
 library(brms); library(marginaleffects); library(viridis)
-library(easystats)
+library(easystats); library(kableExtra)
 ```
 
 Set theme
 
 ```{r}
-#| code-fold: false
 theme_set(theme_bw(16))
 ```
 
-Model importation
+We're first going to load all model objects stored in the `stan` folder to avoid rerunning all those pesky Bayesian computations.
+
 ```{r}
-# Importing all models from \stan folder to avoid refitting
-# Note, there must be a way to automatically import all models files
-# from a folder. Doing it the hard way for now
-gomp.prior.default = readRDS("stan/gomp.prior.default.rds")
-gomp.prior = readRDS("stan/gomp.prior.rds")
-gomp = readRDS("stan/gomp.rds")
-gomp.sc.prior = readRDS("stan/gomp.sc.prior.rds")
-gomp.sc = readRDS("stan/gomp.sc.rds")
-gomp.to = readRDS("stan/gomp.to.rds")
+#| code-fold: true
+# Make a vector of file paths
+file_paths <- list.files(path = "stan/", 
+                         pattern = "\\.rds", full.names = TRUE)
+
+# Make a vector of file names
+file_names <-  gsub(pattern = "\\.rds$", replacement = "", 
+                    x = basename(file_paths))
+
+# Read all models into a list
+mods_list <- lapply(file_paths, readRDS)
+
+# Assign file names to list elements
+names(mods_list) <- file_names      
 ```
 
 
@@ -60,10 +69,9 @@ gomp.to = readRDS("stan/gomp.to.rds")
 I've been working a lot with nonlinear models lately. In many cases across ecology and evolution, trends do not go on forever. Having modeling approaches that can account for boundaries and plateaus is therefore very important in specific situations. In my case I'm generally interested in how contamination exposure affects growth, reproduction and behavior of invertebrates and its consequences on individual fitness. In this post I'm exploring how to use nonlinear mixed effect models of growth to recover individual trajectories using simulated data. I'm mostly using the `{brms}` package for now as it provides a very user-friendly syntax for fitting these models. The level of complexity I'm dealing with is veering dangerously toward a full `STAN` implementation, especially when I'll have to deal with jointly modeling fitness, but that's a problem for future me! 
 
 ## Inspiration
-A lot of the code in this document has been taken and adapted from Solomon Kurtz's work and his translation of Richard McElreath's [Statistical Rethinking]() book into `{brms}` syntax. Specifically, I've been working through [Chapter 14 section 1.3](https://bookdown.org/content/4857/adventures-in-covariance.html#the-varying-slopes-model.).Many thanks to them for putting out all this material in an open format!
+A lot of the code in this document has been taken and adapted from Solomon Kurtz's work and his translation of Richard McElreath's [Statistical Rethinking]() book into `{brms}` syntax. Specifically, the simulation of individual differences is directly inspired from working through [Chapter 14 section 1.3](https://bookdown.org/content/4857/adventures-in-covariance.html#the-varying-slopes-model.). Many thanks to them for putting out all this material in an open format!
 
 ## Model description
-
 I'm using the model described in [Goussen et al. (2013)](https://doi.org/10.1007/s10646-013-1078-5) showing adaptation of *C. elegans* to Uranium.
 The model assumes nematodes body-length grows according to the following Gompertz function:
 
@@ -150,7 +158,7 @@ df = ID %>%
   mutate(Lhat = Linf_i * exp(log(L0_i/Linf_i)*exp(-alpha_i*t))) %>%
   mutate(L = rnorm(n(), Lhat, sd))
 
-df %>% 
+fig.title = df %>% 
   ggplot(aes(y = L, x = t, group = ID)) +
   geom_point(alpha = .2, size = 2.5) +
   geom_line(alpha = .2, size = .5) +
@@ -158,8 +166,18 @@ df %>%
                      args = list(Linf = Linf, L0 = L0, alpha = alpha),
                      color = "red", size = 1) +
   ylim(0, 1600) +
-  labs(x = "Hours since hatching", y = "Body-length (mum)")
+  labs(x = "Hours since hatching", 
+       y = expression(paste("Body-length (", mu, "m)")))
+fig.title
 ```
+
+```{r}
+#| echo: false
+# Store figure as icon for blog
+ggsave(filename = "blog/2023/nonlinear-mm/figs/fig.title.png", 
+       fig.title, width = 4, height = 4)
+```
+
 
 ### Defining the model in `brms`
 
@@ -171,7 +189,7 @@ bf = bf(L ~
          L0 + Linf + alpha ~ 1 + (1|ID), # parameters with random effects
          nl = T)
 priors = get_prior(bf, df)
-priors
+priors %>% kable(digits = 2)
 ```
 
 These are default priors and may not be well-suited for our problem. For some reason, `brms` won't let us sample from these default priors, but we can easily illustrate the point by setting unrealistically uninformative priors (i.e. normal(0, 100) here) on these parameters. I'm using the lower bound argument `lb = 0` to keep the growth positive.
@@ -193,11 +211,7 @@ gomp.prior.default = brm(bf,
                          df,
                          backend = "cmdstan",
                          prior = priors, 
-                         # init = 0,
-                         # warmup = 2000,
                          iter = 1000,
-                         # control = list(adapt_delta = .9,
-                         #                max_treedepth = 15),
                          sample_prior = "only",
                          file = "stan/gomp.prior.default",
                          seed = 42, 
@@ -206,7 +220,8 @@ gomp.prior.default = brm(bf,
 ```
 ```{r}
 # plotting
-plot(conditional_effects(gomp.prior.default, ndraws = 100, spaghetti = T))
+plot(conditional_effects(mods_list$gomp.prior.default, 
+                         ndraws = 100, spaghetti = T))
 ```
 
 
@@ -287,14 +302,16 @@ gomp.prior = brm(bf,
 
 Inspecting the model and plotting predicted growth
 ```{r}
-gomp.prior
-plot(conditional_effects(gomp.prior, ndraws = 100, spaghetti = T))
+mods_list$gomp.prior
+plot(conditional_effects(mods_list$gomp.prior, 
+                         ndraws = 100, spaghetti = T))
 
 re = crossing(t = seq(min(df$t), 
                        max(df$t),
                        length.out=100),
                ID = unique(df$ID)) %>% 
-  add_epred_draws(gomp.prior, re_formula = NULL, scale = "response", ndraws = 20)
+  add_epred_draws(mods_list$gomp.prior, re_formula = NULL, 
+                  scale = "response", ndraws = 20)
 
 re %>% 
   ggplot(aes(y = .epred, x = t)) +
@@ -332,15 +349,17 @@ gomp = brm(bf,
 ```
 Inspecting the model and plotting predicted growth
 ```{r}
-model_parameters(gomp, effects = "all")
-pp_check(gomp, ndraws = 100)
-plot(conditional_effects(gomp, ndraws = 100, spaghetti = T))
+model_parameters(mods_list$gomp, effects = "all") %>% 
+  kable(digits = 2)
+pp_check(mods_list$gomp, ndraws = 100)
+plot(conditional_effects(mods_list$gomp, ndraws = 100, spaghetti = T))
 
 re = crossing(t = seq(min(df$t), 
                        max(df$t),
                        length.out=100),
                ID = unique(df$ID)) %>% 
-  add_epred_draws(gomp, re_formula = NULL, scale = "response", ndraws = 20)
+  add_epred_draws(mods_list$gomp, re_formula = NULL, 
+                  scale = "response", ndraws = 20)
 
 re %>% 
   ggplot(aes(y = .epred, x = t)) +
@@ -447,11 +466,7 @@ gomp.sc.prior = brm(bf,
              df,
              backend = "cmdstan",
              prior = priors, 
-             # init = 0,
-             # warmup = 2000,
              iter = 1000,
-             # control = list(adapt_delta = .9,
-             #                max_treedepth = 15),
              sample_prior = "only",
              file = "stan/gomp.sc.prior",
              seed = 42, 
@@ -463,14 +478,17 @@ gomp.sc.prior = brm(bf,
 Model inspection
 
 ```{r}
-model_parameters(gomp.sc.prior, effects = "all")
-plot(conditional_effects(gomp.sc.prior, ndraws = 100, spaghetti = T))
+model_parameters(mods_list$gomp.sc.prior, effects = "all") %>%
+  kable(digits = 2)
+plot(conditional_effects(mods_list$gomp.sc.prior, 
+                         ndraws = 100, spaghetti = T))
 
 re = crossing(t = seq(min(df$t), 
                        max(df$t),
                        length.out=100),
                ID = unique(df$ID)) %>% 
-  add_epred_draws(gomp.sc.prior, re_formula = NULL, scale = "response", ndraws = 20)
+  add_epred_draws(mods_list$gomp.sc.prior, re_formula = NULL, 
+                  scale = "response", ndraws = 20)
 
 re %>% 
   ggplot(aes(y = .epred, x = t)) +
@@ -513,15 +531,18 @@ gomp.sc = brm(bf,
 Model inspection
 
 ```{r}
-model_parameters(gomp.sc, effects = "all")
-plot(conditional_effects(gomp.sc, ndraws = 100, spaghetti = T))
-pp_check(gomp.sc, ndraws = 100)
+model_parameters(mods_list$gomp.sc, effects = "all") %>%
+  kable(digits = 2)
+plot(conditional_effects(mods_list$gomp.sc, 
+                         ndraws = 100, spaghetti = T))
+pp_check(mods_list$gomp.sc, ndraws = 100)
 
 re = crossing(t = seq(min(df$t), 
                        max(df$t),
                        length.out=100),
                ID = unique(df$ID)) %>% 
-  add_epred_draws(gomp.sc, re_formula = NULL, scale = "response", ndraws = 20)
+  add_epred_draws(mods_list$gomp.sc, re_formula = NULL, 
+                  scale = "response", ndraws = 20)
 
 re %>% 
   ggplot(aes(y = .epred, x = t)) +
@@ -676,16 +697,19 @@ gomp.to = brm(bf,
 ### Model inspection
 
 ```{r}
-model_parameters(gomp.to, effects = "all")
+model_parameters(mods_list$gomp.to, effects = "all") %>%
+  kable(digits = 2)
 
-plot(conditional_effects(gomp.to, ndraws = 100, spaghetti = T))
-pp_check(gomp.to, ndraws = 100)
+plot(conditional_effects(mods_list$gomp.to, 
+                         ndraws = 100, spaghetti = T))
+pp_check(mods_list$gomp.to, ndraws = 100)
 
 re = crossing(t = seq(min(df$t), 
                        max(df$t),
                        length.out=100),
                ID = unique(df$ID)) %>% 
-  add_epred_draws(gomp.to, re_formula = NULL, scale = "response", ndraws = 20)
+  add_epred_draws(mods_list$gomp.to, re_formula = NULL,
+                  scale = "response", ndraws = 20)
 
 re %>% 
   ggplot(aes(y = .epred, x = t)) +
@@ -704,7 +728,7 @@ This recovers the parameter values pretty well! Note that there is some moderate
 ```{r}
 #| fig-width: 10
 #| fig-height: 10
-re = gomp.to %>%
+re = mods_list$gomp.to %>%
   spread_draws(# Population values
     b_l0_Intercept, b_linf_Intercept, b_alpha_Intercept, 
     # Individual offsets
@@ -775,7 +799,7 @@ corr3 = re.mean %>%
   theme(aspect.ratio=1)
 
 # Plot correlation estimate (upper diagonal elements)
-dcorr1 = gomp.to %>% 
+dcorr1 = mods_list$gomp.to %>% 
   spread_draws(`cor.*`, regex = TRUE) %>% 
   ggplot(aes(x = cor_ID__l0_Intercept__linf_Intercept)) +
   stat_halfeye() +
@@ -784,7 +808,7 @@ dcorr1 = gomp.to %>%
   labs(x = "", y = "") +
   theme_bw(12) +
   theme(aspect.ratio=1)
-dcorr2 = gomp.to %>% 
+dcorr2 = mods_list$gomp.to %>% 
   spread_draws(`cor.*`, regex = TRUE) %>% 
   ggplot(aes(x = cor_ID__l0_Intercept__alpha_Intercept)) +
   stat_halfeye() +
@@ -793,7 +817,7 @@ dcorr2 = gomp.to %>%
   labs(x = "", y = "") +
   theme_bw(12) +
   theme(aspect.ratio=1)
-dcorr3 = gomp.to %>% 
+dcorr3 = mods_list$gomp.to %>% 
   spread_draws(`cor.*`, regex = TRUE) %>% 
   ggplot(aes(x = cor_ID__linf_Intercept__alpha_Intercept)) +
   stat_halfeye() +
@@ -814,7 +838,7 @@ Another possibility is to sample correlation estimates and plot those on a small
 ```{r}
 levels = c("l[0]", "l[inf]", "alpha")
 
-rho = as_draws_df(gomp.to) %>% 
+rho = as_draws_df(mods_list$gomp.to) %>% 
   select(starts_with("cor_")) %>% 
   slice_sample(n = 60 * 60) %>% 
   bind_cols(crossing(x = 1:60, y = 1:60)) %>% 
@@ -861,8 +885,7 @@ Formally, our statistical model can be described with the following set of equat
 
 ### Non-scaled model
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 
 \large \text{Model Likelihood}\\ 
 \text{Average growth rate}\\
@@ -920,8 +943,7 @@ R &=
 
 \text{Among-individual covariance}\\
 R &\sim LKJ(2)
-\end{aligned}
-$$
+\end{aligned}$$
 
 ### Scaled model
 Compared to the non-scaled model, the major difference here is that we put a strong prior around 1 for the $l_{inf}$ parameter.

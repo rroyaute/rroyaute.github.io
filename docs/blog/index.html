@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.309">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -51,9 +51,11 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
-    null
+    "f",
+    "/",
+    "s"
   ],
   "language": {
     "search-no-results-text": "No results",
@@ -63,6 +65,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -71,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-posts_2023 .list');
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -84,35 +87,7 @@ ul.task-list li input[type="checkbox"] {
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-posts_2023'] = new List('listing-posts_2023', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing-1 .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing-1'] = new List('listing-listing-1', options);
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -129,14 +104,41 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
@@ -165,44 +167,50 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../people/index.html"><span class="menu-text">People</span></a>
+    <a class="nav-link" href="../people/index.html"> 
+<span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/index.html"><span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publications/index.html"><span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="../publications/index.html"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv/index.html"><span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../cv/index.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../blog/index.html" aria-current="page"><span class="menu-text">Blog</span></a>
+    <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:raphael.royaute@inrae.fr" <i="" role="img" aria-label="email">
- 
-&gt;<span class="menu-text"></span></a>
+    <a class="nav-link" href="mailto:raphael.royaute@inrae.fr"> <i class="bi bi-envelope" role="img" aria-label="email">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rroyaute" <i="" role="img">
- 
-&gt;<span class="menu-text"></span></a>
+    <a class="nav-link" href="https://github.com/rroyaute"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://https://forgemia.inra.fr/raphael.royaute"><span class="menu-text"><i class="fa-brands fa-gitlab" aria-label="gitlab"></i></span></a>
+    <a class="nav-link" href="https://https://forgemia.inra.fr/raphael.royaute"> 
+<span class="menu-text"><i class="fa-brands fa-gitlab" aria-label="gitlab"></i></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&amp;hl=en" <i="" role="img">
- 
-&gt;<span class="menu-text"></span></a>
+    <a class="nav-link" href="https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&amp;hl=en"> <i class="bi bi-google" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/RRoyaute" <i="" role="img">
- 
-&gt;<span class="menu-text"></span></a>
+    <a class="nav-link" href="https://twitter.com/RRoyaute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -233,7 +241,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">Friday, December 22, 2023</p>
+        <p class="date">Monday, March 18, 2024</p>
       </div>
     </div>
     
@@ -243,17 +251,16 @@ ul.task-list li input[type="checkbox"] {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#whats-on-this-blog" id="toc-whats-on-this-blog" class="nav-link active" data-scroll-target="#whats-on-this-blog">What’s on this blog?</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2023</a></li>
   </ul>
 </nav>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Bayesian">Bayesian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Gompertz growth">Gompertz growth <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="STAN">STAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="brms">brms <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ecotoxicology">ecotoxicology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="job">job <span class="quarto-category-count">(1)</span></div><div class="category" data-category="modeling">modeling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="postdocs">postdocs <span class="quarto-category-count">(1)</span></div></div></div>
@@ -263,27 +270,33 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+
 <section id="whats-on-this-blog" class="level2">
 <h2 class="anchored" data-anchor-id="whats-on-this-blog">What’s on this blog?</h2>
 <p>This blog is an opportunity for me to explore these different classes of models in the open and hopefully provide some useful tools to the research community. I’ll also post about job opportunities and ongoing projects.</p>
+<!-- ## 2023 -->
+<!-- :::{#posts_2023} -->
+<!-- ::: -->
+
+
+
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">2023</h2>
-<div id="listing-posts_2023" class="quarto-listing quarto-listing-container-default">
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Gompertz growth,R,STAN,brms,Bayesian" data-listing-date-sort="1703250636000" data-listing-file-modified-sort="1703250636317" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="33" data-listing-word-count-sort="6459">
+<div class="quarto-post image-right" data-index="0" data-categories="Gompertz growth,R,STAN,brms,Bayesian" data-listing-date-sort="1710783697000" data-listing-file-modified-sort="1710783697975" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6617">
 <div class="thumbnail">
-<p><a href="../blog/2023/nonlinear-mm/index.html"> <p class="card-img-top"><img src="2023\nonlinear-mm\data:image\png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAABjFBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZpAAZrYqKiozMzM1NTU6AAA6ADo6OgA6Ojo6OmY6ZmY6ZpA6ZrY6kLY6kNtCQkJNTU1NTW5NTY5Nbm5Nbo5NbqtNjshTU1NgYGBmAABmADpmOgBmOjpmZjpmZmZmZpBmkJBmkLZmkNtmtttmtv9oaGhuTU1ubk1ubm5ubo5ujqtujshuq8huq+R4eHiCgoKOTU2Obk2Obm6Oq8iOyOSOyP+QOgCQOjqQZjqQZmaQZraQkGaQkLaQtraQttuQtv+Q27aQ2\+Wlpajo6Orbk2rjm6ryOSr5P+2ZgC2Zjq2ZpC2kDq2kGa2kJC2tma2tpC2tra2ttu229u22\+2\+8vLzIjk3Ijm7Iq27Iq47I5OTI5P\I\MzMzbkDrbkGbbtmbbtpDbtrbb25Db27bb29vb2\b\9vb\kq27kyI7kyKvk5Mjk5P\k\+Tk\r6+v\AAD\tmb\yI7\25D\27b\29v\5Kv\5Mj\7b\8j\9v\+T\+Au5y7AAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nO29+6MbV4GteYzD0LQvNgnJ4enOjTHkJidAD0HhecMFMkPEw0yHi0kaX2iQO8nYmQ7MdBI7DkmO9Y9PVelVu7RVqseqJe1Va\3Q7cg6+rTY+3yu566TueM4jtMpJ4f+Ao7jOKnGAnUcx+kYC9RxHKdjLFDHcZyOsUAdx3E6xgJ1HMfpGAvUcRynYyxQx3GcjrFAHcdxOsYCdRzH6RgL1HEcp2MsUMdxnI6xQB3HcTrGAnUcx+kYC9RxHKdjLFDHcZyOsUAdx3E6xgJ1HMfpGAvUcRynYyxQx3GcjklGoJ92HMc5XKJeskAdx3H2J+qlhATa9ifezTLEN9lF47GEq3GbCVfzfASxljQLdOB4woJYFiiIxmMJV7NAWfGEBbEsUBCNxxKuZoGy4gkLYlmgIBqPJVzNAmXFExbEskBBNB5LuJoFyoonLIhlgYJoPJZwNQuUFU9YEMsCBdF4LOFqFigrnrAglgUKovFYwtUsUFY8YUEsCxRE47GEq1mgrHjCglgWKIjGYwlXs0BZ8YQFsSxQEI3HEq5mgbLiCQtiWaAgGo8lXM0CZcUTFsSyQEE0Hku4mgXKiicsiGWBgmg8lnA1C5QVT1gQywIF0Xgs4WoWKCuesCCWBQqi8VjC1SxQVjxhQSwLFETjsYSrWaCseMKCWBYoiMZjCVezQFnxhAWxLFAQjccSrmaBsuIJC2JZoCAajyVczQJlxRMWxLJAQTQeS7iaBcqKJyyIZYGCaDyWcDULlBVPWBDLAgXReCzhahYoK56wIJYFCqLxWMLVLFBWPGFBLAsUROOxhKtZoKx4woJYFiiIxmMJV7NAWfGEBbEsUBCNxxKuZoGy4gkLYlmgIBqPJVzNAmXFExbEskBBNB5LuJoFyoonLIhlgYJoPJZwNQuUFU9YEMsCBdF4LOFqFigrnrAglgUKovFYwtUsUFY8YUEsCxRE47GEq1mgrHjCglgWKIjGYwlXs0BZ8YQFsSxQEI3HEq5mgbLiCQtiWaAgGo8lXM0CZcUTFsSyQEE0Hku4mgXKiicsiGWBgmg8lnA1C5QVT1gQywIF0Xgs4WoWKCuesCCWBQqi8VjC1SxQVjxhQSwLFETjsYSrWaCseMKCWBYoiMZjCVezQFnxhAWxLFAQjccSrmaBsuIJC2JZoCAajyVczQJlxRMWxLJAQTQeS7iaBcqKJyyIZYGCaDyWcDULlBVPWBDLAgXReCzhahYoK56wIJYFCqLxWMLVLFBWPGFBLAsUROOxhKtZoKx4woJYFiiIxmMJV7NAWfGEBbEsUBCNxxKuZoGy4gkLYlmgIBqPJVzNAmXFExbEskBBNB5LuJoFyoonLIhlgYJoPJZwNQuUFU9YEMsCBdF4LOFqFigrnrAglgUKovFYwtUsUFY8YUEsCxRE47GEq1mgrHjCglgWKIjGYwlXs0BZ8YQFsSxQEI3HEq5mgbLiCQtiWaAgGo8lXM0CZcUTFsSyQEE0Hku4mgXKiicsiGWBgmg8lnA1C5QVT1gQywIF0Xgs4WoWKCuesCCWBQqi8VjC1SxQVjxhQSwLFETjsYSrWaCseMKCWBYoiMZjCVezQFnxhAWxLFAQjccSrmaBsuIJC2JZoCAajyVczQJlxRMWxLJAQTQeS7iaBcqKJyyIZYGCaDyWcLVDCPTt0y+\U\qPdT7\6+VrD\2vew\v\WrzbtiL1VigQYw1WoWKIzGYwlXO4BA\5cSaAPf7Et0I+\u3zhS39evS3yUjUWaABTrWaBwmg8lnA1vkA\fOG0JNCPX9gSaOmlL\xl612rl7ZigQYw1WoWKIzGYwlXows092dJoNnmaFWJtzKVfv+d+cM\PXd6+pWdL23FAg1gqtUsUBiNxxKuxhboX587DQR6f8uImVJPf7j6u8VGaeSl7VigAUy1mgUKo\FYwtW4Av3wl4v98I1A3z49fT58z9sbpd5a\mXkpe1YoAFMtZoFCqPxWMLVqAK9n8vz238tC\TWattylfys0uqV5emmyEuRWKABTLWaBQqj8VjC1dgC\dKf8\+7duDHL1R3ybNX1gdFl3+OvBSJBRrAVKtZoDAajyVcjSvQL\5gPg8Emm9Q\udfv3F6+vl\vPmldXfZpueuV4jL0VigQYw1WoWKIzGYwlXO8B1oGWBZn\+4uoSz+dXr2zOKi128CMvrfLpct51HMc5SA4j0NJ9SEuDWqCO4ySXwwj0Vn5\5r\ld2rm26E\rAp0cY4+8pIF6jjOEeUgAs3Prz+\+WP+ciDIxX9EXrJAHcc5ohxmC7SUvz9XnB5qtwVaik8iBTDVatxmwtU8H0Gsg55EKmV5tWe7Y6ClWKABTLWaBQqj8VjC1Y5HoMubjCxQDEy1mgUKo\FYwtWOSKCLnXNfB4qBqVazQGE0Hku42hEJdLFt6TuRMDDVahYojMZjCVc7rEDLO+fLbcvyJubmXvjqS5FYoAFMtZoFCqPxWMLVDivQ8mqgq5e9GhMEplrNAoXReCzhaocVaH7mfanGfM3P51d\8HqgvWGq1SxQGI3HEq524GOg+QJ3X8rvRMrXml++mt+d9O135g\eFpekb760lYs0ACmWs0ChdF4LOFqhz6JdCvyTDk\EwkAU61mgcJoPJZwtUMLdLOcyOZ5mx9uP4Iz8lI1FmgAU61mgcJoPJZwtYMLdP7hL79RPPG99I7FQ+C\+YOt58IHL1VigQYw1WoWKIzGYwlXO4BAB4oFGsBUq1mgMBqPJVzNAmXFExbEskBBNB5LuJoFyoonLIhlgYJoPJZwNQuUFU9YEMsCBdF4LOFqFigrnrAglgUKovFYwtUsUFY8YUEsCxRE47GEq1mgrHjCglgWKIjGYwlXs0BZ8YQFsSxQEI3HEq5mgbLiCQtiWaAgGo+VWLXZNMusKcsC5cQTFsSyQEE0HiutatNZkWlDlgXKiScsiGWBgmg8VkrVZkt\ZgadNWJZoJx4woJYFiiIxmOlVG3tz2bboBYoK56wIJYFCqLxWAlVK\mzkUEtUFY8YUEsCxRE47HSqTarpAHLAuXEExbEskBBNB4rnWrT0J\7N0EtUFY8YUEsCxRE47HSqWaBtkgyo9oFplrNAoXReKx0qlmgLZLMqHaBqVazQGE0HiudahZoiyQzql1gqtUsUBiNx0qnmk8itUgyo9oFplrNAoXReKyEqvkypuZJZ1Q7wFSrWaAwGo+VUjVfSN84CY1qe5hqNQsURuOxUqrmWzkbJ6FRbQ9TrWaBwmg8VlrVvJhIwyQ1qm1hqtUsUBiNx0qsmpeza5a0RrUlTLWaBQqj8VjC1SxQVjxhQSwLFETjsYSrWaCseMKCWBYoiMZjCVezQFnxhAWxLFAQjccSrmaBsuIJC2JZoCAajyVczQJlxRMWxLJAQTQeS7iaBcqKJyyIZYGCaDyWcDULlBVPWBDLAgXReCzhahYoK56wIJYFCqLxWMLVLFBWPGFBLAsUROOxhKtZoKx4woJYFiiIxmMJV7NAWfGEBbEsUBCNxxKuZoGy4gkLYlmgIBqPJVzNAmXFExbEskBBNB5LuJoFyoonLIhlgYJoPJZwNQuUFU9YEMsCBdF4LOFqFigrnrAglgUKovFYwtUsUFY8YUEsCxRE47GEq1mgrHjCglgWKIjGYwlXs0BZ8YQFsSxQEI3HEq5mgbLiCQtiWaAgGo8lXM0CZcUTFsSyQEE0Hku4mgXKiicsiGWBgmg8lnA1C5QVT1gQywIF0Xgs4WoWKCuesCCWBQqi8VjC1SxQVjxhQSwLFETjsYSrWaCseMKCWBYoiMZjJVZtNs0ya8qyQDnxhAWxLFAQjcdKq9p0OskynTZkWaCceMKCWBYoiMZjpVRtNp1Mi0wabYRaoKx4woJYFiiIBvqgJju8CVWbLP2Zb4c2YlmgnFigIJYFCqJhPmc6K1K\w5tOtenan\k2aBOWBcqJBQpiWaAgGuJTZkt\Zgad1cISqTYr+TMz6KwBywLlxAIFsSxQEA3xKWt\1m+DJlMt8Gdm0AYsC5QTCxTEskBBNMCHlPxZa9Bkqp2FAj1rwLJAObFAQSwLFETr\xmzSmpgiVSzQFskmVHtAlOtZoHCaP0\Yxr6c\cmaDLVLNAWSWZUu8BUq1mgMFr\z9ATqI+Btkgyo9oFplrNAoXR+n+GnkB9Fr5FkhnVLjDVahYojNb\M\QE6utAWySdUe0AU61mgcJo\T9D7ySS70RqkYRGtT1MtZoFCqMBPkTuMibfC98iCY1qe5hqNQsURkN8itqF9Hm8GlPDJDWqbWGq1SxQGA3xKWq3chaZnmVp5k8LlBYLFMSyQEE0zOeILSYyb9how7JAObFAQSwLFEQDfZDYcnbZpvTkapZJ\Tb1hmWBcmKBglgWKIjGY6VUbTq7OilytdE2qAXKiicsiGWBgmg8VkLVppOlPzOD+jrQ+qQzqh1gqtUsUBiNx0qn2my29me+DTprwLJAOfGEBbEsUBCNx0qn2rTkz8yg+zdBLVBWPGFBLAsUROOx0ql2Ngni1ZjqksyodoGpVrNAYTQeK51qT4QCfaIBywLlxBMWxLJAQTQeK51qFmiLJDOqXWCq1SxQGI3HSqfa1VCgVxuwLFBOPGFBLAsUROOx0ql2lh8EvfqPWXKVnvkYaF2SGdUuMNVqFiiMxmOlU206PZv849Ui\zg5a7CgiAXKiicsiGWBgmg8VkLVzq7+w9Vl\uHq\g1QC5QWT1gQywIF0XislKr9w9kTC38+cfYPjVgWKCeesCCWBQqi8VgJVTs7e+Ls6hNZrmZ\8BZobdIZ1Q4w1WoWKIzGY6VTLV9Z6omzIk\kf27AskA58YQFsSxQEI3HSqda8Vz4s3wL9MzPhd+XZEa1C0y1mgUKo4E+SGo90LPwufAWaF2SGdUuMNVqFiiMhvkcrRXpLdAWSWZUu8BUq1mgMBriU9SeiWSBtkgyo9oFplrNAoXREJ+i9lTOTJrv5VkZtAHLAuXEAgWxLFAQDfAhQs+Ffy9I0w1QC5QWCxTEskBBtP6fsfBm8RT14o81sGOu9t52mvrTAqXFAgWxLFAQrf9n5NqcLDbWJrWboEdaLWLOkkAbPRreAmXFAgWxLFAQrf9nTLPNz9XRwmwjNBWB7vZmWaBNtj8t0CG+yS4ajyVczQKF0fp\xnS29me+DZqAQBu4M6uV34jUZPNzboEO8U120Xgs4WoWKIzW\zOmJX\m26A1sENXayLObiwLlBMLFMSyQEG0\p8xraQGdqBqDbY4O7tzybJAObFAQSwLFETr\xlHvQU6rDg3LAuUEwsUxLJAQbT+n3Gsx0AJ4lyzLFBSLFAQywIF0fp\xhGehSe6s4gFyooFCmJZoCBa\884qutAueJcxQJlxQIFsSxQEK3\ZxS3H03y519MDnon0gHEuYoFyooFCmJZoCAa4EOm5S3QA9wLf5CNziBKAn3XcRxqvvOdl5f5znd41H0HOt\jfZV1LFDHcVqGLtBjdGcRAYG2\Ym89hDfZBeNxxKuxm0mXC29Xfh96izRerMaZ93MAh04FiiIZYGCaP0\g7acXWN3Lml9WO1igbJigYJYFiiI1v8zgvWUh7mMqY04N7RurC6xQFmxQEEsCxRE6\8Zwwq0tTg3tNaszrFAWbFAQSwLFETr\xmDCbSzO5e0Nqx+sUBZsUBBLAsUROv\GUMItJ87l7Sm7+wfC5QVCxTEskBBtP6fMaukBtYA1\5g505aq7f3igXKigUKYlmgIBrgQ6bls\A9LmNCqXNF6\BDHWOBsmKBglgWKIiG+JTp5jrQjs+Fx7pzSev6k11YFignFiiIZYGCaIhPmZ6tlrOrfYhQvNoA7lzSev14S5YFyokFCmJZoCAa4lO6boEO5c4lrf9nNGdZoJxYoCCWBQqiAT6k2zHQ4dS5oqE+qQnLAuXEAgWxLFAQrf9ndDkLP6w7lzTox+1hWaCcWKAglgUKovX\jJbXgRLcuaThP3M3ywLlxAIFsSxQEK3\ZzQXKMudC1rParP8oO6sKcsC5cQCBbEsUBCt\2c0EejAxztj6Vltuu+fg5BlgXJigYJYFiiI1v8z9gh0wBPttelVbbYu1Wgj1AJlxQIFsSxQEK3\Z9ScRNopT8KjinpVm+7+ByHOskA5sUBBLAsURAN8SLAJuvbNAd1ZpE+1eKM6lgXKiQUKYlmgIBriU7a313a4M5FqjS\M2rAsUE4sUBDLAgXREJ8SHDHcvdmZTLXG1xVsWBYoJxYoiGWBgmiYz1koZ88uezLVLNAWSWZUu8BUq1mgMBrog\bJcwFLpJoF2iLJjGoXmGo1CxRGQ3xKw5NFyVSzQFskmVHtAlOtZoHCaL0\ovmp9mSqHeok0gc3f3z92uXLV65\eZbjb8sNhZoAFOtZoHCaL1+vLE7l7BUqh3gMqbz3z51EuTKS\R6jtjYoEGMNVqFiiM1v1n27hzCUulGv1C+jvXTiK58mq7bw2IBRrAVKtZoDBaxx9sK88FLIlqebi3cr7xVEyfeR55qeUX7xsLNICpVrNAYbT2P9N6y3MDO\ZqpfAWE3mw0ueVr9+8ezfbbz+\e\fmj1ebpI9wt0It0ACmWs0ChdFavb3dMc9t2BFX2wppObvz3yw8+dOtI54fvPKZ4q8eZR4LtUADmGo1CxRGa\rO5ifba2DHWQ3B6irQNy5lirzw9A5HfvCb4q+f6f8Nm8YCDWCq1SxQGK3R2wD2nB9pNRCro0Dzzc+LdX48fz1X6GP9vl6LWKABTLWaBQqj7X8Pxp7zY6yGY3UT6EdP7t76XCVX6Cf+tc+3axMLNICpVrNAYbT6v2\sziZHDI+rGpbVVaCPNTjAef4bC3RD47GEq1mgMNruv2uz3dnonPXxVMOzugn0vOENRx\QziNZoAFMtZoFCqPt+ItW++wNr5o8kmqDsCC3ch5BLNAAplrNAoXRIi+2PuKZ+XM6yTKt3wY9gmqDsSxQTixQECttgdYcMTz0oHU4X5R5czItMqk16KGrDcmyQDmxQEGspAVad8TwoIPW6WR7vvk5XSbfCK2Byc9HC3TgWKAgVsICrT9ieLBB63yl0nS29me+Dbp7E3QE87GPQM\vvnkzzO\56zFZoAFMtVrSAq1f6ecgg9Zhv32Tacmf+TZoDUx+PnYW6Pkrl7aXEuFdvbSOBRrAVKulLNA9a03yB62PPPME\swMWgOTn49dBfrgydhaTBZohMZjCVdLWKD7VjvnVuu16bnMWSjQs51vHMF87CjQj6L+tEBjNB5LuFrCAt33vB1iNYQ9594CnfcX6O3ClxevV\I1HwPdpvFYwtUs0N7ByDOPj4H2Fej5j\I1l9hrJ0djgQYw1WoWaK\g5JnHZ+H7CrTYg38c\q26xAINYKrVLNDOAe23l+LrQBECvfBz+LfqEgs0gKlWS1igBz2JtC1PBMt3IgEEeoATRrFYoAFMtVrCAj3YZUzRTU8My\fC9z8GaoE2pPFYwtVSFuhhLqTfseOOYXk1pp5n4e+dnJw8i\5SnWKBBjDVakkLlH8r5+6jnijWdLEF6vVAuwk03wT9JP+apUgs0ACmWi1pgbIXE6k7ZWSBglg970TKj4J+6hgMaoEGMNVqiQt0Pj3LErcNuNqeE+7ehQexet8L\6P84ZyvHtyhFmgAU62WuEBJW6ANLleCnUSqOapbgsnPx+6rMRUX0\tWzv00Hku4WtIC5RwDbXa1J4SV91mdhfdlTNE37BXov0cWY7JAYzQeS7ha0gId\iz8jlPukSCa5UU214H6QvpY9gn0thcTaUrjsYSrpSzQwa8Dba5PTLNpeCeSb+WMpMFlTPnt8JfDXLFAt2k8lnC1hAU68J1ILeS5oPVgLeN74XsL9Eauz88d\AzS3AKtwFSrJSzQQe+FbyXPBa0zax2vxoS4E8mLiTSk8VjC1SzQSFrbc45p5vVA+wrUi4m0oPFYwtUs0Era7biXae1Z1VigCIH6XviGNB5LuFrqAl1f9AMRaMvjniGtJSsS78IjduEt0IY0Hku4WsIC3XfRT8tqbU65R+KTSCBWv5NIt72YSGMajyVcLWGB5reNTyf5rZyTaezm8VbVeurTlzHBWP0Emu\DezGRZjQeS7haygKdn03PJkXOYk+wbF6trzwXtA4\VIkvpO9\If37l05OHgN\qU6xQAOYarWUBTqdXJ0sczVywLBptf7yXNA6\mA5vpWzt0ALgz7y0uE3Qi3QAKZaLWGB5ltr6y3QSddjoBB7zlHNvJhIT4Gev3nzlcXN8Bd9J9IeGo8lXC1hgRbHC5fHQGPnrBtUQ9lzjmrm5ewAx0B9L3wzGo8lXC1hge67anJfNcyu+4bW8wOWqVugrwSTn48W6MCxQEGsZAV6Fgp06zRSbTWsPefAZrO8zGwfTH4+WqADxwIFsUYoUMBJ9614PoJYfU8iHUss0ACmWi1hgXbdhR\AnnPPRxjLAuXEExbESlag+258jFYbxp5zz0cYywLlxBMWxEpWoLPwxsfZNmuLNpQ9556PMJYFyoknLIiVrECLWznX258NLqQfzp5zz0cYywLlxBMWxEpXoJvFN6ILb4TVBtz4XNLwn1kDk5+PFujA8YQFsRIW6Gy6uvFxz1M5BzvyWaYN8ak7YfLz0ZcxDRxPWBArYYE2ey48wZ5zz0cYywLlxBMWxEpaoHWXnRfVhrjkcwdtsI+OweTnowU6cDxhQay0BVrLepdlz7nnI4zVU6DXymuIFMuKPPKzmzd\z1+dyQINYKrVhAVKtOfct3LCWNiTSHeeOtRT5izQAKZaTVagVHvOcc28mAj4LPyNAxnUAg1gqtVEBUq25xzVzMvZwQWaP2fuEA\5sEADmGq11AUa2+Flb3wWwTTzgsr460DvnZycPN7rS3WKBRrAVKslLtDtHV7ukc9NIM2CR937kR6xtBdo\oyPA2yCWqABTLVa0gLd2uGt2DO1QZtVUgNLrVpzFlyg+ZVNvowpQuOxhKslLdBwh7d6yWd6gzYN\enHGkdigYJigYJY6Qo08M32rnt6g2aBDnUM1AKN0Hgs4WoJC7TWnvMUB80CHegsvI+Bxmg8lnC1hAU6jeuzxEpt0CxQvEAf5P70WfgYjccSrpa8QHefdE9v0HwSCXwr5+XLB7sV3gINYarVEhdo3TVLCQ6aL2PqLdDoYiIH2AC1QEOYarWkBVp\yWeKg+YL6YcQ6CH8aYGGMNVqCQs0sGdkhzfFQfOtnHCBXnz6LfSXbBQLNICpVktWoFV9Nngm0qBBsbyYCPoypgPFAg1gqtXSFGjVnlHhJDpoXs6u+IMFOnAsUBArPYFu63PfM5EI8XwEsSxQTjxhQazEBBqeOGryTCROPB9BLAuUE09YECspgW6dd9\3TCRaPB9BLAuUE09YECsdgb63pc89LNVBE64GEej53TdvhvEzkSI0Hku4WjoCbWfPufKgCVfrL9DzVy75qZyNaDyWcLVUBNpan8qDJlytt0AfRG9FskAjNB5LuFoaAm1vz7nyoAlXG+ROpD0Cffv0y+9s\uvh3753enr6rV+1fqkSCzSAqVZLQaCd9Kk8aMLV+gr09uLuo+uVfK3mGOjfnysL9OPvni7ypT+3e6kaCzSAqVY7eoF2tOdcedCEq\UUaLH454WX2hA\fOG0JNCPXzhd5Qt\afPSVizQAKZa7cgF2l2fyoMmXK2nQIs9+FZrh+T+LAn01unp57\zvzhn547Pf1Km5e2YoEGMNVqRy3QPvpUHjThagCBXvh5C95fnzstCzTbnT\9YfGn+5kjf938pe1YoAFMo9r2ZedHLNB++tQZtChMtRpAoC3OuH\4y8V++Fqgb2+2KLOtzOebv7QdCzSASVSL3Ph4tALtq0+ZQYvDVKsBjoE2F+j9XJ7f\utGoA9\sdq0XJ9bavZSJBZoABOoFl1r8kgF2tuec5FB2wVTrdb3LHz+CM5nm8LuF2fR728E+vELm5NCyz83eykSCzSACVSLrnZ+lAJF6FNk0HbBVKv1FWi+Cdr4EZz3v\iD+bws0PL2ZLadmR\ebPZSJBZoAEu\Wvx5O0coUIw+NQZtJ0y1Wu87kfKjoJ9qded7SaD3yyfVbxU76s1eWuXT5bzrCOUPlRz6++xKWZ+H\i7O4dL9XvhsG\TC0682d6gF6jTIy6E\Xz7094mntT7\8HKWo\3XwOmc7qsxFRfTt7iVc5dA3y5OsDd7yQKVTwICfa\91ufLx9vG6ZXOAv33yGJMTQUa2HDxH81eskDlc\QC7aDPP6xLeSNULV0Ferv1YiLILdBSfBIpgCVfLTiHtDmLxG22u1qnyz7rn6IuMGi7YSlVa\KYvA2r\2VM+e3wl8Nc6SDQLsdAS7FAA1jy1WaVrFnHINBuV83HrysosZIftN2whKo1elDzhtVPoDdyfX7uYGfhS7FAA1j61Y73MqaONx3t+CehxEp\0HbCkqkWvX2jjtV\NaZWi4n4OlAOTKDakV5I3\myzx0HJUosgUHbBUumWv1hlgiLu5jIfO47kSgwgWpHeStnj6vmLVAarfvP7jnMEmExFxMpcj+4F369Pbm58b3BS5FYoAFMotrRLSbS66ajos10kmVqgQ5L6\yj+w6zRFjExUQWue\VmAgwjWrHtZxdz3s2c21OpkUmFuigtM4\um8vIcLqdxLpdpvFRBa57\VACTDVaocTaO9b3vPNz+ky+UboNkt10NKpRhdovg\feDGRRe5XVqQ\fY784d\PC0vP9\gpa1YoAFMtdqBBNrxxHuY3J+Tsyz5\dlTAPSOv8oXaDz9y+dnDzW6jve9zORCDDVagcRKESfhUDPJkXOLNBBaZ1\lC\QwqCPvNRiIzQQ6PzD7edtNnupGgs0gKlWO4BAQfrMduEnVyfLXJ14F35AWucfZZ9Emp+\efOVxc3wFzvciZRn8cT3b\6g9UuVWKABTLUaXaAofeZbN+UtUJ9EGpDW\WfJlzEtHpazmL4AACAASURBVMvZ7l74gWKBBjDVamSB4vS5OAS6PgYa2YfXHbSUqnEvpLdAW9B4LOFq1GZAe2ZZn4Jfnoiv\r3uoKVUjXsrpwXagsZjCVcjNsPqcz4\CwV6Vv173UFLqxp1MZHjiQUawFSr0Zqh9ektUCKt388zl7M7nligAUy1GqkZXp\LY6Abf\oY6HA0JssC5cQTFsQi0IbQ5+Is\MafPgs\II3JskA58YQFsQanlfWJhPlWThqNyeom0I\+R6NL58\L9rZJAs0gKlWG7xZuPUJhU3Li4n4TqQBaUxWR4E+eeHp\Qp9\RLvdLwFGsBUqw3drLLzjoVNN8vZ+ZlIQ9KYrK4CzW\grP\sN55iXs9kgQYw1WrDNts69omF1V9jqDtowtU6HwN9kNmxTqHnr38mf8Nrfb9g41igAUyjGnc90MipIzSs7hpDlUGLwlSrdT+JdP4vxeM4n34r9pcPXiyup3+s3UJ3vWKBBjCJatwV6WMn3uGwmmsMRQYtDlOt1ucsfLERmjn0a78PPPnB7766uB2JuPk5t0ArMIFq1Gci7bhwSefoxDaNxxKu1u8yptcvre7dvPzZ60WufWb1ysVn8N+2LhZoABOoRnwq587rPi1QEEy1Wt\rQF9fCzPMvhNM+FigASz9arznwtdcNm+BgmCq1fpfSH\n2rY+H6XuvC9igQaw5KvtWNoW36z2tiMLFARTrQa5E+nOjy9v5Hn5668Cv1\zWKABLPlqOx6ugG62565NCxQEU60GEWie87t33\z93bvE0+6VWKABLPlqFIHuvendAgXBVKvBBHrwWKABLPlqBIE2WDPEAgXBVKtZoKx4wrbL8ALdr08LFAZTrWaBsuIJ2y5Dn0Rqok8LFAZTrWaBsuIJ2zKDXsbUTJ8WKAymWs0CZcUTtm0GvJC+mT3nFigMplrNAmXFE7ZtBruVs+HW5wLXF9Y8EoO2C6ZazQJlxRO2fYZZTKS5Pi1QGEy1mgXKiidshwywnF0bfVqgMJhqNQuUFU9YEKsXrcXe+xLXA9YyuoMmXM0CZcUTFsTqQWtpz3lC1TrQeCzhahYoK56wIFZnWtutzwWuI6xDdAdNuJoFyoonLIjVkdZFn4lU60jjsYSrWaCseMKCWJ1o3fSZRLXONB5LuJoFyoonLIjVhdZRnylU607jsYSrWaCseMKCWO1pnfV5\NX60Hgs4WoWKCuesCBWW1rXvfclrsMPdYzuoAlXs0BZ8YQFsVrS+ujzyKv1pPFYwtUAAj3\7bWtJ8t94l+h37JJLNAAplqtZbNem5\zo67Wm8ZjCVfrL9DNo40t0HoajyVcrV2znvocoNr2zaklluqgCVfrLdB70acaW6ARGo8lXK1Ns976xFeLLI9SYqkOmnC1vgL96MmFMS9eDnLFAt2m8VjC1Zo367v3vsT1+OGtRBfoK7FUB024Wl+B3s7t+chhHmQcxgINYKrVmjZD2HOOrhZdIrrEUh004Wo9BXr+o8yfnzzcs4xLsUADmGq1Zs0gW58LXM8PKCf+kJISS3XQhKv1FGixB\8s\Ft1iQUawFSrNWkG0ye22o7H5JVYqoMmXA0g0AOcMIrFAg1gqtX2NwPqE1ttx4OaSyzVQROuZoGy4gkLYu2hIfVpgcJgqtUAx0Av\Bz+rbrEAg1gqtX2NMPq0wKFwVSrIc7C+xhoMxqPJVOt5TORoHvvSxzqkyxQIo3J6n8dqM\CN6PxWCrVWj6VE65Pn0SCwVSr9b4T6f1LJyefAn+pTrFAA5hAtZbPhcdvfs59GRMMplqtt0ALgx7DlfQWaAATqBa97HxnsyH06QvpYTDVal0F+tG19W2blyL3cvpWzgiNx5KoFt9e29FsGH36Vk4YTLVaZ4E+GV1ExIuJ1NB4LIVqO44YRpsNsve+xGE\z4uJUGhMlgXKiSdsu+w4Zx1pNpg95wNU83J2DBqTZYFy4gnbLk0FOtzW5wI3xKfuYiU\aLthqtX6n0Q6lligASz5as0EOqw+LVAYTLWaBcqKJ2y7NBHo0Pq0QGEw1WoWKCuesO3S4CTS4Pq0QGEw1Wq9BfrB3btvVV46v\O7\9b\m7WNBRrA0q+27zImgj4tUBhMtVpfgUaWY8oXGDnA3Z0WaAATqFZ7If3we+9L3KAfX2EJDNoumGq1AQR6oCXuLNAAJlCt7lZOjj4tUBhMtdoAAs3v7bRAIzQeS6XarsVESJufcwsUBlOt1lmgb94s8rvMlhd+drOU3z3l60DjNB5Lplp0OTuePi1QGEy1WmeBxp8Hv8oB1meyQAOYarWSPzk4BmXFUh004Wrdd+Fv1An0AGssW6ABTLUac\NzboHCYKrVugv0\Uu7\fn4MF+2NhZoABOtxtWnBQqDqVbrcRLp9etZvpofA\3s9U1+evPm7w+yQr0FGsAkq7H1aYHCYKrVBjgLf6BYoAFMsRrfnxYoCqZazQJlxRO2Z9b65P4PyWTpDdoaplqtr0DP3zzULns1FmgAU6u2OXlE\h+SyVIbtBJMtVpfgR5PLNAAJlatpM+0BeoFlRk0JssC5cQTtntK1y4lLlA\0oNCY7IsUE48YbsmuPQzaYH6oXIkGpPV8yTStcvRXH+a\aRjCzSA6VQLz70nLVA\1phEY7L6n4XflceoJ5cs0ACmUq1651HKAo2vcFpiqQxaBKZabUiBnlz4Ofrr1sQCDWAa1bZv3ExYoDvW2C+xNAYtClOt1n8X\jMrXV78zJZBmVeIWqABTKJa5Mr5hAW64ylPJZbEoMVhqtX6n0QqFhW5sjzieefF5a3w53eukVdlskADmEC16LohFigono8gVk+B3q7sqj94crWYSPVvBo4FGsDSr7bWZ2xFelYsUBBMtVpfgeZrMoWW3Lxyg7oukwUawFKvVtJn9JlIpFigIJhqtb4Cvb0tyfVL+ZrLvKfLWaABLPFqa39OJpNp\KmclPgkEgimWq2nQPMncFZ30\NN0MKb6z9QYoEGsKSrrfU5LTIp6SZhgfoyJhqNyeol0NhiTOvXuCs1WaABLOVqFX9mBp2ufZOyQH0hPYvGZFmgnHjCNsxm7z0z51mW\P9rCNS3cpJoTFZvge7chbdAQxqPlXK1sj\PJkXO8m3QNSthgXoxERKNyep3EunG9sWe65d8DDSk8VjpVttc+jnJNj8ny2QboZM1K2mBejk7Co3J6ifQ4unGz2y9UjyV8zb1SnoLNIClWa106fxkuvZnvg2qItBaVpqD1gimWq2vQBf3wn9uvZ15\i\rWziLS+p5zze2QANYitWCO4+mVyelXBXZha9npThoDWGq1XrfiXRvsWzIozfvZvndi5fWi4gUjz3m7cFboCEswWrhnZvFFujZ1Sxn3gIdhMZjCVfrLdD5va3nw18oNjs3u\KcWKABLLlq1RvfM2eeXT0rkil0erZmWaAgGo8lXK2\QOcPngr9+chrxcs3MpM+s+dHkbFAA1hq1bYWDpmEAvUWKJzGYwlXAwh0Pl+svLTIal2m8\9++em3QF+yUSzQAJZWtci6S8VJ+PUuvMplTPWstAatFUy1GkSgWe787sfXr1\Gfs5HqVYoAEsqWqxdetKVzFZoIPQeCzhaiiBHj4WaABLqFpMn5lAw+tALVA4jccSrmaBsuIJuyNxf2ZboIp3ItWz0hm01jDVahYoK56w0ezQZ37To9698PtYqQxaB5hqNQuUFU\YWHb6MxNovg2qtRrTPlYig9YFploNINDzV65tXQrKfJrcMhZoAEui2m59LpbdmGzWA7VA4TQeS7haf4G+vmVPCzRO47ESqVbnz8X67ZP8MqZJef12CxRG47GEq\UW6L2IPi3QKI3HSqJarT7nxSboZgtU4ZEe+1nHP2idYarV+gp0sZjIycnFy0GuWKDbNB4rhWr7\DmfTzbHQCfrFy1QGI3HEq7WV6C3i5s3D3j9\DoWaAA78mr79WmBDk3jsYSr9RRo\lA55pJLNbFAA9hxV2viT+\CD0zjsYSr9RToR9w1P+vy6U+\66SRtT7r3vSHPC9\J8vLxR9ZX85xugT3ULkDxQJNJY38+e5Cm+u8TPpyjtMpAgJt+xN57SG+yS4aj3XM1ZrsvecJHqLu60AHoPFYwtXWzbofA60+lfNAsUAD2LFWa+pPC3RwGo8lXK2nQIuz8MdyDLTtT+iO6tFWa6xPC3R4Go8lXK2vQPN9eJ+Fb0bjsY61Wgt\zmeVrFkWKIjGYwlX6yvQ4k6kx8FfqlMs0AB2hNXa6HNe2QT1ZUx4Go8lXK23QIt74Y\hSnoLNIAdX7WW\gwMuvanBYqj8VjC1foK9PzNm69c2r6X07dyRmiDI2b5VeezBezYqrXWZ15n7c9ZiWWBgmg8lnA1xDFQLybSjDY0YbrZWju6ah38OQ8abVgWKIjGYwlXs0BZGZoVbK8dWbVu+pyXt6k3LAsUROOxhKtZoKwMzQqOGB5Xtc7+jLIsUBCNxxKu1v8k0rFk5AINz1kfUzWkPi1QII3HEq5mgbIyLKty0eQfjqca1p8WKI7GYwlXs0BZGZZVuW\n5WOpBtanBQqk8VjC1SxQVkYpULg\LVAcjccSrmaBsjJCgeL1aYECaTyWcDWMQM\f+OrlS8Wp9wdfO9RNSRbosQl0CH9aoDgajyVcDSHQBy9url26d3LyyGvIL9g44xbo8Z1EGkSfFiiQxmMJVwMI9N8vlS7+vHFyqAVCxy3Qo7uMaSB\WqA4Go8lXK2\QG+Xr54vHjJ3GIOOXKDHdSH9UPq0QIE0Hku4Wm+B5svZnTz62urZHovd+UOsEDp2gR7TrZzD+dMCxdF4LOFqkFs5Hy8\HOn2gTZBxy7Q41lMZEB9WqBAGo8lXK2vQO8ttzc3Ai324g+wxLIFeiTL2Q3qTwsUR+OxhKv1FeiN5TORSo\nvHeYfXgLNIAdqtqw+rRAgTQeS7haT4Gun8pZEuj7l7waU5TGYx2u2tD+tEBxNB5LuFpPga69WRLogZ4Vb4EGsINUG1yfFiiQxmMJV7NAWRnBhCX40wLF0Xgs4WoAgcZ24X0MNELjsQ5TjaBPCxRI47GEqwGOgVZPIuXXMX0K+iUbxQINYPRqjM3PuQUKpPFYwtX6noVf2XIj0NWVoexYoAGMXY2jTwsUSOOxhKv1FWi+v55vgq4FWmyT+kL6GI3HolcjbX7OLVAgjccSrtZXoIsbj55ZC\TBUyeH2YO3QEMYtRrPnxYojsZjCVfrLdDF8iEXv5ptiV742Y8XCzMd4lZ4CzSEMXE8fVqgQBqPJVytt0CXBi3nEf41THMLtALj4Yibn3MLFEjjsYSr9Rfo\PyVS4E\HzvE9qcFWoHRcFR9WqBAGo8lXA0g0FChjx5mPXoLtAJj4cj+tEBxNB5LuBpEoFnO797M8upbqO\VPhZoAOPguLvveSxQGI3HEq6GEujhY4EGMApupU9Zy1igKJhqNQuUFb0Ju9781LWMBYqCqVazQFmRm7Cb3XddywhXk5uPZRqTZYFyIjZhy0c\dS0jXE1sPoY0JqubQD+6drkuV7yc3TaNxxq+WnD2SNcywtW05mOFxmR1FOiT1cvng3g90AiNxxq8WnjyXdcywtWk5mOVxmRZoJwITdjqxUu6lhGuJjQft2lMlgXKic6E3br2U9cywtV05mOExmT5JBInKhM2cu28rmWEq6nMxyiNybJAORGZsLF7j4artnnS\YZlgYJoPJZwNQuUFY0JG711c7Bq0+kky3QasCxQEI3HEq5mgbKiMGF33Po+ULXZdDItMilthFqgMBqPJVwNJ9ADPc14HQs0gA2B27VyyEDVJkt\5tuhJZYFCqLxWMLVLFBW0p+wO1deGqbadO3PfBt0w7JAQTQeS7iaBcpK6hO2ZuW6QarNSv7MDDpbsyxQEI3HEq5mgbJCYE3PskwXMDSubuHPQaoF\swMumZZoCAajyVczQJlZXjW2UI1Z3N8tfqFkwepdhYK9GzNskBBNB5LuJoFysrQrOnaONlGKLjanoXnLVAQS2k+VmCq1SxQVoZmnZVlA62297kdFiiIpTQfKzDVahYoKwOzAt+cIavt9aePgaJYQvOxClOtZoGyMiwrtM30ZVy1vfr0WXgYS2c+bsFUq1mgrAzLquzw\hOq2v7Nz7mvA4WxdObjFky1mgXKSpICbaJP34kEY+nMxy2YajWcQM9\fP361\4D8626xAKFC7TR5ufc98LDWDrzcQumWg0n0EPHAkULtKk\h6vm1ZiGpPFYwtUsUFaSO4nUVJ9DVvN6oAPSeCzhan0F+tF\ffQ19HfqlnELFH4ZU+PNz7myZYSrWaAgVk+BPnlycuHpt9Bfq0NGLlDwhfQt9KlsGeFqFiiI1V+gWS4+fcDTR4uMXaDQWzlb+VPYMsLVLFAQq6dAf7R6EOcjL6G\W7uMXaDAxUTa7L7P58qWEa5mgYJYfU8iffDKpZVDH30V++VaxQJFLWfXUp\KlhGuZoGCWICz8A9eXDn0wuFOKVmgAaw7rrU\hS0jXC2Z+diFxmRhLmN68OJqM\RQp5Qs0ADWGdfen8KWEa6WynzsRGOyYNeB3rm2cujFZw5wSskCDWAdcR30qWwZ4WppzMeONCYLeSH9G0+tHHqFfkrJAg1g3XCd\ClsGeFqSczHrjQmC3wn0hur46EXHuNuhlqgAawTrps\hS0jXC2F+diZxmRhBXpnfT4pC1WhFmgA64Lr6E9hywhXS2A+dqcxWUCB3lmfSfrMciv054Cv2DAWaABrj+uqT2XLCFc7+vnYh8ZkoQRaupbp6bfm568XDiUuEGqBBrDWuO7+FLaMcLVjn4+9aEwWRKAbe56srwR9PX\pU4gv2SgWaABriWt781GF1uWnusUChdF4LOFqCIGW7kUK7ue8nb3wSdphUAs0gLXD9fKnsGWEqx31fOxLY7J6CrRkz+qKItyHfFigAawVrpc+lS0jXO2Y52NvGpPVT6DL1Zjyq5a2bkCyQEMaj9WuWr\Nz7myZYSrHe98BNCYLIhAr8SWEcn\zsdANzQeq1W1vvpUtoxwtaOdjwgak9VfoI+8FD\Q+eDHP\s970pQCzSANcb196ewZYSrHet8hNCYrJ4C\a+HX0p5EQs0gDXE9d59X9D6\HRblgUKovFYwtXQdyIdLhZo6RFsTash9KlsGeFqFiiIZYFyMjxrOisynTetBtn8nCtbRriaBQpiWaCcDM2aLf2ZGXTWrBrKn8KWEa5mgYJYFignQ7PW\sy3QRtUg+lT2TLC1SxQEKubQNfXf8ZDvAd+lZELtOTPzKD7qwH9KWwZ4WoWKIhlgXIyLGsW5g\7qgH1qWwZ4WoWKIhlgXIyLGsaCvTl+mrIzc+5smWEq1mgIFZHgV67vEqxbt2Fz37t5s3fXi\+\Nnr17\GvzjUAm0sUKw+lS0jXM0CBbH6nkR68NTJySPrOznzp3NeeAb17drEAm0oUPDm51zZMsLVLFAQq6dA3790cvKp8vbmb7Jt0GcxX65VLNBmAsX7U9gywtUsUBCr562cT1bX\Dz\EfdRHquMW6CNTyLh9alsGeFqFiiI1U+gt7e3N+9RF6JfZ9wCbXgZ0wCbn3NlywhXs0BBrF4CjW1ubm+UUjJygTa6kH4QfSpbRriaBQpi9RJobM1k7jrK64xdoA1u5RzIn8KWEa5mgYJYcIHmp5Us0AhtaMKexUSG2X2fz5UtI1zNAgWxeu\Cx46Behc+QhscUbuc3WD6VLaMcDULFMTqdxLpxtYZo8KpPokUofFYkWoD+lPYMsLVLFAQq59A883Nk8fLr+RK9WVMMRqPtV1tSH8KW0a4mgUKYvUTaLG9efLYeo\9QfHfB9gAtUBDWIAbVJ\KlhGuZoGCWIA7kfLHcj59M8tPnjrUUiIWaAVWxg3sT2HLCFezQEGsngKd37tUXYrpkUP40wINYSXc0P4UtoxwNQsUxOor0GI1kXIea3UG\u3TdT7\6+VrD\2vew\v\WrdzZvi7xUiQUawDa4wf0pbBnhahYoiNVboPP5nRfX9rzw2Fut+A9\sS3Qj7+7fOFLf169LfJSNRZoAFvhhtensmWEq1mgIBZAoFk+eDM\Bvr7dvbM8vELWwItvfSFv2y9a\XSVizQALbEMfwpbBnhahYoiIURaNf8\bktJd7KVPr9d+YP\Tc6elXdr60FQs0gBW44W4+qtCG\fyQZYGCaDyWcLVDC\T+lhEzpZ7+cPV3i43SyEvbsUADWI4j+VPYMsLVLFAQCyXQu3fvtt6BL84hPb\1ykqpt5Z\GXlpOxZoAMtwJH0qW0a4mgUKYiEE+sa15bVMFz77Ujv+rdW25Sr5WaXVK9mW55ffib4UiQUawN5lbX7OlS0jXM0CBbH6C\T14ErQVk9E+viF6i559sr6oOjyz5GXIrFAAxhPn8qWEa5mgYJYfQV6\pvqhfQtLgTNNyj\86\fOD39\D\efPKahMz2\TM9Rp5KRILtAxj+lPYMsLVLFAQq69AbyysefGz16+vduSb3wp\T0i6tLPJ9fvbI5q7TYwY+8tMqny3nXWWa9+37oL+I4I0lXgRbLMV14ernRef5K4dDGT+Us3Ye0NKgF2j\Wp+OQ0+OpnCefeG3zwoMn26wmciu\P\Pf8js18+3QH1YFujhHH3nJAq2J\ek47PRYDzRc\bNYnqnhJmh+fv35zR\zI52BIBf\EXnJAt0d+9Nx6OmxIv3j4Uu3uy0I+vfnitND7bZAS\FJpCIbfVJwRXTPtAhX80kkEKvXSaTYY43zTdAOz0RaXu3Z7hhoKRZontLmJwO3iK5lhKtZoCBWL4EiH2t8a3tz0wJtldm0vPs+OG4dXcsIV7NAQayjEehi59zXgXbOWp\vyVUrsyxQEI3HEq4GEGhsF77jFugPfSdS52w2P6czsWohywIF0Xgs4WqAY6A9ngtf3jlfbluWNzE398JXX4pk7AJdb37OZlOxaiHLAgXReCzhaj0FWpxyD21ZOPXxXe8PU14N9P7iMiavxtQtJX9mBpWqVmFZoCAajyVcra9Ai6s+g4uW2jwXPj\zvlRjvubn86s\eD3Qlgn0meUPOtW2WBYoiMZjCVfrK9DFrfCPrm9Favlc+Pv5Y47yO5HyteaX++b53Unffmf+8I+n5RXpqy9tZcwCXftzMplMc4G+LFNtm2WBgmg8lnC13gIt7uU8Obny09\fvfvmb6+1fS78rcgz5fxMpHbZ6PMsy2RigSJxTJbqoAlX6y3QxU58kKY78EXWy4lsnrf54fYjOCMvVTNaga79mbkzz1m2EWqBwnBMluqgCVfrL9Ct58J\8rW9P1LOh7\8RvHE99JLi4fAf\MHW8+FD16qZKQC3ehz6c\MoGcWKA7HZKkOmnA1gEDn8zdKCr3yKvDbtck4BVrafZ+sczbxSSQYjslSHTThahCBZrlz8yfXr3\95qHsOR+pQNe3Hs2uTkq5aoHCcEyW6qAJV0MJ9PAZo0A3D+6YTMtboNPvJF9tN8sCBdF4LOFqFigreNZGn\P52XSzD382mf5T4tXqWBYoiMZjCVezQFmBs8r+zAQ6XW2D5n+0QGE4Jkt10ISrQQX6wZs3X22\ECgoYxNo4M9CoNPFdaBTCxSJY7JUB024GlCgy8fDP\IS5Iu1zsgEGvpzXmhzEx8DheGYLNVBE67WS6Dnb1y7fPny028Vf\5Rl+fCAzMqgVb0OZ\PAoP6MiYcjslSHTThan0E+vqlkjFvlC+lP4RBxyTQLX\O59OSQSdejQmHY7JUB024Wg+B3i4b897iJs6lUhuuZgfNeAT6XsSf2U782qCTSbLVmrAsUBCNxxKu1l2g98q3b34uf7jc09mG5\m\tFxNBJbRCDTuz\lstQ068Yr0SByTpTpowtU6C7RYhenCM9mf3lhudi4Xpr9X+jMzYxFoXJ958m3PfDt0nmq1ZiwLFETjsYSrdRbovc2yS4v1mNZrgEYeFc\IOAS6Y\NzkVm+ATpbwNKr1pRlgYJoPJZwtc4CLWvydrDR2eKZSMiMQqB1+gxhyVVrzLJAQTQeS7haV4EGT5MrbY3OFxukFmiE1v8zmvozwWrNWRYoiMZjCVfrKtDgecbhg4y7Phe+Z\QFWrv7XoWlVa0NywIF0Xgs4Wp9BLq2ZKhMC3QHrecHNNdnctVasSxQEI3HEq5mgbLSl9XGn4lVa8eyQEE0Hku4mgXKSk9WK3+mVa0lywIF0Xgs4WoWKCu9WO30mVS11iwLFETjsYSrWaCs9GG19WdC1dqzLFAQjccSrmaBstKD1dqf6VTrwLJAQTQeS7iaBcpKZ1aLq5dKsCSqdWJZoCAajyVczQJlpSurgz5TqdaNZYGCaDyWcDULlJVurC6bn\M0qnVlWaAgGo8lXK2PQGtigUZoHX6ooz9TqNaZZYGCaDyWcDULlJUOrK76TKBaD5YFCqLxWMLVLFBW2rO6+\Poq\VhWaAgGo8lXK2zQPPHye3OFQt0m9bu\T30eezV+rEsUBCNxxKu1lWgxxcxgfby53FX68myQEE0Hku4mgXKSitWP30edbXeLAsUROOxhKtZoKy0YfX15xFX68+yQEE0Hku42ogFOns5y2yIrxJNi1Htq89RTFgWjslSHTThauMV6HT2hyyz6TDfZjvNR7W\P8cwYVk4Jkt10ISrjVWgs+lsIdDZ4jGWw6fpqAL0OYoJy8IxWaqDJlxtrALN\LkUKGsbtOGoQvw5hgnLwjFZqoMmXG2kAs39uRIoyaDNRhXjzzFMWBaOyVIdNOFq4xTobFYW6Gw22JcqpdGogvw5hgnLwjFZqoMmXG2cAp2GAqVsgjYYVZQ+RzFhWTgmS3XQhKtZoMcjUJw\xzBhWTgmS3XQhKtZoMci0N4Xz4cw+QnLwjFZqoMmXM0CPRKBQv05hgnLwjFZqoMmXG2cAj2+k0hQfY5iwrJwTJbqoAlXG6dAj+0yJuzm53wUE5aFY7JUB024vXijaAAAHdVJREFU2kgFelwX0qP1OYoJy8IxWaqDJlxtrAI9pls58f4cw4Rl4Zgs1UETrjZWgR7PYiLw3fcFTH7CsnBMluqgCVcbr0CPZDm7IfQ5ignLwjFZqoMmXG3EAj2GUcVufs6mWWYL2MGrDcayQEE0Hku4mgXKSoyF9efi6tbioMThqw3HskBBNB5LuJoFyso2C735OVsm2wg9dLUhWRYoiMZjCVezQFnZYoHPHq39mW+DjmDCsnBMluqgCVezQFmpsNAn30v+zAw6ggnLwjFZqoMmXM0CZSVkof05C\MH\QnLwjFZqoMmXM0CZaXMwl\7OQ0F+rL+hGXhmCzVQROuNmKBHu460AGunbdAh8IxWaqDJlxtvAI92J1Ig9x6ZIEOhWOyVAdNuNpYBXq4e+EH8acFOhiOyVIdNOFqYxXooVZjGkafPok0HI7JUh004WojFeih1gMdyp++jGkwHJOlOmjC1cYp0OVmGntF+uH0OfeF9EPhmCzVQROuNk6BHuaZSIP607dyDoRjslQHTbjaiAU6\U6WKU+gg+ozjxcTGQLHZKkOmnC18Qp0Ms2vA51OWAId3J9ezm4QHJOlOmjC1cYq0OlkuhBo9geGQAn6LGcEE5aFY7JUB0242jgFmm9\rgSab4MO9qVWIftzDBOWhWOyVAdNuNo4BTo\m24EOj0b7DutwvbnGCYsC8dkqQ6acLVxCpS7BTrs2fdoRjBhWTgmS3XQhKuNU6DUY6ArfXrCYlgWKIjGYwlXG6tAaWfh15ufnrAglgUKovFYwtXGK1DOdaCb3XdPWBDLAgXReCzhaiMWKOFOpPLRT09YEMsCBdF4LOFq4xQo6V744OyRJyyIZYGCaDyWcLVxCpSyGlPl5LsnLIhlgYJoPJZwtZEKlLAeaPXiJU9YEMsCBdF4LOFqYxXo0CvSb1\76QkLYlmgIBqPJVxtrAId+JlIkWvnPWFBLAsUROOxhKuNV6ADPpUzeuuRJyyIZYGCaDyWcLURC3SwUY3fuukJC2JZoCAajyVczQJFZ9ed756wIJYFCqLxWMLVLFBwdq4c4gkLYlmgIBqPJVzNAoWmZuElT1gQywIF0Xgs4WoWKDJ1C9d5woJYFiiIxmMJV7NAcalf99MTFsSyQEE0Hku4mgUKy551kz1hQSwLFETjsYSrWaCg7F123hMWxLJAQTQeS7iaBYrJXn96wqJYFiiIxmMJV7NAEdmvT09YGMsCBdF4LOFqFiggTfzpCYtiWaAgGo8lXM0C7Z1G+vSEhbEsUBCNxxKuZoH2TUN\esKiWBYoiMZjCVezQPulqT49YWEsCxRE47GEq1mgvdLcn56wKJYFCqLxWMLVLNAeaaFPT1gYywIF0Xgs4WoWaPe08qcnLIplgYJoPJZwNQu0a9rp0xMWxrJAQTQeS7jaiAXa75Eebf3JGNXZNMtsAZOfsCwck6U6aMLVxivQXg+Va61PxqgWD7tfPKZ5BBOWhWOyVAdNuNpYBdrvscYd\Dn4qM6W\iwajWDCsnBMluqgCVcbq0Bz2ywE2n4btIs+hx\VtT\zRiOYsCwck6U6aMLVRirQwjZLgbY1aDd\Dj2qJX9mjUYwYVk4Jkt10ISrKQn03cb5QyXNf\LdtT5b\AwhPRo5jtM7oxLoy6FtXm78g+8dqT+7N3IcBxABgTZ\72J\d7UL33wfvuPee5Fh9yuCPfjZLBfokLgwuvu5wtW8Cw9i6ezCN39vN4G+18efFiiKZYGCaDyWcDULtKlA++nTAoWxLFAQjccSrjZOgc5Cgc4a\EhPfQ49qot\CCZZFhcY6E9YFo7JUh004WrjFGixwTb9TpZpsw3Qvpufc8ZlTJNpkYkvY0LimCzVQROuNlKBZr6ZTPN74TPdtPFn1y83H35UJ0t\ZgadjGHCsnBMluqgCVcbrUDPppN\yjLJ\rDvvQh9WqAwlgUKovFYwtVGK9DZ1Um+Cz+5um8LFLD3XsS78CCWBQqi8VjC1UYq0Ewzqy3QTDs1bwTZc+6TSDCWBQqi8VjC1cYp0MXWWnEMtNhi2\U+1NZnHl\GBGJZoCAajyVcbZwCnRZ7u0uBZv8RfxdSnxYojGWBgmg8lnC1cQp0cbRwJdDpJPomqD4tUBjLAgXReCzhauMU6Fko0LPIW8D6tEBhLAsUROOxhKtZoHGBovVJOYm0iU8iwXBMluqgCVcbp0D37cLDNz\njMuYNvFlTDgck6U6aMLVxinQPSeRhvDn4KPqR3oMg2OyVAdNuNo4BVp7GdMg+hx+VP1QuWFwTJbqoAlXG6dAiwvplwKtXkg\kD8Jo+rHGg+BY7JUB0242kgFunsxkYH0SRnVWX5AYraAyU9YFo7JUh004WpjFWi2n7tczi54LvxQm59zT1gYywIF0Xgs4WpjFWi+DVosqFze\hxQn56wMJYFCqLxWMLVxivQ+SzfhZ9t\ntQfXrCwlgWKIjGYwlXG7FAw1HF3vgepQ30wXGY\IRl4Zgs1UETrmaB5nlvcH16wsJYFiiIxmMJV7NAOfr0hIWxLFAQjccSrjZigS6PgXL06QkLY1mgIBqPJVxtvAJdnIVn6dMTFsayQEE0Hku42lgFOpvOJqenPH16wsJYFiiIxmMJVxurQBcPlSP60xMWxbJAQTQeS7jaSAU6nVydlAQ62JcqxRMWxLJAQTQeS7jaOAU6y7Y\NwLd\VA5ZDxhQSwLFETjsYSrjVOg09yf+XPhM31OJlf3PBkeE09YEMsCBdF4LOFq4xTo2WQl0OIPsWciweMJC2JZoCAajyVcbZwCfWIl0O8Uf3hiuG+1iScsiGWBgmg8lnA1C9QCBdCYLAsUROOxhKuNU6BXQ4FeHe5bbeIJC2JZoCAajyVcbZwCPTsrC\TMx0D70pgsCxRE47GEq41ToNPp2UagZ1Ofhe9LY7IsUBCNxxKuNk6Bzs8mZyuBnnFOwnvColgWKIjGYwlXG6lA52fZNmgh0OwPQ32jMJ6wIJYFCqLxWMLVxirQ6dl08k9ZJtkfhvpGYTxhQSwLFETjsYSrjVWg+TZo8Vhj0vanJyyMZYGCaDyWcLXxCnQ+zbdASZufc09YGMsCBdF4LOFqIxao8KgKV7NAYTQeS7iaBcqKJyyIZYGCaDyWcDULlBVPWBDLAgXReCzhahYoK56wIJYFCqLxWMLVLFBWPGFBLAsUROOxhKuNWKDLxxqz4gkLYlmgIBqPJVxtvAJdPNZ4RruOyRMWxLJAQTQeS7jaWAU6m84WAs3+MNAXqsQTFsSyQEE0Hku42lgFmvlzKVDWNqgnLIhlgYJoPJZwtZEKNPfnSqAkg3rCglgWKIjGYwlXG6dAZ7OyQP1Y4940JssCBdF4LOFq4xToNBSoF1TuS2OyLFAQjccSrmaBWqAAGpNlgYJoPJZwNQvUAgXQmCwLFETjsYSrWaAWKIDGZFmgIBqPJVxtnAL1SSQwjcmyQEE0Hku42jgF6suYwDQmywIF0Xgs4WojFagvpMfSmCwLFETjsYSrjVWgvpUTSmOyLFAQjccSrjZWgXoxESiNybJAQTQeS7jaeAXq5eyANCbLAgXReCzhaiMWqPCoClezQGE0Hku4mgXKiicsiGWBgmg8lnA1C5QVT1gQywIF0Xgs4WoWKCuesCCWBQqi8VjC1SxQVjxhQSwLFETjsYSrWaCseMKCWBYoiMZjCVezQFnxhAWxLFAQjccSrmaBsuIJC2JZoCAajyVczQJlxRMWxLJAQTQeS7iaBcqKJyyIZYGCaDyWcDULlBVPWBDLAgXReCzhahYoK56wIJYFCqLxWMLVLFBWPGFBLAsUROOxhKtZoKx4woJYFiiIxmMJV7NAWfGEBbEsUBCNxxKuZoGy4gkLYlmgIBqPJVzNAmXFExbEskBBNB5LuJoFyoonLIhlgYJoPJZwNQuUFU9YEMsCBdF4LOFqFigrnrAglgUKovFYwtUsUFY8YUEsCxRE47GEq1mgrHjCglgWKIjGYwlXs0BZ8YQFsSxQEI3HEq5mgbLiCQtiWaAgGo8lXM0CZcUTFsSyQEE0Hku4mgXKiicsiGWBgmg8lnA1C5QVT1gQywIF0Xgs4WoWKCuesCCWBQqi8VjC1SxQVjxhQSwLFETjsYSrWaCseMKCWBYoiMZjCVezQFnxhAWxLFAQjccSrmaBsuIJC2JZoCAajyVczQJlxRMWxLJAQTQeS7iaBcqKJyyIZYGCaDyWcDULlBVPWBDLAgXReCzhahYoK56wIJYFCqLxWMLVLFBWPGFBLAsUROOxhKtZoKx4woJYFiiIxmMJV7NAWfGEBbEsUBCNxxKuZoGy4gkLYlmgIBqPJVwtFYE+\Nv3Tk9Pv\Wrd3a+wwINYKrVLFAYjccSrpaIQD\+7ukiX\rzrrdYoAFMtZoFCqPxWMLV0hDoxy+crvKFv+x4jwUawFSrWaAwGo8lXC0Ngd46Pf3899+ZP\zTc6enX9nxHgs0gKlWs0BhNB5LuFoSAv175s0fFn+6n5n01\E3WaABTLWaBQqj8VjC1ZIQ6Nub7c5sW\T5+Jss0ACmWs0ChdF4LOFqKQj04S9WG6DFxuiX42fiLdAAplrNAoXReCzhaikI9OMXNqeOyn8OY4EGMNVqFiiMxmMJV0tBoOWtzmxrdMdBUAs0gKlWs0BhNB5LuFoKAr1fPvV+a7M7Py++9SbvOo7jHCQWqOM4TsekItC3g9PwFqjjOEeQIxZo4EwL1HGco8sRC7RmC7QUn0QKYKrVuM2Eq3k+glhJn0QqxQINYKrVLFAYjccSrmaBsuIJC2JZoCAajyVcLQWB+jrQDjDVahYojMZjCVdLQaC+E6kDTLWaBQqj8VjC1VIQaHmr0\fCN4SpVrNAYTQeS7haCgL1akwdYKrVLFAYjccSrpaEQL0eaHuYajULFEbjsYSrJSHQfLvz9NvvzB\+8dQr0jeEqVazQGE0Hku4WhoC9TORWsNUq1mgMBqPJVwtDYHOP\RTOVvCVKtZoDAajyVcLRGBLp8L\80f+LnwDWGq1SxQGI3HEq6WikD3xwINYKrVLFAYjccSrmaBsuIJC2JZoCAajyVczQJlxRMWxLJAQTQeS7iaBcqKJyyIZYGCaDyWcDULlBVPWBDLAgXReCzhahYoK56wIJYFCqLxWMLVLFBWPGFBLAsUROOxhKtZoKx4woJYFiiIxmMJV7NAWfGEBbEsUBCNxxKuZoGy4gkLYlmgIBqPJVzNAmXFExbEskBBNB5LuJoFyoonLIhlgYJoPJZwNQuUFU9YEMsCBdF4LOFqFigrnrAglgUKovFYwtUsUFY8YUEsCxRE47GEq1mgrHjCglgWKIjGYwlXs0BZ8YQFsSxQEI3HEq5mgbLiCQtiWaAgGo8lXM0CZcUTFsSyQEE0Hku4mgXKiicsiGWBgmg8lnA1JYE6juMcLFEvWaCO4zj7E\WSBeo4jrM\US8lI9D22dk5\ehW023mailmbzMLNMXoVtNt5mopxgKVjG413WaulmIsUMnoVtNt5mopxgKVjG413WaulmIsUMnoVtNt5mopxgKVjG413WaulmIsUMnoVtNt5mopxgKVjG413WaulmIsUMnoVtNt5mopZswCdRzHGTYWqOM4TsdYoI7jOB1jgTqO43SMBeo4jtMxFqjjOE7HWKCO4zgdY4E6juN0jAXqOI7TMRao4zhOx1igjuM4HaMq0Id\+97p6em3fvXOob8ILP\vL7+RNfrmDzaN3j5d5\O\PuA365lYDYXhu38a5vniVYVBe\v0y6WBiYxVssMXNmvyKycq0I+\u6z5pT8f+qtg8vCX25L5hcDvYryGxPBFBaowaH9\rqyZyFglO3xBs2a\cpoC\fiFdc8v\OXQXwaRYOR+uHitVDLZ38V5tIbG8FUFWgybwKB9mFXYaCYyVskOX9Cs4a+cpkBvZf2+\8784Z+eOz39yqG\DCL5rsP\v\NF42WszL75zKt+RlPpIbc8OW\jIs9+PQHLbdMSaCRsUp1+MJmDX\lJAWa9Vz8e59vBST673yQ\F++5T+CQbeUpueubNeQG778l3H5i5n8oP31udOyZiJjlerwhc2a\spJCvTtTc9bq3\6k0554Nbl3paoFqkhN3ylDZfEB+3D5XHB8nZadazSHL5qs6a\cooCzXeYlv94VA54p5rywK0b3dq0TDlbNeSGr1wo7UErDut++68bzUTGKs3h22rW9FdOUaDZ1vf6SEX5zxpZjWbWLKH9o53ZriE3fG8HO4YpD9r94sT6\aBPdazSHL6tZuXU\copCrT8717272HKMzaS1b5F3vI\qN09PP\3NiF4sE2a6hNnzlX7vEB+3+F38wn5c1ExmrNIdvq1nwlzW\cooCDQ71pr3PFMnquFLW8our6+1SOdAUyXYNteG7VeojMWj340cKl2OV8vDtEGjdr5wFmljur66pKN0UkfAvY6SG2PBlmy2brTCJQRubQGt\5eQFmvhpz2rya9UWfbK5efqtf8tvm8v\UUxpmgbZriE2fG9XhJL+oO0S6GKsUh6+qEDrf+UUBRqMWmJDuCcfr++V2FybXfwxkZOdW4nU0Bq+4MSDxqDdj5+rXv5HysMXE+ieXzlFgab8b2B9Pvxu9O64YC8x3SxraA3fjsNqKQ\aqLZA9\3KyQs0saMwtfn7c\G7i8uX3iWcZQ2p4ds9NOkO2piOge79lbNA00k+mF+KXlaX0B0fdbm1vQmT+vDV3Pue7KCNSKD7f+UUBZrmlWh78\bpzqNmie0p7cqihtTwBaeQtv4qzUFTvA50kapAG\zKKQo0zXsh9qVYHWbHWYfE\qHflUUNqeGrGZlkB03xTqRFKgJt8iunKNDyv3vp3I27J\+rcuFgeU8ptX\oS4nUUBq+ys1\GoNW0kxkrFIevlCgjX7lFAWa6Howtckqff4H5RfKB9d2nuk9\sRqCA1fxSAag1b+5jKrMRUJxqTZr5ykQFNdkXB3tnvkpwGX8zSvm9Q8LSVWQ2j4KgtIagxaWTNC64HOw2YNf+UkBVrcMvDtd+YP\3ia+vq1i5RWd10nX4DrS\+2XDE70W2ZebyGzvBVTxRJDFqwnRYZq3SHLzy62+hXTlOgyT6VZUeCm3BX\zLeqr6QZiI1dIZv60SRwqAFAlV6JlLlHqtGv3KaAi3uHyiS2nMBoyk\36o0eOsxTrtkpIbK8EVOFAkMWnj0NjJWyQ7fplnjXzlRgS6fTF1+pHPCKT8MsPyv34fFc6u\9avDfrveidQQGb7Ymfb0B61y+isyVqkO36ZZ4185VYE6juMMHgvUcRynYyxQx3GcjrFAHcdxOsYCdRzH6RgL1HEcp2MsUMdxnI6xQB3HcTrGAnUcx+kYC9RxHKdjLFDHcZyOsUAdx3E6xgJ1HMfpGAvUcRynYyxQx3GcjrFAHcdxOsYCdRzH6RgL1HEcp2MsUKc+t09OTh5v8Boz5z86OfnEvw7z2R89eXLyyf9o9zNv\B9dPnHIFg4pFqhTHwt0Xx68ePJsl0+0QAVigTr1sUD35PVLJxboaGOBOvWxQPck\x\DAh1rLFCnPsco0CHDE6gjEAvUqY8FuicW6JhjgTr1sUD3xAIdcyxQpz4NBPrBK5ezFy5ceampJd5\6uTk0dcWf37jq5eyH7545ac7f3j\O+bnxTe4\HT4jsX3uvjoq5X3Xqv7tkvdnb8e+8QHP7l8qfjh0utVgW5Raz9xf4s3rhUf99rOH3MOGAvUqc9egZ7\5mSVC\9t9WK41bU5XfL+pZMLP7+3eHNunfwU9iqPRdUSe8fm83LOs5v3bL5A8L1K23\nr6w\78IzMd7im+eK33rTG0+dVL\LvU33n++i7vrERi3WP3by2P\zI2\JHl0sUKc++wT6oGyVk08F0li9PxTo\nk2ji3yz8btUP0HRX13Cu9Y\1VPyp\r\XJ7vwnI28upfjm\elyJvCr3Lyqfy1qkBj1F2f2KTFvdKP\W9PWaBHFwvUqc8egX70ZEQr9QL9zFqG718Kf3hbaPF3hOr5evk9yw3BiinL5q0HFp94MfaJ904qeXa+JdAoddcnNmhRrW+BHlssUKc+9QJdGOPiM\+RH\u7tHFSjUCzPPJatqubvfFG7opn3pqvfnj7qsj4O0L15B+YH9Bc7GE\vvmK5Zefrbx6Xry8ElUp5U+881TY6OSkOLJ5fic\LFn8W1ERaJS66xP3t1j8r5sf\lz+j2uBHlssUKc+lR3XdRa\4oVAVocmi735jRJ2CnTlyfxNa2fmf7Plsx3vqKrnc6Xty81W3+p4wubl4hPWBzVvn6w3mCvIdaXSJ97baHj5s8svVjqJFKfu+sT9LQrmM5v2FujRxQJ16lMv0BuBhAoRPL76006BrjSU\8fmh39z5em3qvAd76ioZw3K3754\V705coJ8xuxTdBdnxg2Ld1FVPrQOHXXJ+5vceOktPVf\E9ngR5ZLFCnPrUCzX\zyw5ab9TVCXT9A9Wf3s6Od1TU82z57Rv1PLt5+5WfvrX8sbKB8i+zdRR01yfO3\zxfyl9kxsxgUapOz9xb4tg+3vx6RbokcUCdepTK9BwC7Hyu79LoOvXF4f4rry0teE5n9e\I1TPxjHr1+O3mVeFmb9rax9+xydWExPojjfv+sS9LSr\696zQI8vFqhTn9qTSPdOtpVUbDE2EuhGzp\ddQ1+\B2heiKc+M0\W+fRY0ba9c3LLe+8sjnaWxLojluOdn3i3haVIw6+o+kIY4E69akV6NZtjDcaCDQ8krjKI1GHxt+xVz3VLeNFYgLdsmOtQD948ydfvVz50c3\BnEqTKDVIxDOEcQCderTTqC3Wwk0vG7ywud2rPm29Y7DCPS8fFMUQ6CVk1wW6BHGAnXqM6hAK7dHRvUQecdBBBrcZGSBOkUsUKc+Q+7CL\6yWC1jkfgST1vv6CHQvYtI1elumYuf\elbsZNI3oUfXyxQpz74k0gRx3zw22vx7cH4O3qcRIrAw+z65sXprItf\3dxV\EBOqTSOOLBerUp1agDS9j2lyms0OgeV4\2XdV6Pode9VTOffz\uWvvTqvXgKwIzVKPtmszBS9kD5O7S7QivAbfX2HGwvUqU+tQGsvpN+4ZHNvTSjQOz\5zJ4bg+Lv2Kue8JL21fct9sJLH\f+f3l0+9R\s4MCpRsCdl1Iv\5fqbNAKxfS3951lNg5XCxQpz71i4nU3cq5seGNk6hAKzejRwS64x37BRpcdL6+0adyL8+N2C59I4Ge3ziJCTRO7SxQ38p5\LFAnfrUC3TXYiKlFTGWhw8jAi2UEAiiegx0xzv2qydY1mPt79BBxdfaehhHjUDX3+5BcUJpW6BxaneBlhcTWay7aoEeWSxQpz571gO9UZxb2VrObrmw26urdeOiAl3dqJlL4e5vLkVAO96xXz2rheXm4Qpyxbe9kC9Jsvxa20KqOwZ6Ie85v\Pi4mT8UqDFZudr5dYVaneBbpazO\dydscZC9SpT7cFlcOlgD\xP+PHQKsXZm6fhI+\o4FAgwvw1++pXsu5Yz3QnWfhwzxb\oqfqF1QuZtAvaDy0ccCdeqz95EeT8Z\wUvCKZ6CFD0LH1opdg4++o4G6qk8XGP1SLbQoBciT9NscB1o3vOV9f8EK8k9u4vaQ6DBIz0+68uYji8WqFOf\Q+Ve3EjpPJj2v599bv\yM\nuwQaPDIu\uDJ2DuaqKf8eLdHN9opvZovjL+dJtu0Wc9SkaXjH99F7SPQ0kPlHvd1oEcYC9SpT5vHGofvWj6lNz9uuFOg8\kbLxarc1zeXk159zsaqWe+fsBw6MnzV67lTr78tfiDgms+8c6Lnyk+76XKXywePLz6H2SL2kug+adnX\fiY2\5QvpjjAXqOGkkF+jeG6kcbixQx0kj0QX0ncPGAnWcI835fw\ulArvc3KOIhao4xxp1kuzFMkPPNevFeDwY4E6zrGmcObT+fpPpUfRO8cUC9RxjjXV6+h3r\bnHCgWqOMcbcIbsbwDf3yxQB3nePN+6c6m+I0GzkFjgTrOMefO3hsNnAPGAnUcx+kYC9RxHKdjLFDHcZyOsUAdx3E6xgJ1HMfpGAvUcRynYyxQx3GcjrFAHcdxOsYCdRzH6RgL1HEcp2MsUMdxnI6xQB3HcTrGAnUcx+kYC9RxHKdjLFDHcZyOsUAdx3E6xgJ1HMfpGAvUcRynYyxQx3GcjrFAHcdxOsYCdRzH6Zj\H6SpnaWtXbz7AAAAAElFTkSuQmCC"  class="thumbnail-image card-img"/></p> </a></p>
+<p><a href="../blog/2023/nonlinear-mm/index.html" class="no-external"></a></p><a href="../blog/2023/nonlinear-mm/index.html" class="no-external">
+<p><img src="../blog/2023/nonlinear-mm/blog/2023/nonlinear-mm/figs/fig.title.png" class="thumbnail-image"></p>
+</a><p><a href="../blog/2023/nonlinear-mm/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="../blog/2023/nonlinear-mm/index.html">
 <h3 class="no-anchor listing-title">
-Nonlinear mixed-effect models for individual differences in growth
+<a href="../blog/2023/nonlinear-mm/index.html" class="no-external">Nonlinear mixed-effect models for individual differences in growth</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="../blog/2023/nonlinear-mm/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Gompertz growth'); return false;">
 Gompertz growth
@@ -301,16 +314,14 @@ brms
 Bayesian
 </div>
 </div>
-<a href="../blog/2023/nonlinear-mm/index.html">
 <div class="listing-description">
-Load libraries
+<a href="../blog/2023/nonlinear-mm/index.html" class="no-external">Load libraries</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../blog/2023/nonlinear-mm/index.html">
+<a href="../blog/2023/nonlinear-mm/index.html" class="no-external">
 <div class="listing-date">
-Friday, December 22, 2023
+Monday, March 18, 2024
 </div>
 <div class="listing-author">
 Raphaël Royauté
@@ -318,19 +329,19 @@ Raphaël Royauté
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="job,modeling,ecotoxicology,postdocs" data-listing-date-sort="1703245048000" data-listing-file-modified-sort="1703245048640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="333">
+<div class="quarto-post image-right" data-index="1" data-categories="job,modeling,ecotoxicology,postdocs" data-listing-date-sort="1710780958000" data-listing-file-modified-sort="1710780958720" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="333">
 <div class="thumbnail">
-<p><a href="../blog/2023/job-offer-ofb/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="../blog/2023/job-offer-ofb/index.html" class="no-external"></a></p><a href="../blog/2023/job-offer-ofb/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="../blog/2023/job-offer-ofb/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="../blog/2023/job-offer-ofb/index.html">
 <h3 class="no-anchor listing-title">
-Postdoctoral Position in Ecotoxicological Modeling
+<a href="../blog/2023/job-offer-ofb/index.html" class="no-external">Postdoctoral Position in Ecotoxicological Modeling</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="../blog/2023/job-offer-ofb/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('job'); return false;">
 job
@@ -345,16 +356,14 @@ ecotoxicology
 postdocs
 </div>
 </div>
-<a href="../blog/2023/job-offer-ofb/index.html">
 <div class="listing-description">
-We are recruiting a Postdoctoral Researcher in Ecotoxicology to work on models of pesticide fate and their impact on biodiversity in vineyard landscapes. The position is a…
+<a href="../blog/2023/job-offer-ofb/index.html" class="no-external">We are recruiting a Postdoctoral Researcher in Ecotoxicology to work on models of pesticide fate and their impact on biodiversity in vineyard landscapes. The position is a…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../blog/2023/job-offer-ofb/index.html">
+<a href="../blog/2023/job-offer-ofb/index.html" class="no-external">
 <div class="listing-date">
-Friday, December 22, 2023
+Monday, March 18, 2024
 </div>
 <div class="listing-author">
 Raphaël Royauté
@@ -362,19 +371,6 @@ Raphaël Royauté
 </a>
 </div>
 </div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing-1">
-<div class="list quarto-listing-default">
-
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -652,15 +648,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -669,7 +678,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -711,6 +728,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -786,7 +826,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

@@ -1,5 +1,0 @@
----
-title: "Earthworm growth model"
-categories: [news, code, analysis]
-draft: true
----

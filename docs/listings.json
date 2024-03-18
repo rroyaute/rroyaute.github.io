@@ -1,25 +1,13 @@
 [
   {
-    "listing": "/publications/index.html",
-    "items": []
-  },
-  {
-    "listing": "/blog/2023/job-offer-ofb/index.html",
-    "items": []
-  },
-  {
-    "listing": "/blog/2023/eworm-growth/index.html",
-    "items": []
-  },
-  {
-    "listing": "/blog/2023/new-papers/index.html",
-    "items": []
-  },
-  {
     "listing": "/blog/index.html",
     "items": [
       "/blog/2023/nonlinear-mm/index.html",
       "/blog/2023/job-offer-ofb/index.html"
     ]
+  },
+  {
+    "listing": "/publications/index.html",
+    "items": []
   }
 ]
