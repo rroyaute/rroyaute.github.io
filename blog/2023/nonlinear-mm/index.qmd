@@ -1,7 +1,7 @@
 ---
 title: "Nonlinear mixed-effect models for individual differences in growth"
 draft: false
-image: "blog/2023/nonlinear-mm/figs/fig.title.png"
+image: "figs/fig.title.png"
 date: last-modified
 categories:
   - Gompertz growth
