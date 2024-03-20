@@ -878,6 +878,7 @@ rho %>%
 
 
 ## In conclusion
+With some clever reparametrization, we can easily fit nonlinear mixed effect models with `brms`. Working through data simulations and prior predictive checks is crucial to understand the model's behavior however.
 
 
 ## Mathematical description of the statistical models
