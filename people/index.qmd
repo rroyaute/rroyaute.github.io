@@ -50,23 +50,6 @@ Co-supervisors: [Rémy Beaudouin (INERIS)](https://umr-sebio.fr/personnel/remy-b
 :::
 ::::
 
-:::: {layout="[ 40, 60 ]"}
-::: {#first-column}
-![](../images/AlbanRoyne-round.png){height=144}
-:::
-
-::: {#second-column}
-### Alban Royné
-Alban is a second-year Master's student from [Université des Sciences de Bordeaux](https://www.u-bordeaux.fr/). He will be working on trophic interactions between carabids and detritivores exposed to pesticide mixtures.
-
-Background: Ecotoxicology and Environmental Chemistry
-
-Project: [Effect of pesticides in simplified soil trophic networks](../projects#EPIC) 
-
-Co-supervisor: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
-:::
-::::
-
 ---
 
 <br /> 
@@ -106,6 +89,41 @@ Links: [INRAE Website](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes
 ## Past students
 
 :::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/AlbanRoyne-round.png){height=144}
+:::
+
+::: {#second-column}
+### Alban Royné
+Alban completed just completed his MSc from  [Université des Sciences de Bordeaux](https://www.u-bordeaux.fr/). He completed his end-of-year project with us and worked on trophic interactions between carabids and detritivores exposed to pesticide mixtures.
+
+Background: Ecotoxicology and Environmental Chemistry
+
+Project: [Effect of pesticides in simplified soil trophic networks](../projects#EPIC) 
+
+Co-supervisor: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
+:::
+::::
+
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/CLaborczy.jpeg){height=144}
+:::
+
+::: {#second-column}
+### Clara Laborczy
+Clara is a second-year student at [AgroParisTech](https://www.agroparistech.fr/). She did an internship  as part of the "La Recherche & moi" programm, working on an interactive dashboard for monitoring our earthworm laboratory population.
+
+Background: Agronomy
+
+Project: [Eco-evolutionary dynamics](../projects#EEWORMS) 
+
+Co-supervisor: [Lisa Gollot  (EcoSys)]()
+:::
+::::
+
+
+:::: {layout="[ 40, 60 ]"}
 ::: {first-column}
 ![](../images/PerrineLegrand-round.jpg)
 :::
@@ -113,7 +131,7 @@ Links: [INRAE Website](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes
 ::: {second-column}
 ### Perrine Legrand
 
-Perrine is a first-year MSc student in evolutionary biology at [Université de Lille](). She  focused on developing methods for evaluating the effects of pesticide exposure on soil fauna in a simplified trophic network.
+Perrine came as a first-year MSc student in evolutionary biology at [Université de Lille](). She  focused on developing methods for evaluating the effects of pesticide exposure on soil fauna in a simplified trophic network.
 
 Background: Biodiversity, Ecology and Evolution
 
