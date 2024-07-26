@@ -1,3 +1,75 @@
+- title: "The promise of community-driven preprints in ecology and evolution"
+  type: "Preprints"
+  author: 
+    -  Daniel WA Noble
+    - Zoe A Xirocostas
+    - Nicholas C Wu
+    - April Robin Martinig
+    - Rafaela A Almeida
+    - Kevin R Bairos-Novak
+    - Heikel Balti
+    - Michael G Bertram
+    - Louis Bliard
+    - Jack A Brand
+    - Ilha Byrne
+    - Ying-Chi Chan
+    - Dena J Clink
+    - Quentin Corbel
+    - Ricardo A Correia
+    - Jordann Crawford-Ash
+    - Antica Culina
+    - Elvira D'Bastiani
+    - Gideon D Gywa
+    - Melina de Souza Leite
+    - Félicie Dhellemmes
+    - Shreya Dimri
+    - Szymon M Drobniak
+    - Alexander D Elsy
+    - Susan E Everingham
+    - Samuel JL Gascoigne
+    - Matthew Grainger
+    - Gavin C Hossack
+    - Knut A Hovstad
+    - Ed R Ivimey-Cook
+    - Matt Lloyd Jones
+    - Ineta Kačergytė
+    - Georg Küstner
+    - Dalton C Leibold
+    - Magdalena M Mair
+    - Jake M Martin
+    - Ayumi Mizuno
+    - Ian R Moodie
+    - David Moreau
+    - Rose E O'Dea
+    - James A Orr
+    - Matthieu Paquet
+    - Rabindra Parajuli
+    - Joel L Pick
+    - Patrice Pottier
+    -Marija Purgar
+    - Pablo Recio
+    - Dominique G Roche
+    - "<b>Raphaël Royauté</b>"
+    - Saeed S Sabet
+    - Julio MG Segovia
+    - Inês Silva
+    - Alfredo Sánchez-Tójar
+    - Bruno E Soares
+    - Birgit Szabo
+    - Elina Takola
+    - Eli Thoré
+    - Bishnu Timilsina
+    - Natalie E van Dis
+    - Wilco CEP Verberk
+    - Stefan JG Vriend
+    - Kristoffer H Wild
+    - Coralie Williams
+    - Yefeng Yang
+    - Shinichi Nakagawa
+    - Malgorzata Lagisz
+  year: 2021
+  preprint: "https://doi.org/10.32942/X2SS46"
+  github: "https://github.com/daniel1noble/ecoevo_1000"
 
 
 - title: "Sex-specific behavioral syndromes allow the independent evolution of behavioral dimorphism"
@@ -19,7 +91,20 @@
   year: 2020
   preprint: "https://doi.org/10.1101/2020.05.14.088518"
 
-- title: "Drift on holey landscapes as a dominant evolutionary process (<i>Accepted</i>)"
+- title: "Individual flexibility in group foraging behaviour of reef manta rays (<i>Mobula alfredi</i>)"
+  type: "Published"
+  author:
+    - Annie Murray
+    - "<b>Raphaël Royauté</b>"
+    - Guy M. W. Stevens
+    - Callum Roberts
+    - Kathryn E. Arnold
+  year: 2024
+  journal: "<b>Behavioral Ecology and Sociobiology</b>"
+  pubopen: "https://doi.org/10.1007/s00265-024-03489-w"
+  github: "https://github.com/rroyaute/mantarays-iiv-analysis"
+
+- title: "Drift on holey landscapes as a dominant evolutionary process"
   type: "Published"
   author:
     - Ned A Dochtermann
@@ -28,7 +113,7 @@
     - "<b>Raphaël Royauté</b>"
   year: 2023
   journal: "<b>Proceedings of the National Academy of Sciences</b>"
-  preprint: "https://doi.org/10.32942/X2CG64"
+  pubopen: "https://doi.org/10.1073/pnas.2313282120"
   github: "https://github.com/DochtermannLab/Wright_vs_Holey"
 
 - title: "Nature 4.0: A networked sensor system for integrated biodiversity monitoring (<i>Accepted</i>)"
