@@ -11,7 +11,7 @@ categories:
   - Bayesian
 format:
   html: 
-    code-fold: false
+    code-fold: true
     fig-cap-location: bottom
     shift-heading-level-by: 1
     embed-resources: true
