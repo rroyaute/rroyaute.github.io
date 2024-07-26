@@ -1,0 +1,1018 @@
+---
+title: "Nonlinear mixed-effect models for individual differences in growth (part 2)"
+draft: true
+image: "figs/fig.title.png"
+date: last-modified
+categories:
+  - Gompertz growth
+  - R
+  - STAN
+  - brms
+  - Bayesian
+format:
+  html: 
+    code-fold: false
+    fig-cap-location: bottom
+    shift-heading-level-by: 1
+    embed-resources: true
+toc: true
+toc-depth: 5
+toc-location: left
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+(*Update 18/03/2024: Fixing minor formatting issues*)
+
+
+Load libraries
+
+```{r}
+#| code-fold: false
+library(tidyverse); library(patchwork); library(tidybayes)
+library(brms); library(marginaleffects); library(viridis)
+library(easystats); library(kableExtra)
+```
+
+Set theme
+
+```{r}
+theme_set(theme_bw(16))
+```
+
+We're first going to load all model objects stored in the `stan` folder to avoid rerunning all those pesky Bayesian computations.
+
+```{r}
+#| code-fold: true
+# Make a vector of file paths
+file_paths <- list.files(path = "stan/", 
+                         pattern = "\\.rds", full.names = TRUE)
+
+# Make a vector of file names
+file_names <-  gsub(pattern = "\\.rds$", replacement = "", 
+                    x = basename(file_paths))
+
+# Read all models into a list
+mods_list <- lapply(file_paths, readRDS)
+
+# Assign file names to list elements
+names(mods_list) <- file_names      
+```
+
+
+## Rationale
+I've been working a lot with nonlinear models lately. In many cases across ecology and evolution, trends do not go on forever. Having modeling approaches that can account for boundaries and plateaus is therefore very important in specific situations. In my case I'm generally interested in how contamination exposure affects growth, reproduction and behavior of invertebrates and its consequences on individual fitness. In this post I'm exploring how to use nonlinear mixed effect models of growth to recover individual trajectories using simulated data. I'm mostly using the `{brms}` package for now as it provides a very user-friendly syntax for fitting these models. The level of complexity I'm dealing with is veering dangerously toward a full `STAN` implementation, especially when I'll have to deal with jointly modeling fitness, but that's a problem for future me! 
+
+## Inspiration
+A lot of the code in this document has been taken and adapted from Solomon Kurtz's work and his translation of Richard McElreath's [Statistical Rethinking]() book into `{brms}` syntax. Specifically, the simulation of individual differences is directly inspired from working through [Chapter 14 section 1.3](https://bookdown.org/content/4857/adventures-in-covariance.html#the-varying-slopes-model.). Many thanks to them for putting out all this material in an open format!
+
+## Model description
+I'm using the model described in [Goussen et al. (2013)](https://doi.org/10.1007/s10646-013-1078-5) showing adaptation of *C. elegans* to Uranium.
+The model assumes nematodes body-length grows according to the following Gompertz function:
+
+$$
+L = L_{inf}\times e^{ln \left( \frac{L_0}{Linf} \right) \times e^{-\alpha t} }$$
+
+where $L_{inf}$ is the asymptotic body-length, $L_0$ is the body-length at hatching and $\alpha$ the growth rate.
+
+Plugging in the values from the paper gives a sigmoid growth curve:
+
+```{r}
+# Store parameters for non-exposed populations
+n_id = 10 # 10 individuals
+obs = seq(0, 126, by = 24) # One observation every day
+Linf = 1370
+L0 = 182
+alpha = 0.028
+t = seq(0,126, by = 1) # measure every h for 126 h 
+sigma = 100 # random noise
+
+Gomp.fun = function(t, Linf, L0, alpha){
+  Lhat = Linf * exp(log(L0/Linf)*exp(-alpha*t)) # predicted growth
+  return(Lhat)
+}
+
+# Apply equation
+set.seed(42)
+df = crossing(obs, 1:n_id) %>% 
+  mutate(Lhat = Gomp.fun(obs, Linf = Linf, L0 = L0, alpha = alpha)) %>% 
+  mutate(L = rnorm(n(), Lhat, sigma))
+df %>% 
+  ggplot(aes(y = L, x = obs)) +
+  geom_point(alpha = .2, size = 2.5) +
+  geom_function(fun = Gomp.fun, 
+                     args = list(Linf = Linf, L0 = L0, alpha = alpha),
+                     color = "red", size = 1) +
+  ylim(0, 1600) +
+  labs(x = "Hours since hatching", y = "Body-length (mum)")
+```
+
+
+## Simulating individual differences
+
+We can use the `brms` package to make simulations according to some prior distributions for our parameters. We first need to store the values of the growth parameters for each individual
+
+### Data simulations
+I'm using the same approach as above but now allow individual to have some deviation from the population mean for all parameters: $\mu_i \sim N(mu + \text{offset}, \text{ } \sigma)$ where $\mu$ and $\mu_i$ are the individual and population mean for a given parameter and the offset is calculated as: $\text{offset} \sim N(0, \text{ } \sigma_i)$ where $\sigma_i$ is the among-individual standard deviation for a given parameters. In our simulation, we assume a coefficient of variation 10 % for all parameters such that $\sigma_i = 0.10 \times \mu$
+
+::: {.callout-note}
+## Note 
+There are different ways to interpret the $L_{inf}$ parameter. In Goussen et al' paper, this was assumed to be the maximum body-size for the population. Meaning that with enough time, all individuals will converge toward this value. Most individuals of course will die before that! Here, I am assuming that all individuals have their own maximum size they can reach. This means that two individuals with the same growth rate measured for the same amount of time may still differ in their maximum length.
+:::
+
+
+```{r}
+n_id = 30 # 30 individuals
+times = seq(0, 126, by = 24) # One observation every day
+sd = 10 # random noise
+L0_mu = 182 # initial length (micrometers)
+Linf_mu = 1370 # maximal length (micrometers)
+alpha_mu = 0.028 # Growth rate (hour^-1)
+
+rho = 0 # Suppose all parameters are independent
+
+mu     = c(L0_mu, Linf_mu, alpha_mu)
+sigmas = c(L0_mu*.1, Linf_mu*.1, alpha_mu*.1) # 10 % CV around the mean
+rho_mat = matrix(c(1, rho, rho,
+                    rho, 1, rho,
+                    rho, rho, 1), 
+                    nrow = 3)
+
+sigma = diag(sigmas) %*% rho_mat %*% diag(sigmas)
+
+set.seed(42)
+ID = MASS::mvrnorm(n_id, mu, sigma) %>% 
+  data.frame() %>% 
+  set_names("L0_i", "Linf_i", "alpha_i") %>% 
+  mutate(ID = 1:n_id)
+
+# Simulate individual growth
+df = ID %>%
+  tidyr::expand(nesting(ID, L0_i, Linf_i, alpha_i), 
+                t = times) %>%
+  mutate(Lhat = Linf_i * exp(log(L0_i/Linf_i)*exp(-alpha_i*t))) %>%
+  mutate(L = rnorm(n(), Lhat, sd))
+
+fig.title = df %>% 
+  ggplot(aes(y = L, x = t, group = ID)) +
+  geom_point(alpha = .2, size = 2.5) +
+  geom_line(alpha = .2, size = .5) +
+  geom_function(fun = Gomp.fun, 
+                     args = list(Linf = Linf, L0 = L0, alpha = alpha),
+                     color = "red", size = 1) +
+  ylim(0, 1600) +
+  labs(x = "Hours since hatching", 
+       y = expression(paste("Body-length (", mu, "m)")))
+fig.title
+```
+
+```{r}
+#| echo: false
+# Store figure as icon for blog
+ggsave(filename = "figs/fig.title.png", 
+       fig.title, width = 4, height = 4)
+```
+
+
+### Defining the model in `brms`
+
+In `brms`, we can use the standard `R` formula syntax to specify the Gompertz model
+
+```{r}
+bf = bf(L ~ 
+           Linf * exp(log(L0 / Linf) * exp(-alpha * t)), # Gompertz population curve
+         L0 + Linf + alpha ~ 1 + (1|ID), # parameters with random effects
+         nl = T)
+priors = get_prior(bf, df)
+priors %>% kable(digits = 2)
+```
+
+These are default priors and may not be well-suited for our problem. For some reason, `brms` won't let us sample from these default priors, but we can easily illustrate the point by setting unrealistically uninformative priors (i.e. normal(0, 100) here) on these parameters. I'm using the lower bound argument `lb = 0` to keep the growth positive.
+
+```{r}
+priors = priors = 
+  # Intercept priors
+  prior(normal(0, 100), nlpar = L0, class = b, lb = 0) +
+  prior(normal(0, 100), nlpar = Linf, class = b, lb = 0) +
+  prior(normal(0, 100), nlpar = alpha, class = b, lb = 0)
+```
+
+Next, we fit the model and simply specify `sample_prior = "only"` in the `brm()` function to only get the growth trends implied by the priors
+
+```{r}
+#| echo: false
+#| code-fold: false
+gomp.prior.default = brm(bf,
+                         df,
+                         backend = "cmdstan",
+                         prior = priors, 
+                         iter = 1000,
+                         sample_prior = "only",
+                         file = "stan/gomp.prior.default",
+                         seed = 42, 
+                         cores = 4,
+                         threads = threading(4))
+```
+```{r}
+# plotting
+plot(conditional_effects(mods_list$gomp.prior.default, 
+                         ndraws = 100, spaghetti = T))
+```
+
+
+Not very good right?! Let's retry now with more reasonable priors
+
+```{r}
+priors = 
+  # Intercept priors
+  prior(normal(200, 40), nlpar = L0, class = b, lb = 0) +
+  prior(normal(1500, 300), nlpar = Linf, class = b, lb = 0) +
+  prior(normal(.03,.006), nlpar = alpha, class = b, lb = 0) + 
+  # Random effects priors (informative priors with 20 % CV)
+  prior(exponential(.025), nlpar = L0, class = sd, group = ID) +
+  prior(exponential(.003), nlpar = Linf, class = sd, group = ID) +
+  prior(exponential(170), nlpar = alpha, class = sd, group = ID) +
+  # Residual prior
+  prior(exponential(1), class = sigma) 
+
+# Plot priors
+p1 = priors %>% 
+  parse_dist() %>% 
+  filter(class == "b") %>% 
+  ggplot(aes(xdist = .dist_obj, y = format(.dist_obj))) +
+  stat_dist_halfeye() +
+  facet_wrap(~nlpar, scales = "free") +
+  ggtitle("Intercepts") +
+  xlab("Value") + ylab("Density") +
+  theme_bw(12) +
+  theme(axis.text.y = element_text(angle = 90)) 
+
+p2 = priors %>% 
+  parse_dist() %>% 
+  filter(class == "sd") %>% 
+  ggplot(aes(xdist = .dist_obj, y = format(.dist_obj))) +
+  stat_dist_halfeye() +
+  facet_wrap(~nlpar, scales = "free") +
+  ggtitle("Among-individual variance") +
+  xlab("Value") + ylab("Density") +
+  theme_bw(12) +
+  theme(axis.text.y = element_text(angle = 90)) 
+
+p3 = priors %>% 
+  parse_dist() %>% 
+  filter(class == "sigma") %>% 
+  ggplot(aes(xdist = .dist_obj, y = format(.dist_obj))) +
+  stat_dist_halfeye() +
+  facet_wrap(~nlpar, scales = "free") +
+  ggtitle("Residual variance") +
+  xlab("Value") + ylab("Density") +
+  theme_bw(12) +
+  theme(axis.text.y = element_text(angle = 90)) 
+ 
+(p1 + p2 + p3) + plot_layout(ncol = 1)
+```
+
+### Prior predictive checks
+
+We can now check if the model shows a more appropriate gortwh curve while sampling only from these new priors. 
+
+```{r}
+#| echo: false
+#| code-fold: false
+gomp.prior = brm(bf,
+             df,
+             backend = "cmdstan",
+             prior = priors, 
+             # init = 0,
+             # warmup = 2000,
+             iter = 1000,
+             # control = list(adapt_delta = .9,
+             #                max_treedepth = 15),
+             sample_prior = "only",
+             file = "stan/gomp.prior",
+             seed = 42, 
+             cores = 4,
+             threads = threading(4))
+```
+
+Inspecting the model and plotting predicted growth
+```{r}
+mods_list$gomp.prior
+plot(conditional_effects(mods_list$gomp.prior, 
+                         ndraws = 100, spaghetti = T))
+
+re = crossing(t = seq(min(df$t), 
+                       max(df$t),
+                       length.out=100),
+               ID = unique(df$ID)) %>% 
+  add_epred_draws(mods_list$gomp.prior, re_formula = NULL, 
+                  scale = "response", ndraws = 20)
+
+re %>% 
+  ggplot(aes(y = .epred, x = t)) +
+  geom_line(aes(y = .epred, x = t, group = .draw), size = .5, alpha = .5) +
+  geom_point(data = df, aes(y=L, x=t, color = ID)) +
+  facet_wrap(~ID, nrow = 6, ncol = 5) + 
+  scale_color_viridis() +
+  ylab("Mass (mg)") + 
+  xlab("Time") +
+  theme_bw(12) +
+  theme(legend.position = "none")
+```
+
+### Fit model to simulated data
+
+Next, we can fit the model to the simulated dataset
+
+```{r}
+#| echo: false
+#| code-fold: false
+gomp = brm(bf,
+            df,
+            backend = "cmdstan",
+            prior = priors, 
+            init = 0,
+            warmup = 2000,
+            iter = 3000,
+            control = list(adapt_delta = .95,
+                           max_treedepth = 15),
+            sample_prior = "yes",
+            file = "stan/gomp",
+            seed = 42, 
+            cores = 4,
+            threads = threading(4))
+```
+Inspecting the model and plotting predicted growth
+```{r}
+model_parameters(mods_list$gomp, effects = "all") %>% 
+  kable(digits = 2)
+pp_check(mods_list$gomp, ndraws = 100)
+plot(conditional_effects(mods_list$gomp, ndraws = 100, spaghetti = T))
+
+re = crossing(t = seq(min(df$t), 
+                       max(df$t),
+                       length.out=100),
+               ID = unique(df$ID)) %>% 
+  add_epred_draws(mods_list$gomp, re_formula = NULL, 
+                  scale = "response", ndraws = 20)
+
+re %>% 
+  ggplot(aes(y = .epred, x = t)) +
+  geom_line(aes(y = .epred, x = t, group = .draw), size = .5, alpha = .5) +
+  geom_point(data = df, aes(y=L, x=t, color = ID)) +
+  facet_wrap(~ID, nrow = 6, ncol = 5) + 
+  scale_color_viridis() +
+  ylab("Mass (mg)") + 
+  xlab("Time") +
+  theme_bw(12) +
+  theme(legend.position = "none")
+```
+The model functions correctly but there are a lot of divergent transitions and some poor convergence diagnostics. Let's try reparametrizing to improve the sampling.
+
+### Model reparametrization
+
+We can express all body-length parameters as a function of the maximum length to help the model converge. Divinding each side of the Gompertz equation gives
+
+$$\begin{aligned}
+l &= L/L_{inf}\\
+l_0 &=L_0/L_{inf}\\
+l &= e^{ln \left( l_0 \right) \times e^{-\alpha t} }
+\end{aligned}$$
+
+```{r}
+ggplot() +
+  geom_function(fun = Gomp.fun, 
+                     args = list(Linf = 1, L0 = L0/Linf, alpha = alpha),
+                     color = "red", size = 1) +
+  xlim(0, 126) + ylim(0, 1) +
+  labs(x = "Hours since hatching", y = "Scaled body-length") 
+```
+
+#### Prior predictive checks
+
+We need to reformulate model formula and priors in order to get sensible outputs
+
+```{r}
+df$l = with(df, L/Linf)
+
+bf = bf(l ~ 
+           exp(log(l0) * exp(-alpha * t)), # Gompertz population curve
+         l0 + alpha ~ 1 + (1|ID), # parameters with random effects
+         nl = T)
+```
+
+Defining and plotting priors
+
+```{r}
+priors = 
+  # Intercept priors
+  prior(normal(.15, .03), nlpar = l0, class = b, lb = 0) +
+  prior(normal(.03,.006), nlpar = alpha, class = b, lb = 0) + 
+  # Random effects priors (informative priors with 20 % CV)
+  prior(exponential(34), nlpar = l0, class = sd, group = ID) +
+  prior(exponential(170), nlpar = alpha, class = sd, group = ID) +
+  # Residual prior
+  prior(exponential(1), class = sigma) 
+
+# Plot priors
+p1 = priors %>% 
+  parse_dist() %>% 
+  filter(class == "b") %>% 
+  ggplot(aes(xdist = .dist_obj, y = format(.dist_obj))) +
+  stat_dist_halfeye() +
+  facet_wrap(~nlpar, scales = "free") +
+  ggtitle("Intercepts") +
+  xlab("Value") + ylab("Density") +
+  theme_bw(12) +
+  theme(axis.text.y = element_text(angle = 90)) 
+
+p2 = priors %>% 
+  parse_dist() %>% 
+  filter(class == "sd") %>% 
+  ggplot(aes(xdist = .dist_obj, y = format(.dist_obj))) +
+  stat_dist_halfeye() +
+  facet_wrap(~nlpar, scales = "free") +
+  ggtitle("Among-individual variance") +
+  xlab("Value") + ylab("Density") +
+  theme_bw(12) +
+  theme(axis.text.y = element_text(angle = 90)) 
+
+p3 = priors %>% 
+  parse_dist() %>% 
+  filter(class == "sigma") %>% 
+  ggplot(aes(xdist = .dist_obj, y = format(.dist_obj))) +
+  stat_dist_halfeye() +
+  facet_wrap(~nlpar, scales = "free") +
+  ggtitle("Residual variance") +
+  xlab("Value") + ylab("Density") +
+  theme_bw(12) +
+  theme(axis.text.y = element_text(angle = 90)) 
+ 
+(p1 + p2 + p3) + plot_layout(ncol = 1)
+```
+
+
+And now running the model on priors only
+
+```{r}
+#| echo: false
+#| code-fold: false
+gomp.sc.prior = brm(bf,
+             df,
+             backend = "cmdstan",
+             prior = priors, 
+             iter = 1000,
+             sample_prior = "only",
+             file = "stan/gomp.sc.prior",
+             seed = 42, 
+             cores = 4,
+             threads = threading(4))
+
+```
+
+Model inspection
+
+```{r}
+model_parameters(mods_list$gomp.sc.prior, effects = "all") %>%
+  kable(digits = 2)
+plot(conditional_effects(mods_list$gomp.sc.prior, 
+                         ndraws = 100, spaghetti = T))
+
+re = crossing(t = seq(min(df$t), 
+                       max(df$t),
+                       length.out=100),
+               ID = unique(df$ID)) %>% 
+  add_epred_draws(mods_list$gomp.sc.prior, re_formula = NULL, 
+                  scale = "response", ndraws = 20)
+
+re %>% 
+  ggplot(aes(y = .epred, x = t)) +
+  geom_line(aes(y = .epred, x = t, group = .draw), size = .5, alpha = .5) +
+  geom_point(data = df, aes(y=l, x=t, color = ID)) +
+  facet_wrap(~ID, nrow = 6, ncol = 5) + 
+  scale_color_viridis() +
+  ylab("Mass (mg)") + 
+  xlab("Time") +
+  theme_bw(12) +
+  theme(legend.position = "none")
+
+```
+
+
+#### Fitting model to data
+
+As above we rerun the scaled model on the scaled data
+
+
+```{r}
+#| echo: false
+#| code-fold: false
+gomp.sc = brm(bf,
+               df,
+               backend = "cmdstan",
+               prior = priors, 
+               init = 0,
+               warmup = 2000,
+               iter = 3000,
+               control = list(adapt_delta = .95,
+                              max_treedepth = 15),
+               sample_prior = "yes",
+               file = "stan/gomp.sc",
+               seed = 42, 
+               cores = 4,
+               threads = threading(4))
+```
+
+Model inspection
+
+```{r}
+model_parameters(mods_list$gomp.sc, effects = "all") %>%
+  kable(digits = 2)
+plot(conditional_effects(mods_list$gomp.sc, 
+                         ndraws = 100, spaghetti = T))
+pp_check(mods_list$gomp.sc, ndraws = 100)
+
+re = crossing(t = seq(min(df$t), 
+                       max(df$t),
+                       length.out=100),
+               ID = unique(df$ID)) %>% 
+  add_epred_draws(mods_list$gomp.sc, re_formula = NULL, 
+                  scale = "response", ndraws = 20)
+
+re %>% 
+  ggplot(aes(y = .epred, x = t)) +
+  geom_line(aes(y = .epred, x = t, group = .draw), size = .5, alpha = .5) +
+  geom_point(data = df, aes(y=l, x=t, color = ID)) +
+  facet_wrap(~ID, nrow = 6, ncol = 5) + 
+  scale_color_viridis() +
+  ylab("Mass (mg)") + 
+  xlab("Time") +
+  theme_bw(12) +
+  theme(legend.position = "none")
+
+```
+
+Much better!
+
+## Assuming a trade-off between maximum size and growth-rate
+So far, we have assumed that all our parameters are independent. However, trade-offs between various life-history traits are also likely to occur. One such trade-off is the compromise between fast growth and reproductive rate, such that individuals that mature sooner reach a smaller asymptotic length. This is the case in  collembolas exposed to Cadmium for example.
+We can easily modify our simulation function to incorporate a similar trade-off in our data.
+
+
+### Data simulations and modeling
+
+```{r}
+n_id = 30 # 30 individuals
+times = seq(0, 126, by = 24) # One observation every day
+sd = 10 # random noise
+L0_mu = 182 # initial length (micrometers)
+Linf_mu = 1370 # maximal length (micrometers)
+alpha_mu = 0.028 # Growth rate (hour^-1)
+
+rho = -.7 # Assume strong negative correlation between Linf and alpha
+
+mu     = c(L0_mu, Linf_mu, alpha_mu)
+sigmas = c(L0_mu*.1, Linf_mu*.1, alpha_mu*.1) # 10 % CV around the mean
+rho_mat = matrix(c(1, 0, 0,
+                    0, 1, rho,
+                    0, rho, 1), 
+                    nrow = 3)
+
+sigma = diag(sigmas) %*% rho_mat %*% diag(sigmas)
+
+set.seed(42)
+ID = MASS::mvrnorm(n_id, mu, sigma) %>% 
+  data.frame() %>% 
+  set_names("L0_i", "Linf_i", "alpha_i") %>% 
+  mutate(ID = 1:n_id)
+
+# Plot
+ID %>% 
+  select(-ID) %>% 
+  GGally::ggpairs() +
+  theme_bw() 
+```
+And now we simulate growth over 126 hours as before
+```{r}
+# Simulate individual growth
+df = ID %>%
+  tidyr::expand(nesting(ID, L0_i, Linf_i, alpha_i), 
+                t = times) %>%
+  mutate(Lhat = Linf_i * exp(log(L0_i/Linf_i)*exp(-alpha_i*t))) %>%
+  mutate(L = rnorm(n(), Lhat, sd))
+
+df %>% 
+  ggplot(aes(y = L, x = t, group = ID)) +
+  geom_point(alpha = .2, size = 2.5) +
+  geom_line(alpha = .2, size = .5) +
+  geom_function(fun = Gomp.fun, 
+                     args = list(Linf = Linf_mu, L0 = L0_mu, alpha = alpha_mu),
+                     color = "red", size = 1) +
+  ylim(0, 1600) +
+  labs(x = "Hours since hatching", 
+       y = expression(paste("Body-length (", mu, "m)")))
+
+```
+
+Switching directly to fitting the model to the data, we make some small adjustments to the formula
+
+```{r}
+df$l = with(df, L/Linf_mu)
+
+bf = bf(l ~ 
+           linf*exp(log(l0/linf) * exp(-alpha * t)), # Gompertz population curve
+         l0 + linf + alpha ~ 1 + (1|c|ID), # parameters with random effects
+         nl = T)
+```
+
+We introduce a scaled version of $L_{inf}$ into the formula and allow random effects to be correlated with the `(1|c|ID)` chunk. Next we need to specify a strong prior for on $l_{inf}$ to constrain it around 1. We also specify a prior on the correlation parameter using an LKJ prior of parameter $\eta>1$
+
+```{r}
+priors = 
+  # Intercept priors
+  prior(normal(.15, .03), nlpar = l0, class = b, lb = 0) +
+  prior(normal(1, .03), nlpar = linf, class = b, lb = 0) +
+  prior(normal(.03,.006), nlpar = alpha, class = b, lb = 0) + 
+  # Random effects priors (informative priors with 20 % CV)
+  prior(exponential(34), nlpar = l0, class = sd, group = ID) +
+  prior(exponential(5), nlpar = linf, class = sd, group = ID) +
+  prior(exponential(170), nlpar = alpha, class = sd, group = ID) +
+  # Residual prior
+  prior(exponential(1), class = sigma) +
+  # Correlation prior
+  prior(lkj(2), class = cor)
+
+
+# Plot priors for linf
+priors %>% 
+  parse_dist() %>% 
+  filter(nlpar == "linf") %>% 
+  ggplot(aes(xdist = .dist_obj, y = format(.dist_obj))) +
+  stat_dist_halfeye() +
+  facet_wrap(~nlpar, scales = "free") +
+  ggtitle("Scaled asymptotic length priors") +
+  xlab("Value") + ylab("Density") +
+  theme_bw(12) +
+  theme(axis.text.y = element_text(angle = 90)) 
+```
+
+To get a better sense of what these prior imply, we can simulate the distribution of individual differences in $l_{inf}$ 
+
+```{r}
+linf_sim = data.frame(offsets = rnorm(n_id*100, 0, .2)) %>% 
+  mutate(linf_mu = rnorm(n(), (1 + offsets), sigma))
+  
+linf_sim %>% 
+  ggplot(aes(x = linf_mu)) +
+  stat_halfeye() +
+  xlim(-2,3)
+```
+
+
+We now fit the model to the simulated data
+
+```{r}
+#| echo: false
+#| code-fold: false
+gomp.to = brm(bf,
+               df,
+               backend = "cmdstan",
+               prior = priors, 
+               init = 0,
+               warmup = 2000,
+               iter = 3000,
+               control = list(adapt_delta = .95,
+                              max_treedepth = 15),
+               sample_prior = "yes",
+               file = "stan/gomp.to",
+               seed = 42, 
+               cores = 4,
+               threads = threading(4))
+```
+
+### Model inspection
+
+```{r}
+model_parameters(mods_list$gomp.to, effects = "all") %>%
+  kable(digits = 2)
+
+plot(conditional_effects(mods_list$gomp.to, 
+                         ndraws = 100, spaghetti = T))
+pp_check(mods_list$gomp.to, ndraws = 100)
+
+re = crossing(t = seq(min(df$t), 
+                       max(df$t),
+                       length.out=100),
+               ID = unique(df$ID)) %>% 
+  add_epred_draws(mods_list$gomp.to, re_formula = NULL,
+                  scale = "response", ndraws = 20)
+
+re %>% 
+  ggplot(aes(y = .epred, x = t)) +
+  geom_line(aes(y = .epred, x = t, group = .draw), size = .5, alpha = .5) +
+  geom_point(data = df, aes(y=l, x=t, color = ID)) +
+  facet_wrap(~ID, nrow = 6, ncol = 5) + 
+  scale_color_viridis() +
+  ylab("Mass (mg)") + 
+  xlab("Time") +
+  theme_bw(12) +
+  theme(legend.position = "none")
+```
+
+This recovers the parameter values pretty well! Note that there is some moderate correlation between $l_0$ and $l_{inf}$ due to sampling even if the true value is 0. The model seems to overestimate slightly this value compared to the value found in the simulated data. Let's now plot these correlations according to the model estimates
+
+```{r}
+#| fig-width: 10
+#| fig-height: 10
+re = mods_list$gomp.to %>%
+  spread_draws(# Population values
+    b_l0_Intercept, b_linf_Intercept, b_alpha_Intercept, 
+    # Individual offsets
+    r_ID__l0[ID,Intercept], r_ID__linf[ID,Intercept], r_ID__alpha[ID,Intercept],
+    # Individual variances
+    sd_ID__l0_Intercept, sd_ID__linf_Intercept, sd_ID__alpha_Intercept,
+    sigma) %>% 
+  # Individual offsets converted onto the original length scale (in micrometers)
+  mutate(L0_i = (b_l0_Intercept + r_ID__l0) * Linf_mu,
+         Linf_i = (b_linf_Intercept + r_ID__linf) * Linf_mu,
+         alpha_i = b_alpha_Intercept + r_ID__alpha) %>% 
+  # Population averge distribution
+  mutate(L0_dist = rnorm(n(), b_l0_Intercept, sd_ID__l0_Intercept)*Linf_mu,
+         Linf_dist = rnorm(n(), b_linf_Intercept, sd_ID__linf_Intercept)*Linf_mu,
+         alpha_dist = rnorm(n(), b_alpha_Intercept, sd_ID__alpha_Intercept))
+re.mean = re %>% 
+  select(.chain, .iteration, .draw, L0_i, Linf_i, alpha_i) %>% 
+   mean_qi(L0_i, Linf_i, alpha_i)
+  # Summarize individual values into mean, lower and upper 95 % quantiles
+
+# Plot population average (diagonal elements)
+L0_dist = re %>% 
+  ggplot(aes(x = L0_dist)) +
+  stat_histinterval(slab_color = "gray45", 
+                    outline_bars = TRUE) +
+  labs(x = "", y = expression(L[0])) +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+Linf_dist = re %>% 
+  ggplot(aes(x = Linf_dist)) +
+  stat_histinterval(slab_color = "gray45", 
+                    outline_bars = TRUE) +
+  labs(x = "", y = "") +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+alpha_dist = re %>% 
+  ggplot(aes(x = alpha_dist)) +
+  stat_histinterval(slab_color = "gray45", 
+                    outline_bars = TRUE) +
+  labs(x = expression(alpha), y = "") +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+
+# Plot individual average with CI (lower diagonal elements)
+corr1 = re.mean %>% 
+  ggplot(aes(x = L0_i, y = Linf_i)) +
+  geom_errorbarh(aes(xmin = L0_i.lower, xmax = L0_i.upper)) +
+  geom_errorbar(aes(ymin = Linf_i.lower, ymax = Linf_i.upper)) +
+  geom_point(alpha = .8, size = 3) +
+  labs(x = "", y = expression(L[inf])) +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+corr2 = re.mean %>% 
+  ggplot(aes(x = L0_i, y = alpha_i)) +
+  geom_errorbarh(aes(xmin = L0_i.lower, xmax = L0_i.upper)) +
+  geom_errorbar(aes(ymin = alpha_i.lower, ymax = alpha_i.upper)) +
+  geom_point(alpha = .8, size = 3) +
+  labs(x = expression(L[0]), y = expression(alpha)) +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+corr3 = re.mean %>% 
+  ggplot(aes(x = Linf_i, y = alpha_i)) +
+  geom_errorbarh(aes(xmin = Linf_i.lower, xmax = Linf_i.upper)) +
+  geom_errorbar(aes(ymin = alpha_i.lower, ymax = alpha_i.upper)) +
+  geom_point(alpha = .8, size = 3) +
+  labs(x = expression(L[inf]), y = "") +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+
+# Plot correlation estimate (upper diagonal elements)
+dcorr1 = mods_list$gomp.to %>% 
+  spread_draws(`cor.*`, regex = TRUE) %>% 
+  ggplot(aes(x = cor_ID__l0_Intercept__linf_Intercept)) +
+  stat_halfeye() +
+  geom_vline(xintercept = 0, linewidth = 1, color = "black", linetype = "dashed") +
+  xlim(-1, 1) +
+  labs(x = "", y = "") +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+dcorr2 = mods_list$gomp.to %>% 
+  spread_draws(`cor.*`, regex = TRUE) %>% 
+  ggplot(aes(x = cor_ID__l0_Intercept__alpha_Intercept)) +
+  stat_halfeye() +
+  geom_vline(xintercept = 0, linewidth = 1, color = "black", linetype = "dashed") +
+  xlim(-1, 1) +
+  labs(x = "", y = "") +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+dcorr3 = mods_list$gomp.to %>% 
+  spread_draws(`cor.*`, regex = TRUE) %>% 
+  ggplot(aes(x = cor_ID__linf_Intercept__alpha_Intercept)) +
+  stat_halfeye() +
+  geom_vline(xintercept = 0, linewidth = 1, color = "black", linetype = "dashed") +
+  xlim(-1, 1) +
+  labs(x = "", y = "") +
+  theme_bw(12) +
+  theme(aspect.ratio=1)
+
+# Arrange plot into 3 x 3 grid
+L0_dist + dcorr1 + dcorr2 +
+  corr1 + Linf_dist + dcorr3 +
+  corr2 + corr3 + alpha_dist +
+  plot_layout(ncol = 3, nrow = 3, byrow = T)
+```
+
+Another possibility is to sample correlation estimates and plot those on a small grid with each color corresponding to the correlation strength. Solution found on [Matthew Kay](https://github.com/mjskay/uncertainty-examples/blob/master/multivariate-regression.md) and [Solomon Kurtz](https://bookdown.org/content/4857/adventures-in-covariance.html#summary-bonus-multilevel-growth-models-and-the-melsm) websites
+```{r}
+levels = c("l[0]", "l[inf]", "alpha")
+
+rho = as_draws_df(mods_list$gomp.to) %>% 
+  select(starts_with("cor_")) %>% 
+  slice_sample(n = 60 * 60) %>% 
+  bind_cols(crossing(x = 1:60, y = 1:60)) %>% 
+  pivot_longer(cols = -c(x:y)) %>% 
+  mutate(name = str_remove(name, "cor_ID__")) %>% 
+  separate(name, into = c("col", "row"), sep = "__") %>% 
+  mutate(
+    col = case_when(
+      col == "l0_Intercept"   ~ "l[0]",
+      col == "linf_Intercept" ~ "l[inf]",
+      col == "alpha_Intercept" ~ "alpha"),
+    row = case_when(
+      row == "l0_Intercept"  ~ "l[0]",
+      row == "linf_Intercept" ~ "l[inf]",
+      row == "alpha_Intercept" ~ "alpha")) %>% 
+  mutate(col = factor(col, levels = levels),
+         row = factor(row, levels = levels))
+
+rho %>% 
+  full_join(rename(rho, col = row, row = col),
+            by = c("x", "y", "col", "row", "value")) %>%
+  
+  ggplot(aes(x = x, y = y, fill = value)) +
+  geom_raster() +
+  scale_fill_distiller(type = "div", 
+                       palette = "RdBu", 
+                       limits = c(-1, 1), name = expression(rho)) +
+  # scale_fill_gradient2(expression(rho),
+  #                      low = "#59708b", mid = "#FCF9F0", high = "#A65141", midpoint = 0,
+  #                      labels = c(-1, "", 0, "", 1), limits = c(-1, 1)) +
+  scale_x_continuous(NULL, breaks = NULL, expand = c(0, 0)) +
+  scale_y_continuous(NULL, breaks = NULL, expand = c(0, 0)) +
+  theme(strip.text = element_text(size = 12)) +
+  facet_grid(row ~ col, labeller = label_parsed, switch = "y")
+```
+
+
+## In conclusion
+With some clever reparametrization, we can easily fit nonlinear mixed effect models with `brms`. Working through data simulations and prior predictive checks is crucial to understand the model's behavior however.
+
+
+## Mathematical description of the statistical models
+
+Formally, our statistical model can be described with the following set of equations
+
+### Non-scaled model
+
+$$\begin{aligned}
+
+\large \text{Model Likelihood}\\ 
+\text{Average growth rate}\\
+L_{i,t} &\sim N(\mu_{i,t}, \text{ } \sigma)\\
+
+\mu_{i,t} &= L_{inf_{i}}\times e^{ln \left( \frac{L_{0_{i}}}{L_{inf_{i}}} \right) \times e^{-\alpha_i t} } \\
+
+\text{Among-individual covariance}\\
+\begin{bmatrix}
+\mu_{L_{0_{i}}}\\
+\mu_{L_{inf_{i}}}\\
+\mu_{\alpha_i}\\
+\end{bmatrix} &\sim 
+
+MVN(\begin{bmatrix}
+\mu_{L_{0}}\\
+\mu_{L_{inf}}\\
+\mu_{\alpha}\\
+\end{bmatrix}, 
+\Sigma)\\
+
+\Sigma &=
+\begin{bmatrix}
+\sigma_{L_{0_{i}}} & 0 & 0\\
+0 & \sigma_{L_{inf_{i}}} & 0 \\
+0 & 0 & \sigma_{\alpha_i}
+\end{bmatrix} 
+
+R 
+
+\begin{bmatrix}
+\sigma_{L_{0_{i}}} & 0 & 0\\
+0 & \sigma_{L_{inf_{i}}} & 0 \\
+0 & 0 & \sigma_{\alpha_i}
+\end{bmatrix} \\
+
+R &= 
+\begin{bmatrix}
+1 & \rho_{1,2} & \rho_{1,3}\\
+\rho_{1,2} & 1 & \rho_{2,3} \\
+\rho_{1,3} & \rho_{2,3} & 1
+\end{bmatrix} \\
+
+\large \text{Priors}\\
+\text{Population Intercepts}\\
+\mu_{L_{0}} &\sim N(200, 40) \\
+\mu_{L_{inf}} &\sim N(1500, 300) \\
+\mu_{\alpha}  &\sim N(0.03, 0.006) \\
+
+\text{Among-individual variances}\\
+\sigma_{L_{0_{i}}} &\sim Exp(.025) \\
+\sigma_{L_{inf_{i}}} &\sim Exp(.003) \\
+\sigma_{\alpha_i} &\sim Exp(170) \\
+\sigma &\sim Exp(1) \\
+
+\text{Among-individual covariance}\\
+R &\sim LKJ(2)
+\end{aligned}$$
+
+### Scaled model
+Compared to the non-scaled model, the major difference here is that we put a strong prior around 1 for the $l_{inf}$ parameter.
+
+$$\begin{aligned}
+
+\large \text{Model Likelihood}\\
+\text{Average growth rate}\\
+l_{i,t} &\sim N(\mu_{i,t}, \text{ } \sigma)\\
+
+\mu_{i,t} &= l_{inf_{i}}\times e^{ln \left( \frac{l_{0_{i}}}{l_{inf_{i}}} \right) \times e^{-\alpha_i t} } \\
+
+\text{Among-individual covariance}\\
+\begin{bmatrix}
+\mu_{l_{0_{i}}}\\
+\mu_{l_{inf_{i}}}\\
+\mu_{\alpha_i}\\
+\end{bmatrix} &\sim 
+
+MVN(\begin{bmatrix}
+\mu_{l_{0}}\\
+\mu_{l_{inf}}\\
+\mu_{\alpha}\\
+\end{bmatrix}, 
+\Sigma)\\
+
+\Sigma &=
+\begin{bmatrix}
+\sigma_{l_{0_{i}}} & 0 & 0\\
+0 & \sigma_{l_{inf_{i}}} & 0 \\
+0 & 0 & \sigma_{\alpha_i}
+\end{bmatrix} 
+
+R 
+
+\begin{bmatrix}
+\sigma_{L_{0_{i}}} & 0 & 0\\
+0 & \sigma_{L_{inf_{i}}} & 0 \\
+0 & 0 & \sigma_{\alpha_i}
+\end{bmatrix} \\
+
+R &= 
+\begin{bmatrix}
+1 & \rho_{1,2} & \rho_{1,3}\\
+\rho_{1,2} & 1 & \rho_{2,3} \\
+\rho_{1,3} & \rho_{2,3} & 1
+\end{bmatrix} \\
+
+\large \text{Priors}\\
+\text{Population Intercepts}\\
+\mu_{L_{0}} &\sim N(0.15, 0.03) \\
+\mu_{L_{inf}} &\sim N(1, 0.3) \\
+\mu_{\alpha}  &\sim N(0.03, 0.006) \\
+
+\text{Among-individual variances}\\
+\sigma_{L_{0_{i}}} &\sim Exp(34) \\
+\sigma_{L_{inf_{i}}} &\sim Exp(5) \\
+\sigma_{\alpha_i} &\sim Exp(170) \\
+\sigma &\sim Exp(1) \\
+
+\text{Among-individual covariance}\\
+R &\sim LKJ(2)
+\end{aligned}$$
+
+## Session info
+
+```{r}
+sessionInfo()
+```
+
