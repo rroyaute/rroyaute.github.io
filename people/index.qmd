@@ -30,8 +30,33 @@ Links:
 
 <br /> 
 
-## Current students
+## Current
 
+<!--
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
+![](../images/LisaGollot-round.jpg)
+:::
+
+::: {#second-column}
+### Quentin Devalloir (starting October 2024)
+
+
+Background: Spatial and Immuno-Ecotoxicology
+
+Project: [Spatially-explicit modeling of pesticide fate](../projects#SpatialTox) 
+
+Co-supervisors: [Carole Bedos (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys_eng/Staff/Personnel-Eco-Phy/Scientifiques-Eco-Phy/BEDOS-Carole)
+
+Collaborators: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette) [Cécile Dagès (LISAH)](https://www.umr-lisah.fr/?q=fr/content/c-dages), [Pierre Benoit (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys_eng/Staff/Photos-and-CV/B/BENOIT-Pierre), [Olivier Crouzet (OFB)](), [Pierre-François Staub (OFB)]()
+
+:::
+::::
+
+---
+
+<br /> 
+-->
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
@@ -40,7 +65,7 @@ Links:
 
 ::: {#second-column}
 ### Lisa Gollot
-Lisa has a background in environmental chemistry and agronomy. Within the course of her MSc studies in ecotoxicology at [AgroParisTech](https://www.agroparistech.fr/en), she joined our team for a 6-month internship focusing on the modeling of individual differences in earthworm growth under different pesticide exposure regimes.  She has just started her PhD with us in October 2023 on similar topics.
+Lisa has a background in environmental chemistry and agronomy. Within the course of her MSc studies in ecotoxicology at [AgroParisTech](https://www.agroparistech.fr/en), she joined our team for a 6-month internship focusing on the modeling of individual differences in earthworm growth under different pesticide exposure regimes.  She has  started her PhD with us in October 2023 on similar topics.
 
 Background: Analytical Chemistry, Ecotoxicology
 
