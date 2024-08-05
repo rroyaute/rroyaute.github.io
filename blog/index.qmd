@@ -1,8 +1,9 @@
 ---
-title: "Home"
+title: "Behavioral and Evolutionary Ecotoxicology Blog"
 listing:
   contents: 
     - "2023/**/index.qmd"
+    - "2024/**/index.qmd"
   sort: "date desc"
   type: default
   categories: true
@@ -14,6 +15,8 @@ title-block-banner: true
 
 ## What's on this blog?
 This blog is an opportunity for me to explore these different classes of models in the open and hopefully provide some useful tools to the research community. I'll also post about job opportunities and ongoing projects.
+
+<br /> 
 
 <!-- ## 2023 -->
 
