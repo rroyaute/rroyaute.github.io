@@ -24,6 +24,7 @@ Projects: [EPIC](../../projects#EPIC)
 ### Behavioral ecotoxicology of soil invertebrates {#BehavTox}
 The rise of behavioral ecotoxicology as a discipline has shown that the effects of contaminants on organisms’ behaviors are ubiquitous across terrestrial and aquatic ecosystems. Many contaminants act on the nervous system and can reshape how individuals perceive their environment. This means that classical ecotoxicological assays are limited as they tend to focus on growth and reproduction while ignoring subtle effects on social interactions, predator avoidance or feeding strategies. A further complication is the current integration of so-called “animal personalities” within ecotoxicological assays. Simply put, there is tremendous variation in individual responses to the same pesticide exposure as shown in several studies, including in my own research. This means that extracting population averages for key traits (growth, reproduction, no effect concentrations) may result in predictions that poorly reflect how populations cope with contaminants, especially when taking into account evolutionary effects. By merging behavioral endpoints with current theory on the modeling of contaminant effects on organisms, I hope to provide better tools to understand the long-term effects of contaminants on soil organisms and their ecological functions.
 
+See also [Projects page](https://rroyaute.github.io/projects/#BehavEcotox)
 
 ---
 
