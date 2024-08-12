@@ -9,4 +9,21 @@ The postdoctoral call from [INRAE's Agroecosystem division](https://www.inrae.fr
 ### Eligibility
 
 - No nationality restrictions
-- Must be within 3-years of PhD completion
+- Must be within 3-years of PhD completion by the time the contract starts (so by fall 2025)
+
+## Application
+
+Four-page application including the following:
+
+- State-of-the-art
+- Research question
+- Hypotheses
+- Research program and timeline
+
+Primary project ideas revolve around applying pose-tracking to video data of soil arthropods exposed to contaminants. I am of course opened to discuss other ideas depending on feasibility within our lab.
+
+
+## Salary range and benefits
+
+- Gross salary range between 2600 and 3100 € depending on experience
+- Full benefits including health care and holidays 
