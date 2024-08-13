@@ -4,12 +4,15 @@ draft: false
 categories: [job, behavior, ecotoxicology, postdocs]
 ---
 
+(*Update 13/08/2024: Adding more details on eligibility and application requirements*)
+
+
 The postdoctoral call from [INRAE's Agroecosystem division](https://www.inrae.fr/en/divisions/agroecosystem) is now open. If successful, the division offers a 12-month position to start in fall 2025. If you are interested my [research activities](https://rroyaute.github.io/research/current-research/#BehavTox), feel free to contact me with your CV and a brief summary of project interests. I would like to prioritize projects on behavioral ecotoxicology and / or modeling but am of course open to your suggestions and ideas. The application must be submitted by the end of September, so make sure to contact me before **August 25, 2024** (*raphael.royaute@inrae.fr*). 
 
 ### Eligibility
 
 - No nationality restrictions
-- Must be within 3-years of PhD completion by the time the contract starts (so by fall 2025)
+- Must have completed the PhD no later than fall 2022 (position subject to 3-years post-PhD rule as per French regulations)
 
 ## Application
 
