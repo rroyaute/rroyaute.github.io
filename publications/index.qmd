@@ -62,7 +62,7 @@ listing:
 
 You can also find my papers on [Google Scholar](https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&hl=en), my [ORCID](https://orcid.org/0000-0002-5837-633X) page or on [HAL](https://cv.hal.science/raphael-royaute).
 
-## Preprints (3)
+## Preprints (2)
 :::{#in-review}
 :::
 
@@ -70,7 +70,7 @@ You can also find my papers on [Google Scholar](https://scholar.google.ca/citati
 :::{#preprints}
 :::
 
-## Published Articles (23)
+## Published Articles (24)
 
 :::{#published-articles}
 :::

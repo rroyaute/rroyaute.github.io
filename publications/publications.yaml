@@ -1,5 +1,5 @@
 - title: "The promise of community-driven preprints in ecology and evolution"
-  type: "Preprints"
+  type: "Published"
   author: 
     -  Daniel WA Noble
     - Zoe A Xirocostas
@@ -67,10 +67,11 @@
     - Yefeng Yang
     - Shinichi Nakagawa
     - Malgorzata Lagisz
-  year: 2021
+  year: 2025
+  journal: "<b>Proceedings of the Royal Society B</b>"
+  pubopen: "https://doi.org/10.1098/rspb.2024.1487"
   preprint: "https://doi.org/10.32942/X2SS46"
   github: "https://github.com/daniel1noble/ecoevo_1000"
-
 
 - title: "Sex-specific behavioral syndromes allow the independent evolution of behavioral dimorphism"
   type: "Preprints"
