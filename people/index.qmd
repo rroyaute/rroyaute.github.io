@@ -34,12 +34,12 @@ Links:
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
-![](../images/QDevalloir.jpeg)
+![](../images/QDevalloir.jpeg){width="20%"}
 :::
 
 ::: {#second-column}
 ### Quentin Devalloir (Postdoctoral Researcher)
-Quentin joined our lab to work on models of pesticide fate and their impact on biodiversity in vineyard landscapes. 
+Quentin has an MSc in conservation biology with a focus on ecotoxicology. His PhD research focused on how multiple stressors (pollution, nutritional quality) impact the immune response of free-ranging rodents. His research merges experimental, field-based approaches along with mechanistic modeling at the landscape scale to understand the response of wild animals to pollution. His current scientific interests are centered around developing new approach methodologies (NAMS) for the use of animals in scientific research and risk assessment. His project focuses on the modeling of pesticide fate and their impact on biodiversity in vineyard landscapes.
 
 Background: Spatial and Immuno-Ecotoxicology
 
@@ -113,7 +113,7 @@ Links: [INRAE Website](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
-![](../images/AlbanRoyne-round.png){height=144}
+![](../images/AlbanRoyne-round.png){height=120}
 :::
 
 ::: {#second-column}
@@ -130,7 +130,7 @@ Co-supervisor: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
-![](../images/CLaborczy.jpeg){height=144}
+![](../images/CLaborczy.jpeg){height=120}
 :::
 
 ::: {#second-column}
