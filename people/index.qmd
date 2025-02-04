@@ -34,7 +34,7 @@ Links:
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
-![](../images/QDevalloir.jpeg){width="20%"}
+![](../images/QDevalloir.jpeg){width="120px"}
 :::
 
 ::: {#second-column}
@@ -113,7 +113,7 @@ Links: [INRAE Website](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
-![](../images/AlbanRoyne-round.png){height=120}
+![](../images/AlbanRoyne-round.png){width="120px"}
 :::
 
 ::: {#second-column}
@@ -130,7 +130,7 @@ Co-supervisor: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
-![](../images/CLaborczy.jpeg){height=120}
+![](../images/CLaborczy.jpeg){width="120px"}
 :::
 
 ::: {#second-column}
