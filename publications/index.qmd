@@ -30,15 +30,15 @@ listing:
     sort: "date desc"
     sort-ui: false
     categories: false
-  # - id: accepted-articles
-  #   include: 
-  #     type: "Accepted"
-  #   contents: publications.yaml
-  #   template: publications.ejs
-  #   filter-ui: false
-  #   sort: "date desc"
-  #   sort-ui: false
-  #   categories: false
+  - id: in-press
+    include:
+      type: "In Press"
+    contents: publications.yaml
+    template: publications.ejs
+    filter-ui: false
+    sort: "date desc"
+    sort-ui: false
+    categories: false
   - id: published-articles
     include: 
       type: "Published"
@@ -62,7 +62,7 @@ listing:
 
 You can also find my papers on [Google Scholar](https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&hl=en), my [ORCID](https://orcid.org/0000-0002-5837-633X) page or on [HAL](https://cv.hal.science/raphael-royaute).
 
-## Preprints (2)
+## Preprints (3)
 :::{#in-review}
 :::
 
@@ -70,7 +70,11 @@ You can also find my papers on [Google Scholar](https://scholar.google.ca/citati
 :::{#preprints}
 :::
 
-## Published Articles (24)
+## Published Articles (26)
+
+:::{#in-press}
+:::
+
 
 :::{#published-articles}
 :::
