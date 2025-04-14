@@ -449,7 +449,7 @@ list_of_inits <- list(
 str(list_of_inits)
 
 ## Fitting the model ----
-gomp.to.dose.prior = brm(bf.l, 
+gomp.dr.prior = brm(bf.l, 
                          # family = gaussian(link = "exponential"),
                          df,
                          backend = "cmdstan",
@@ -457,17 +457,17 @@ gomp.to.dose.prior = brm(bf.l,
                          init = list_of_inits,
                          iter = 1000,
                          sample_prior = "only",
-                         # file = "stan/gomp.to",
+                         file = "stan/gomp.dr.prior",
                          seed = 42, 
                          cores = 4,
                          threads = threading(3))
-model_parameters(gomp.to.dose.prior, effects = "all") %>%
+model_parameters(gomp.dr.prior, effects = "all") %>%
   kable(digits = 2)
-plot(conditional_effects(gomp.to.dose.prior))
-plot(conditional_effects(gomp.to.dose.prior, 
+plot(conditional_effects(gomp.dr.prior))
+plot(conditional_effects(gomp.dr.prior, 
                          ndraws = 100, spaghetti = T))
 
-gomp.to.dose = brm(bf.l,
+gomp.dr.post = brm(bf.l,
                    df,
                    backend = "cmdstan",
                    prior = priors, 
@@ -477,14 +477,14 @@ gomp.to.dose = brm(bf.l,
                    control = list(adapt_delta = .95,
                                   max_treedepth = 15),
                    sample_prior = "yes",
-                   # file = "stan/gomp.to",
+                   file = "stan/gomp.dr.post",
                    seed = 42, 
                    cores = 4,
                    threads = threading(3))
-model_parameters(gomp.to.dose, effects = "all") %>%
+model_parameters(gomp.dr.post, effects = "all") %>%
   kable(digits = 2)
-pp_check(gomp.to.dose, ndraws = 100)
-plot(conditional_effects(gomp.to.dose), points = T)
+pp_check(gomp.dr.post, ndraws = 100)
+plot(conditional_effects(gomp.dr.post), points = T)
 
 
 
