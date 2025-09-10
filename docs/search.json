@@ -173,5 +173,26 @@
     "title": "People",
     "section": "Past students",
     "text": "Past students\n\n\n\n\n\n\n\n\n\n\nAlban Royné\nAlban completed just completed his MSc from Université des Sciences de Bordeaux. He completed his end-of-year project with us and worked on trophic interactions between carabids and detritivores exposed to pesticide mixtures.\nBackground: Ecotoxicology and Environmental Chemistry\nProject: Effect of pesticides in simplified soil trophic networks\nCo-supervisor: Colette Bertrand (EcoSys)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClara Laborczy\nClara is a second-year student at AgroParisTech. She did an internship as part of the “La Recherche & moi” programm, working on an interactive dashboard for monitoring our earthworm laboratory population.\nBackground: Agronomy\nProject: Eco-evolutionary dynamics\nCo-supervisor: Lisa Gollot (EcoSys)\n\n\n\n\n\n\n\n\n\n\n\n\n\nPerrine Legrand\nPerrine came as a first-year MSc student in evolutionary biology at Université de Lille. She focused on developing methods for evaluating the effects of pesticide exposure on soil fauna in a simplified trophic network.\nBackground: Biodiversity, Ecology and Evolution\nProject: Effect of pesticides in simplified soil trophic networks\n\n\n\n\n\n\n\n\n\n\n\n\n\nMagali Dahirel\nMagali completed her MSc. in ecological modeling at Université de Rennes 1. She worked with us on an agent-based model of aphid-ladybeetle dynamics under pesticide exposure.\nBackground: Biodiversity, Ecology and Evolution\nProject: TRAVERSéES\nCo-supervisors: Corinne Robert (EcoSys), Pierre-Antoine Précigout (EcoSys), Colette Bertrand (EcoSys)"
+  },
+  {
+    "objectID": "blog/2025/postdoc-call/index.html",
+    "href": "blog/2025/postdoc-call/index.html",
+    "title": "Postdoctoral Position in Behavioral Ecotoxicology",
+    "section": "",
+    "text": "I have a 12-month fully-funded postdoctoral position within UMR EcoSys to work on AI models for detecting behavioral indicators of generalist predators exposed to pesticides. The successful candidate will make use of an already-collected dataset of carabid exposed to a pesticide gradient for comparing the outcomes of classical indicators of carabid activity (distance moved and percent of arena explore) with pose-tracking approaches that train AI models to detect the motion of different body-parts. In a second phase, you will lead behavioral ecotoxicity assays to determine whether pose-tracking allows for detecting toxicity parameters (NEC and EC50) at lower concentration compared to classical behavioral indicators.\nFeel free to reach out to me for more information or download the full offer here."
+  },
+  {
+    "objectID": "blog/2025/postdoc-call/index.html#application",
+    "href": "blog/2025/postdoc-call/index.html#application",
+    "title": "Postdoctoral Position in Behavioral Ecotoxicology",
+    "section": "Application",
+    "text": "Application\nPlease submit your CV and cover letter to Colette Bertrand (colette.bertrand@inrae.fr) and myself (raphael.royaute@inrae.fr) no later than October 15th. Applications will be reviewed immediately until the position is filled"
+  },
+  {
+    "objectID": "blog/2025/postdoc-call/index.html#salary-range-and-benefits",
+    "href": "blog/2025/postdoc-call/index.html#salary-range-and-benefits",
+    "title": "Postdoctoral Position in Behavioral Ecotoxicology",
+    "section": "Salary range and benefits",
+    "text": "Salary range and benefits\n\nAnticipated start date: Novembre 2025\nGross salary of ~ 3100 €\nFull benefits including health care and holidays"
   }
 ]
