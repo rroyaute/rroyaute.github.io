@@ -4,6 +4,7 @@ listing:
   contents: 
     - "2023/**/index.qmd"
     - "2024/**/index.qmd"
+    - "2025/**/index.qmd"
   sort: "date desc"
   type: default
   categories: true
