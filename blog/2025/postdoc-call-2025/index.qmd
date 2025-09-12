@@ -1,6 +1,8 @@
 ---
 title: "Postdoctoral Position in Behavioral Ecotoxicology "
 draft: false
+image: "postdoc_IB_AES_EcoSys_fig.png"
+date: last-modified
 categories: [job, behavior, ecotoxicology, postdocs]
 ---
 
