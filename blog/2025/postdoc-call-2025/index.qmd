@@ -6,6 +6,7 @@ date: last-modified
 categories: [job, behavior, ecotoxicology, postdocs]
 ---
 
+
 I have a 12-month fully-funded postdoctoral position within [UMR EcoSys](https://ecosys.versailles-saclay.hub.inrae.fr/collaborer-avec-nous/nous-rejoindre/offres-d-emploi-et-post-doc/offre-de-post-doc-en-ecotoxicologie-comportementale) to work on AI models for detecting behavioral indicators of generalist predators exposed to pesticides. The successful candidate will make use of an already-collected dataset of carabid exposed to a pesticide gradient for comparing the outcomes of classical indicators of carabid activity (distance moved and percent of arena explore) with pose-tracking approaches that train AI models to detect the motion of different body-parts. In a second phase, you will lead behavioral ecotoxicity assays to determine whether pose-tracking allows for detecting toxicity parameters (NEC and EC50) at lower concentration compared to classical behavioral indicators.
 
 Feel free to reach out to me for more information or download the full offer [here](ECOSYS_postdoc_behavioral ecotoxicology_FR_EN.pdf).
