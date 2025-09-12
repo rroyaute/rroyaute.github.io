@@ -119,22 +119,22 @@
     "text": "Other projects and collaborations\n\nMeasuring the effects of selection using ecotoxicological assays\n\n\n\n\n\n\n\n\n\nEvolutionary effects are frequently unaccounted for in ecotoxicological studies. As a result, we have a poor understanding on how fast wild population may adapt and at what costs on their growth and reproduction. Quantitative genetic approaches allow to determine the strength and shape of selection acting on phenotypes via the estimation of selection gradients.\n\n\n\nYet, these approaches are rarely used in ecotoxicological assays due to the difficulty of measuring individual fitness in ecotoxicological assays. Using historical data on nematode adaptation to Uranium exposure, we aim to better understand how contaminant exposure may alter evolutionary trajectories.\nCollaborators: Rémy Beaudouin (INERIS), Benoit Goussen (IBACON)\n\n\n\nBehavioral ecotoxicology of carabid beetles in agroecosystems\n\n\n\n\n\n\n\n\n\nCarabid beetles activity\n\n\n\n\nAlthough effects on growth, reproduction and survival are the most commonly evaluated traits in ecotoxicology, pesticides’ impact on wildlife is not limited to these endpoints alone. By acting on neuro-endocrine systems, pesticides can also alter how individuals perceive their environment and deeply alter their physiology or behavior.\n\n\n\nUsing automated-tracking technology, I aim to build better mechanistic models accounting for the effects of pesticides on behavior using a generalist carabid predator as a model system.\nCollaborators: Colette Bertrand (EcoSys)\n\n\n\nSpatially-explicit modeling of pesticide fate\nA major limitation of current risk assessment for pesticide products is its reliance on a substance-by-substance assessment while neglecting the risk posed by pesticide mixtures. A further complication is that pesticides are typically applied at the landscape scale and successively within and across years. To improve on current environmental risk assessment, new exposure modelling approaches are needed that can better account for the fate of pesticides at the landscape scale and the likelihood of exposure given the ecological characteristics of each species (modes of exposure, dispersal, mobility between different habitats). Spatially-explicit models are powerful tools for achieving this vision as they can help identifying landscape features that are more likely to accumulate pesticide residues and can help infer species or groups of species that are most at risk in a given landscape context according to their ecological characteristics. The aim of this project is to determine how pesticides spread in typical vineyard landscapes accounting for how different the exposure risk for functional groups of organisms (e.g., detritivores, herbivores, insectivores…). We will soon hire a postdoctoral researcher to collaborate with us on these topics.\nCollaborators: Cécile Dagès (LISAH), Marc Votlz (LISAH), Carole Bedos (EcoSys), Pierre Benoit (EcoSys), Colette Bertrand (EcoSys), Olivier Crouzet (OFB), Pierre-François Staub (OFB)\nFunders: Horizon Europe - European Partnership for the Assessment of Risks from Chemicals(PARC) - WP6.4.4: Quantify effects of PPP and other stressors through landscape risk assessment informing on environmental impacts\nFunding Period: 2024 – 2026"
   },
   {
-    "objectID": "blog/2025/postdoc-call/index.html",
-    "href": "blog/2025/postdoc-call/index.html",
+    "objectID": "blog/2025/postdoc-call-2025/index.html",
+    "href": "blog/2025/postdoc-call-2025/index.html",
     "title": "Postdoctoral Position in Behavioral Ecotoxicology",
     "section": "",
     "text": "I have a 12-month fully-funded postdoctoral position within UMR EcoSys to work on AI models for detecting behavioral indicators of generalist predators exposed to pesticides. The successful candidate will make use of an already-collected dataset of carabid exposed to a pesticide gradient for comparing the outcomes of classical indicators of carabid activity (distance moved and percent of arena explore) with pose-tracking approaches that train AI models to detect the motion of different body-parts. In a second phase, you will lead behavioral ecotoxicity assays to determine whether pose-tracking allows for detecting toxicity parameters (NEC and EC50) at lower concentration compared to classical behavioral indicators.\nFeel free to reach out to me for more information or download the full offer here."
   },
   {
-    "objectID": "blog/2025/postdoc-call/index.html#application",
-    "href": "blog/2025/postdoc-call/index.html#application",
+    "objectID": "blog/2025/postdoc-call-2025/index.html#application",
+    "href": "blog/2025/postdoc-call-2025/index.html#application",
     "title": "Postdoctoral Position in Behavioral Ecotoxicology",
     "section": "Application",
     "text": "Application\nPlease submit your CV and cover letter to Colette Bertrand (colette.bertrand@inrae.fr) and myself (raphael.royaute@inrae.fr) no later than October 15th. Applications will be reviewed immediately until the position is filled"
   },
   {
-    "objectID": "blog/2025/postdoc-call/index.html#salary-range-and-benefits",
-    "href": "blog/2025/postdoc-call/index.html#salary-range-and-benefits",
+    "objectID": "blog/2025/postdoc-call-2025/index.html#salary-range-and-benefits",
+    "href": "blog/2025/postdoc-call-2025/index.html#salary-range-and-benefits",
     "title": "Postdoctoral Position in Behavioral Ecotoxicology",
     "section": "Salary range and benefits",
     "text": "Salary range and benefits\n\nAnticipated start date: Novembre 2025\nGross salary of ~ 3100 €\nFull benefits including health care and holidays"
