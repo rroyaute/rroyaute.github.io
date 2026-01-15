@@ -164,9 +164,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-type','listing-author','listing-year','listing-journal','listing-osf',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-type","listing-author","listing-year","listing-journal","listing-osf"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -192,9 +192,10 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-type','listing-author','listing-year','listing-journal','listing-pubopen','listing-preprint','listing-github','listing-review','listing-pubclosed','listing-data','listing-osf','listing-correction',{ data: ['index'] },{ data: ['categories'] }],
-      
-      searchColumns: ["listing-title","listing-type","listing-author","listing-year","listing-journal","listing-pubopen","listing-preprint","listing-github","listing-review","listing-pubclosed","listing-data","listing-osf","listing-correction"],
+      valueNames: ['listing-title','listing-type','listing-author','listing-year','listing-journal','listing-pubclosed','listing-preprint','listing-github','listing-pubopen','listing-osf','listing-review','listing-data','listing-correction',{ data: ['index'] },{ data: ['categories'] }],
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-title","listing-type","listing-author","listing-year","listing-journal","listing-pubclosed","listing-preprint","listing-github","listing-pubopen","listing-osf","listing-review","listing-data","listing-correction"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -369,7 +370,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#preprints-3" id="toc-preprints-3" class="nav-link active" data-scroll-target="#preprints-3">Preprints (3)</a></li>
-  <li><a href="#published-articles-26" id="toc-published-articles-26" class="nav-link" data-scroll-target="#published-articles-26">Published Articles (26)</a></li>
+  <li><a href="#published-articles-28" id="toc-published-articles-28" class="nav-link" data-scroll-target="#published-articles-28">Published Articles (28)</a></li>
   <li><a href="#thesis" id="toc-thesis" class="nav-link" data-scroll-target="#thesis">Thesis</a></li>
   </ul>
 </nav>
@@ -438,13 +439,13 @@ No matching items
 <ul class="list">
   
     <li data-index="0">
-      MoveTraits - A database for integrating animal behaviour into trait-based ecology 
+      Genetic and environmental sources of behavioral individuality: a test of the standard model 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
       
         <small class="text-muted">
-          2025. Larissa T Beumer, Anne Gabriela Hertel, <b>Raphaël Royauté</b>, Marlee A Tucker, Joerg Albrecht, Roxanne Beltran, Francesca Cagnacci, Sarah C Davidson, Nandintsetseg Dejid, Roland Kays, Andrea Koelzsch, Ashley Lohr, Eike Lena Neuschulz, Kamran Safi, Anne K Scharf, Matthias Schleuning, Martin Wikelski, Thomas Mueller. .
+          2025. Zachary J. Sweep, <b>Raphaël Royauté</b>, Ned A Dochtermann. .
         </small>
       
       
@@ -462,7 +463,7 @@ No matching items
       
       
       
-        <a role="button" href="https://doi.org/10.1101/2025.03.15.643440" type="button" class="btn btn-outline-secondary btn-xs"> 
+        <a role="button" href="https://doi.org/10.1101/2025.08.27.672710" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-doi ai-lg"></i> Preprint 
         </a> 
       
@@ -472,7 +473,7 @@ No matching items
       
       
       
-        <a role="button" href="https://osf.io/sp8z6/" type="button" class="btn btn-outline-secondary btn-xs"> 
+        <a role="button" href="https://osf.io/vk3a7/" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="ai ai-osf ai-lg"></i> OSF 
         </a>
       
@@ -593,8 +594,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="published-articles-26" class="level2">
-<h2 class="anchored" data-anchor-id="published-articles-26">Published Articles (26)</h2>
+<section id="published-articles-28" class="level2">
+<h2 class="anchored" data-anchor-id="published-articles-28">Published Articles (28)</h2>
 <div id="listing-in-press" class="quarto-listing quarto-listing-container-custom">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
@@ -611,18 +612,154 @@ No matching items
 
 <ul class="list">
   
+</ul>
+
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+<div id="listing-published-articles" class="quarto-listing quarto-listing-container-custom">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+
+<style>
+  .btn-xs {
+    padding: 1px 5px;
+    font-size: 15px;
+  }
+  .ai-lg {
+    font-size: 1.2em;  /* Adjust as needed */
+  }
+</style>
+
+<ul class="list">
+  
     <li data-index="0">
+      Uncovering hidden sensitivity: Inter-individual growth variation in earthworms under fungicide exposure 
+      <br>
+      <p>
+      <!-- paper info for not-yet-published papers -->
+      
+      
+      <!-- paper info for published papers -->
+      
+        <small class="text-muted">
+          2026. Lisa Gollot, Rémy Beaudouin, Jérôme Mathieu, Juliette Faburé, <b>Raphaël Royauté</b>. <b>Environmental Toxicology and Chemistry</b>.
+        </small>
+      
+      
+      <br>
+
+      
+      
+      
+      
+      
+      
+      
+        <a role="button" href="https://doi.org/10.1111/ele.70297" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="ai ai-closed-access ai-lg"></i> Publisher's Version 
+        </a>
+      
+      
+      
+        <a role="button" href="https://ineris.hal.science/ineris-05428800v1" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="ai ai-doi ai-lg"></i> Preprint 
+        </a> 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <a role="button" href="https://github.com/LisaGllt/Ew-Growth-IdVar" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="bi bi-github ai-lg"></i> GitHub 
+        </a>
+      
+      
+      
+      
+      <br>
+      
+      
+      </p>
+      <hr>
+    </li>
+  
+    <li data-index="1">
+      MoveTraits - A database for integrating animal behaviour into trait-based ecology 
+      <br>
+      <p>
+      <!-- paper info for not-yet-published papers -->
+      
+      
+      <!-- paper info for published papers -->
+      
+        <small class="text-muted">
+          2026. Larissa T Beumer, Anne Gabriela Hertel, <b>Raphaël Royauté</b>, Marlee A Tucker, Joerg Albrecht, Roxanne Beltran, Francesca Cagnacci, Sarah C Davidson, Nandintsetseg Dejid, Roland Kays, Andrea Koelzsch, Ashley Lohr, Eike Lena Neuschulz, Kamran Safi, Anne K Scharf, Matthias Schleuning, Martin Wikelski, Thomas Mueller. <b>Ecology Letters</b>.
+        </small>
+      
+      
+      <br>
+
+      
+      
+      
+      
+      
+        <a role="button" href="https://doi.org/10.1111/ele.70297" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="ai ai-open-access ai-lg"></i> Open Access
+        </a>
+      
+      
+      
+      
+      
+        <a role="button" href="https://doi.org/10.1101/2025.03.15.643440" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="ai ai-doi ai-lg"></i> Preprint 
+        </a> 
+      
+      
+      
+      
+      
+      
+      
+        <a role="button" href="https://osf.io/sp8z6/" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="ai ai-osf ai-lg"></i> OSF 
+        </a>
+      
+      
+      
+        <a role="button" href="https://github.com/annescharf/MoveTraitsDatabase" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="bi bi-github ai-lg"></i> GitHub 
+        </a>
+      
+      
+      
+      
+      <br>
+      
+      
+      </p>
+      <hr>
+    </li>
+  
+    <li data-index="2">
       The spiders that lost their personalities: assessing long-term behavioural individuality in social Stegodyphus dumicola 
       <br>
       <p>
       <!-- paper info for not-yet-published papers -->
       
-        <small class="text-muted">
-          2025. Lena Grinsted, <b>Raphaël Royauté</b>, Signe Eiserhardt, Virginia Settepani, Niels Dingemanse, Trine Bilde. .
-        </small>
-      
       
       <!-- paper info for published papers -->
+      
+        <small class="text-muted">
+          2025. Lena Grinsted, <b>Raphaël Royauté</b>, Signe Eiserhardt, Virginia Settepani, Niels Dingemanse, Trine Bilde. <b>Animal Behaviour</b>.
+        </small>
       
       
       <br>
@@ -658,29 +795,7 @@ No matching items
       <hr>
     </li>
   
-</ul>
-
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-<div id="listing-published-articles" class="quarto-listing quarto-listing-container-custom">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-
-<style>
-  .btn-xs {
-    padding: 1px 5px;
-    font-size: 15px;
-  }
-  .ai-lg {
-    font-size: 1.2em;  /* Adjust as needed */
-  }
-</style>
-
-<ul class="list">
-  
-    <li data-index="0">
+    <li data-index="3">
       The promise of community-driven preprints in ecology and evolution 
       <br>
       <p>
@@ -735,7 +850,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="1">
+    <li data-index="4">
       A conceptual framework for landscape-based environmental risk assessment (ERA) of pesticides 
       <br>
       <p>
@@ -782,7 +897,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="2">
+    <li data-index="5">
       Individual flexibility in group foraging behaviour of reef manta rays (<i>Mobula alfredi</i>) 
       <br>
       <p>
@@ -833,7 +948,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="3">
+    <li data-index="6">
       Drift on holey landscapes as a dominant evolutionary process 
       <br>
       <p>
@@ -884,7 +999,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="4">
+    <li data-index="7">
       Nature 4.0: A networked sensor system for integrated biodiversity monitoring 
       <br>
       <p>
@@ -931,7 +1046,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="5">
+    <li data-index="8">
       Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology 
       <br>
       <p>
@@ -982,7 +1097,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="6">
+    <li data-index="9">
       Fencing amplifies individual differences in movement with implications on survival for two migratory ungulates 
       <br>
       <p>
@@ -1029,7 +1144,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="7">
+    <li data-index="10">
       Classifying the activity states of small vertebrates using automated VHF telemetry 
       <br>
       <p>
@@ -1084,7 +1199,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="8">
+    <li data-index="11">
       Moving away from repeatability: a comment on Stuber et al. 
       <br>
       <p>
@@ -1135,7 +1250,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="9">
+    <li data-index="12">
       Phylogenetic conservation of behavioural variation and behavioural syndromes 
       <br>
       <p>
@@ -1194,7 +1309,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="10">
+    <li data-index="13">
       Biologging reveals individual variation in behavioural predictability in the wild 
       <br>
       <p>
@@ -1245,7 +1360,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="11">
+    <li data-index="14">
       Comparing ecological and evolutionary variability within datasets 
       <br>
       <p>
@@ -1300,7 +1415,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="12">
+    <li data-index="15">
       Behavioural syndromes shape evolutionary trajectories via conserved genetic architecture 
       <br>
       <p>
@@ -1359,7 +1474,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="13">
+    <li data-index="16">
       The heritability of behavior: a meta-analysis 
       <br>
       <p>
@@ -1414,7 +1529,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="14">
+    <li data-index="17">
       The mean matters: going beyond repeatability to interpret behavioural variation 
       <br>
       <p>
@@ -1465,7 +1580,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="15">
+    <li data-index="18">
       Current energy state interacts with the developmental environment to influence behavioural plasticity] 
       <br>
       <p>
@@ -1516,7 +1631,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="16">
+    <li data-index="19">
       Paceless life? A meta-analysis of the pace-of-life syndrome hypothesis 
       <br>
       <p>
@@ -1571,7 +1686,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="17">
+    <li data-index="20">
       Phenotypic integration in an extended phenotype: among‐individual variation in nest‐building traits of the alfalfa leafcutting bee (<i>Megachile rotundata</i>) 
       <br>
       <p>
@@ -1626,7 +1741,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="18">
+    <li data-index="21">
       When the mean no longer matters: Developmental diet affects behavioral variation but not population averages in the house cricket (<i>Acheta domesticus</i>) 
       <br>
       <p>
@@ -1681,7 +1796,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="19">
+    <li data-index="22">
       Genetic conservation and management of the California endemic  Torrey pine (*Pinus torreyana* Parry): Implications of genetic rescue in a genetically depauperate species 
       <br>
       <p>
@@ -1728,7 +1843,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="20">
+    <li data-index="23">
       Under the influence: sublethal exposure to an insecticide affects personality expression in a jumping spider 
       <br>
       <p>
@@ -1783,7 +1898,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="21">
+    <li data-index="24">
       Behaviour  metabolism and size: phenotypic modularity or integration in <i>Acheta domesticus</i>? 
       <br>
       <p>
@@ -1834,7 +1949,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="22">
+    <li data-index="25">
       Contaminants as a neglected source of behavioural variation 
       <br>
       <p>
@@ -1885,7 +2000,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="23">
+    <li data-index="26">
       Interpopulation variations in behavioral syndromes of a jumping spider from insecticide‐treated and insecticide‐free orchards 
       <br>
       <p>
@@ -1936,7 +2051,7 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="24">
+    <li data-index="27">
       Colonization dynamics of agroecosystem spider assemblages after snow-melt in Quebec (Canada) 
       <br>
       <p>
@@ -1992,6 +2107,9 @@ No matching items
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="published-articles-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div>
 </section>
 <section id="thesis" class="level2">

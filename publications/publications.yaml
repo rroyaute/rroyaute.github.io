@@ -9,15 +9,6 @@
   preprint: "https://doi.org/10.1101/2025.08.27.672710"
   osf: "https://osf.io/vk3a7/"
 
-- title: "Integration of intra-and inter-sexual selection signaling"
-  type: "Preprints"
-  author: 
-    - Courtney R Garrison
-    -  "<b>Raphaël Royauté</b>"
-    - Ned A Dochtermann
-  year: 2020
-  preprint: "https://doi.org/10.1101/2020.05.14.088518"
-
 - title: "Sex-specific behavioral syndromes allow the independent evolution of behavioral dimorphism"
   type: "Preprints"
   author: 
@@ -27,6 +18,7 @@
   year: 2021
   preprint: "https://doi.org/10.32942/osf.io/4abp6"
   osf: "https://osf.io/pnug5/"
+
 - title: "Integration of intra-and inter-sexual selection signaling"
   type: "Preprints"
   author: 
@@ -37,7 +29,7 @@
   preprint: "https://doi.org/10.1101/2020.05.14.088518"
 
 # In Press
-- title: "MoveTraits - A database for integrating animal behaviour into trait-based ecology"
+- title: "Uncovering hidden sensitivity: Inter-individual growth variation in earthworms under fungicide exposure"
   type: "Published"
   author: 
     - Lisa Gollot
@@ -78,6 +70,7 @@
   pubopen: "https://doi.org/10.1111/ele.70297"
   preprint: "https://doi.org/10.1101/2025.03.15.643440"
   osf: "https://osf.io/sp8z6/"
+  github: "https://github.com/annescharf/MoveTraitsDatabase"
 
 - title: "The spiders that lost their personalities: assessing long-term behavioural individuality in social Stegodyphus dumicola"
   type: "Published"
