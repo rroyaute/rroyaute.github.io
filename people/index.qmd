@@ -34,6 +34,28 @@ Links:
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
+![](../images/NSilva.jpeg){width="120px"}
+:::
+
+::: {#second-column}
+### Nicolas Silva (Postdoctoral Researcher)
+Nicolas works on AI-assisted video monitoring for detecting behavioural shifts in ground beetles exposed to pesticide. His background is in behavioural ecology and sexual selection.  
+
+Background: Behavioural Ecology and Bioinformatics
+
+Project: [Behavioral ecotoxicology](../projects#BehavEcotox) 
+
+Co-supervisor: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
+
+:::
+::::
+
+---
+
+<br /> 
+
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
 ![](../images/QDevalloir.jpeg){width="120px"}
 :::
 
@@ -110,73 +132,4 @@ Links: [INRAE Website](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes
 <br /> 
 
 ## Past students
-
-:::: {layout="[ 40, 60 ]"}
-::: {#first-column}
-![](../images/AlbanRoyne-round.png){width="120px"}
-:::
-
-::: {#second-column}
-### Alban Royné
-Alban completed just completed his MSc from  [Université des Sciences de Bordeaux](https://www.u-bordeaux.fr/). He completed his end-of-year project with us and worked on trophic interactions between carabids and detritivores exposed to pesticide mixtures.
-
-Background: Ecotoxicology and Environmental Chemistry
-
-Project: [Effect of pesticides in simplified soil trophic networks](../projects#EPIC) 
-
-Co-supervisor: [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
-:::
-::::
-
-:::: {layout="[ 40, 60 ]"}
-::: {#first-column}
-![](../images/CLaborczy.jpeg){width="120px"}
-:::
-
-::: {#second-column}
-### Clara Laborczy
-Clara is a second-year student at [AgroParisTech](https://www.agroparistech.fr/). She did an internship  as part of the "La Recherche & moi" programm, working on an interactive dashboard for monitoring our earthworm laboratory population.
-
-Background: Agronomy
-
-Project: [Eco-evolutionary dynamics](../projects#EEWORMS) 
-
-Co-supervisor: [Lisa Gollot (EcoSys)]()
-:::
-::::
-
-
-:::: {layout="[ 40, 60 ]"}
-::: {first-column}
-![](../images/PerrineLegrand-round.jpg)
-:::
-
-::: {second-column}
-### Perrine Legrand
-
-Perrine came as a first-year MSc student in evolutionary biology at [Université de Lille](). She  focused on developing methods for evaluating the effects of pesticide exposure on soil fauna in a simplified trophic network.
-
-Background: Biodiversity, Ecology and Evolution
-
-Project: [Effect of pesticides in simplified soil trophic networks](../projects#EPIC) 
-:::
-
-::::
----
-
-:::: {layout="[ 40, 60 ]"}
-::: {first-column}
-![](../images/MagaliDahirel-round.jpg)
-:::
-
-::: {second-column}
-### Magali Dahirel
-Magali completed her MSc. in ecological modeling at [Université de Rennes 1](https://formations.univ-rennes.fr/master-mention-biodiversite-ecologie-evolution-parcours-modelisation-en-ecologie-mode). She worked with us on an agent-based model of aphid-ladybeetle dynamics under pesticide exposure.
-
-Background: Biodiversity, Ecology and Evolution
-
-Project: [TRAVERSéES](https://ecophytopic.fr/recherche-innovation/concevoir-son-systeme/projet-traversees)
-
-Co-supervisors: [Corinne Robert (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Eco-Phy/Scientifiques-Eco-Phy/ROBERT-Corinne), [Pierre-Antoine Précigout (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Eco-Phy/Scientifiques-Eco-Phy/PRECIGOUT-Pierre-Antoine), [Colette Bertrand (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-Sol-Tox/Scientifiques-Sol-Tox/BERTRAND-Colette)
-:::
-::::
+Cheikh Sarr (MSc, 2025-26), Luc Imbert (BSc, 2024-25), Alban Royné (MSc, 2024), Clara Laborczy (BSc, 2023-24), Lisa Gollot (MSc, 2023) Perrine Legrand (MSc, 2023), Magali Dahirel (MSc, 2022)
