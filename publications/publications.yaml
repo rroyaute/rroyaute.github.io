@@ -1,28 +1,23 @@
 # Preprints
-- title: "MoveTraits - A database for integrating animal behaviour into trait-based ecology"
+- title: "Genetic and environmental sources of behavioral individuality: a test of the standard model"
   type: "Preprints"
   author: 
-    -  Larissa T Beumer
-    - Anne Gabriela Hertel
-    - "<b>Raphaël Royauté</b>"
-    - Marlee A Tucker
-    - Joerg Albrecht
-    - Roxanne Beltran
-    - Francesca Cagnacci
-    - Sarah C Davidson
-    - Nandintsetseg Dejid
-    - Roland Kays
-    - Andrea Koelzsch
-    - Ashley Lohr
-    - Eike Lena Neuschulz
-    - Kamran Safi
-    - Anne K Scharf
-    - Matthias Schleuning
-    - Martin Wikelski
-    - Thomas Mueller
+    - Zachary J. Sweep
+    -  "<b>Raphaël Royauté</b>"
+    - Ned A Dochtermann
   year: 2025
-  preprint: "https://doi.org/10.1101/2025.03.15.643440"
-  osf: "https://osf.io/sp8z6/"
+  preprint: "https://doi.org/10.1101/2025.08.27.672710"
+  osf: "https://osf.io/vk3a7/"
+
+- title: "Integration of intra-and inter-sexual selection signaling"
+  type: "Preprints"
+  author: 
+    - Courtney R Garrison
+    -  "<b>Raphaël Royauté</b>"
+    - Ned A Dochtermann
+  year: 2020
+  preprint: "https://doi.org/10.1101/2020.05.14.088518"
+
 - title: "Sex-specific behavioral syndromes allow the independent evolution of behavioral dimorphism"
   type: "Preprints"
   author: 
@@ -42,8 +37,50 @@
   preprint: "https://doi.org/10.1101/2020.05.14.088518"
 
 # In Press
+- title: "MoveTraits - A database for integrating animal behaviour into trait-based ecology"
+  type: "Published"
+  author: 
+    - Lisa Gollot
+    - Rémy Beaudouin
+    - Jérôme Mathieu
+    - Juliette Faburé
+    - "<b>Raphaël Royauté</b>"
+  year: 2026
+  journal: "<b>Environmental Toxicology and Chemistry</b>"
+  pubclosed: "https://doi.org/10.1111/ele.70297"
+  preprint: "https://ineris.hal.science/ineris-05428800v1"
+  github: "https://github.com/LisaGllt/Ew-Growth-IdVar"
+  
+# Published
+- title: "MoveTraits - A database for integrating animal behaviour into trait-based ecology"
+  type: "Published"
+  author: 
+    - Larissa T Beumer
+    - Anne Gabriela Hertel
+    - "<b>Raphaël Royauté</b>"
+    - Marlee A Tucker
+    - Joerg Albrecht
+    - Roxanne Beltran
+    - Francesca Cagnacci
+    - Sarah C Davidson
+    - Nandintsetseg Dejid
+    - Roland Kays
+    - Andrea Koelzsch
+    - Ashley Lohr
+    - Eike Lena Neuschulz
+    - Kamran Safi
+    - Anne K Scharf
+    - Matthias Schleuning
+    - Martin Wikelski
+    - Thomas Mueller
+  year: 2026
+  journal: "<b>Ecology Letters</b>"
+  pubopen: "https://doi.org/10.1111/ele.70297"
+  preprint: "https://doi.org/10.1101/2025.03.15.643440"
+  osf: "https://osf.io/sp8z6/"
+
 - title: "The spiders that lost their personalities: assessing long-term behavioural individuality in social Stegodyphus dumicola"
-  type: "In Press"
+  type: "Published"
   author: 
     - Lena Grinsted
     - "<b>Raphaël Royauté</b>"
@@ -54,8 +91,7 @@
   year: 2025
   journal: "<b>Animal Behaviour</b>"
   osf: "https://osf.io/xr8mb/"
-  
-# Published
+
 - title: "The promise of community-driven preprints in ecology and evolution"
   type: "Published"
   author: 
