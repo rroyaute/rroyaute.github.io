@@ -172,6 +172,7 @@
   pubopen: "https://doi.org/10.1098/rspb.2024.1487"
   preprint: "https://doi.org/10.32942/X2SS46"
   github: "https://github.com/daniel1noble/ecoevo_1000"
+
 - title: "A conceptual framework for landscape-based environmental risk assessment (ERA) of pesticides"
   type: "Published"
   author: 
@@ -209,6 +210,7 @@
   year: 2024
   journal: "<b>Environment International</b>"
   pubopen: "https://doi.org/10.1016/j.envint.2024.108999"
+
 - title: "Individual flexibility in group foraging behaviour of reef manta rays (<i>Mobula alfredi</i>)"
   type: "Published"
   author:
@@ -221,6 +223,7 @@
   journal: "<b>Behavioral Ecology and Sociobiology</b>"
   pubopen: "https://doi.org/10.1007/s00265-024-03489-w"
   github: "https://github.com/rroyaute/mantarays-iiv-analysis"
+
 - title: "Drift on holey landscapes as a dominant evolutionary process"
   type: "Published"
   author:
@@ -232,6 +235,7 @@
   journal: "<b>Proceedings of the National Academy of Sciences</b>"
   pubopen: "https://doi.org/10.1073/pnas.2313282120"
   github: "https://github.com/DochtermannLab/Wright_vs_Holey"
+
 - title: "Nature 4.0: A networked sensor system for integrated biodiversity monitoring"
   type: "Published"
   author: 
@@ -281,6 +285,7 @@
   year: 2024
   journal: "<b>Global Change Biology</b>"
   pubopen: "https://doi.org/10.1111/GCB.17056"
+
 - title: "Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology"
   type: "Published"
   author:
@@ -302,6 +307,7 @@
   pubopen: "https://doi.org/10.1111/jeb.14230"
   preprint: "https://doi.org/10.32942/X2CG64"
   review: "https://doi.org/10.24072/pci.ecology.100541"
+
 - title: "Fencing amplifies individual differences in movement with implications on survival for two migratory ungulates"
   type: "Published"
   author: 
@@ -313,6 +319,7 @@
   year: 2023
   journal: "<b>Journal of Animal Ecology</b>"
   pubclosed: "https://doi.org/10.1111/1365-2656.13879"
+
 - title: "Classifying the activity states of small vertebrates using automated VHF telemetry"
   type: "Published"
   author: 
@@ -337,6 +344,7 @@
   pubopen: "https://doi.org/10.1111/2041-210X.14037"
   data: "https://data.uni-marburg.de/handle/dataumr/147"
   github: "https://github.com/Nature40/tRackIT"
+
 - title: "Moving away from repeatability: a comment on Stuber et al."
   type: "Published"
   author: 
@@ -347,6 +355,7 @@
   journal: "<b>Behavioral Ecology</b>"
   pubclosed: "https://doi.org/10.1093/beheco/arac006"
   pubopen: "https://hal.inrae.fr/hal-03955530"
+
 - title: "Phylogenetic conservation of behavioural variation and behavioural syndromes"
   type: "Published"
   author: 
@@ -360,6 +369,7 @@
   preprint: "https://doi.org/10.32942/osf.io/ze8ty"
   osf: "https://osf.io/q23ud/"
   correction: "https://onlinelibrary.wiley.com/doi/10.1111/jeb.14021"
+
 - title: "Biologging reveals individual variation in behavioural predictability in the wild"
   type: "Published"
   author: 
@@ -371,6 +381,7 @@
   journal: "<b>Journal of Animal Ecology</b>"
   pubopen: "https://doi.org/10.32942/osf.io/ze8ty"
   osf: "https://osf.io/65djr/"
+
 - title: "Comparing ecological and evolutionary variability within datasets"
   type: "Published"
   author: 
@@ -381,6 +392,7 @@
   pubclosed: "https://doi.org/10.1007/s00265-021-03068-3"
   preprint: "https://ecoevorxiv.org/repository/view/4399/"
   osf: "https://osf.io/5aw42/"
+
 - title: "Behavioural syndromes shape evolutionary trajectories via conserved genetic architecture"
   type: "Published"
   author: 
@@ -393,6 +405,7 @@
   preprint: "https://www.biorxiv.org/content/10.1101/619411v3"
   github: "https://github.com/DochtermannLab/G-PopComparison"
   data: "https://doi.org/10.5061/dryad.5mkkwh730"
+
 - title: "The heritability of behavior: a meta-analysis"
   type: "Published"
   author: 
@@ -406,6 +419,7 @@
   pubopen: "https://doi.org/10.1093/jhered/esz023"
   github: "https://github.com/DochtermannLab/BehavioralHeritability"
   data: "https://doi.org/10.5061/dryad.b38k42m"
+
 - title: "The mean matters: going beyond repeatability to interpret behavioural variation"
   type: "Published"
   author: 
@@ -415,6 +429,7 @@
   journal: "<b>Animal Behaviour</b>"
   pubclosed: "https://doi.org/10.1016/j.anbehav.2019.05.012"
   pubopen: "https://hal.inrae.fr/hal-03955462"
+
 - title: "Current energy state interacts with the developmental environment to influence behavioural plasticity]"
   type: "Published"
   author: 
@@ -427,6 +442,7 @@
   journal: "<b>Animal Behaviour</b>"
   pubclosed: "https://doi.org/10.1016/j.anbehav.2018.11.013"
   pubopen: "https://hal.inrae.fr/hal-03955488"
+
 - title: "Paceless life? A meta-analysis of the pace-of-life syndrome hypothesis"
   type: "Published"
   author: 
@@ -439,6 +455,7 @@
   pubclosed: "hhttps://doi.org/10.1007/s00265-018-2472-z"
   pubopen: "https://hal.inrae.fr/hal-03955414"
   data: "https://doi.org/10.5061/dryad.m74c8nj"
+
 - title: "Phenotypic integration in an extended phenotype: among‐individual variation in nest‐building traits of the alfalfa leafcutting bee (<i>Megachile rotundata</i>)"
   type: "Published"
   author: 
@@ -454,6 +471,7 @@
   pubclosed: "https://doi.org/10.1111/jeb.13259"
   pubopen: "https://hal.inrae.fr/hal-03955517"
   data: "https://doi.org/10.5061/dryad.n925d21"
+
 - title: "When the mean no longer matters: Developmental diet affects behavioral variation but not population averages in the house cricket (<i>Acheta domesticus</i>)"
   type: "Published"
   author: 
@@ -464,6 +482,7 @@
   pubclosed: "https://doi.org/10.1093/beheco/arw164"
   pubopen: "https://hal.inrae.fr/hal-03955457"
   data: "http://dx.doi.org/10.5061/dryad.nv835"
+
 - title: "Genetic conservation and management of the California endemic  Torrey pine (*Pinus torreyana* Parry): Implications of genetic rescue in a genetically depauperate species"
   type: "Published"
   author: 
@@ -475,6 +494,7 @@
   year: 2017
   journal: "<b>]Ecology and Evolution</b>"
   pubopen: "http://dx.doi.org/10.1002/ece3.3306"
+
 - title: "Under the influence: sublethal exposure to an insecticide affects personality expression in a jumping spider"
   type: "Published"
   author: 
@@ -486,6 +506,7 @@
   pubclosed: "http://dx.doi.org/10.1111/1365-2435.12413"
   pubopen: "https://hal.inrae.fr/hal-03955445"
   data: "http://dx.doi.org/10.5061/dryad.4s90s"
+
 - title: "Behaviour  metabolism and size: phenotypic modularity or integration in <i>Acheta domesticus</i>?"
   type: "Published"
   author: 
@@ -497,6 +518,7 @@
   journal: "<b> Animal Behaviour</b>"
   pubclosed: "http://dx.doi.org/10.1016/j.anbehav.2015.09.027"
   pubopen: "https://hal.inrae.fr/hal-03955451"
+
 - title: "Contaminants as a neglected source of behavioural variation"
   type: "Published"
   author: 
@@ -506,6 +528,7 @@
   journal: "<b>Animal Behaviour</b>"
   pubclosed: "http://dx.doi.org/10.1016/j.anbehav.2013.11.018"
   pubopen: "https://hal.inrae.fr/hal-03955428"
+
 - title: "Interpopulation variations in behavioral syndromes of a jumping spider from insecticide‐treated and insecticide‐free orchards"
   type: "Published"
   author: 
@@ -516,6 +539,7 @@
   journal: "<b>Ethology</b>"
   pubclosed: "https://onlinelibrary.wiley.com/doi/10.1111/eth.12185"
   pubopen: "https://hal.inrae.fr/hal-03955434"
+
 - title: "Colonization dynamics of agroecosystem spider assemblages after snow-melt in Quebec (Canada)"
   type: "Published"
   author: 

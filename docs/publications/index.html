@@ -369,8 +369,8 @@ window.Quarto = {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#preprints" id="toc-preprints" class="nav-link active" data-scroll-target="#preprints">Preprints</a></li>
-  <li><a href="#published-articles" id="toc-published-articles" class="nav-link" data-scroll-target="#published-articles">Published Articles</a></li>
+  <li><a href="#sec-preprints" id="toc-sec-preprints" class="nav-link active" data-scroll-target="#sec-preprints">Preprints</a></li>
+  <li><a href="#sec-published" id="toc-sec-published" class="nav-link" data-scroll-target="#sec-published">Published Articles</a></li>
   <li><a href="#thesis" id="toc-thesis" class="nav-link" data-scroll-target="#thesis">Thesis</a></li>
   </ul>
 </nav>
@@ -398,8 +398,8 @@ window.Quarto = {
 
 
 <p>You can also find my papers on <a href="https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&amp;hl=en">Google Scholar</a>, my <a href="https://orcid.org/0000-0002-5837-633X">ORCID</a> page or on <a href="https://cv.hal.science/raphael-royaute">HAL</a>.</p>
-<section id="preprints" class="level2">
-<h2 class="anchored" data-anchor-id="preprints">Preprints</h2>
+<section id="sec-preprints" class="level2">
+<h2 class="anchored" data-anchor-id="sec-preprints">Preprints</h2>
 <div id="listing-in-review" class="quarto-listing quarto-listing-container-custom">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
@@ -797,8 +797,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="published-articles" class="level2">
-<h2 class="anchored" data-anchor-id="published-articles">Published Articles</h2>
+<section id="sec-published" class="level2">
+<h2 class="anchored" data-anchor-id="sec-published">Published Articles</h2>
 <div id="listing-in-press" class="quarto-listing quarto-listing-container-custom">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
@@ -1269,72 +1269,7 @@ No matching items
   
     
     
-      </ul>
-      <h3 id="year-2023" class="pub-year-header anchored" data-pub-year="2023">
-        2023 <span class="pub-year-count">(4)</span>
-      </h3>
-      <ul class="list">
-    
     <li data-index="6">
-      Drift on holey landscapes as a dominant evolutionary process 
-      <br>
-      <p>
-      <!-- paper info for not-yet-published papers -->
-      
-      
-      <!-- paper info for published papers -->
-      
-        <small class="text-muted">
-          2023. Ned A Dochtermann, Brady Klock, Derek A Roff, <b>Raphaël Royauté</b>. <b>Proceedings of the National Academy of Sciences</b>.
-        </small>
-      
-      
-      <br>
-
-      
-      
-      
-      
-      
-        <a role="button" href="https://doi.org/10.1073/pnas.2313282120" type="button" class="btn btn-outline-secondary btn-xs"> 
-          <i class="ai ai-open-access ai-lg"></i> Open Access
-        </a>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <a role="button" href="https://github.com/DochtermannLab/Wright_vs_Holey" type="button" class="btn btn-outline-secondary btn-xs"> 
-          <i class="bi bi-github ai-lg"></i> GitHub 
-        </a>
-      
-      
-      
-      
-      <br>
-      
-      
-      </p>
-      <hr>
-    </li>
-  
-    
-    
-      </ul>
-      <h3 id="year-2024" class="pub-year-header anchored" data-pub-year="2024">
-        2024 <span class="pub-year-count">(3)</span>
-      </h3>
-      <ul class="list">
-    
-    <li data-index="7">
       Nature 4.0: A networked sensor system for integrated biodiversity monitoring 
       <br>
       <p>
@@ -1388,6 +1323,59 @@ No matching items
         2023 <span class="pub-year-count">(4)</span>
       </h3>
       <ul class="list">
+    
+    <li data-index="7">
+      Drift on holey landscapes as a dominant evolutionary process 
+      <br>
+      <p>
+      <!-- paper info for not-yet-published papers -->
+      
+      
+      <!-- paper info for published papers -->
+      
+        <small class="text-muted">
+          2023. Ned A Dochtermann, Brady Klock, Derek A Roff, <b>Raphaël Royauté</b>. <b>Proceedings of the National Academy of Sciences</b>.
+        </small>
+      
+      
+      <br>
+
+      
+      
+      
+      
+      
+        <a role="button" href="https://doi.org/10.1073/pnas.2313282120" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="ai ai-open-access ai-lg"></i> Open Access
+        </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <a role="button" href="https://github.com/DochtermannLab/Wright_vs_Holey" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="bi bi-github ai-lg"></i> GitHub 
+        </a>
+      
+      
+      
+      
+      <br>
+      
+      
+      </p>
+      <hr>
+    </li>
+  
+    
     
     <li data-index="8">
       Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology 
@@ -2750,6 +2738,65 @@ No matching items
 No matching items
 </div>
 </div>
+<script>
+  // Append an automatic "(N)" tally to the Preprints and Published Articles
+  // headers. Each header spans two listing divs, so we sum entries across both.
+  // Year sub-headings (h3.pub-year-header) are not entries, so they're excluded.
+  (function () {
+    // Quarto puts the section id on the <section>, and prefixes listing div
+    // ids with "listing-". We target the <h2> inside the section, and look up
+    // the listing divs by their real (prefixed) ids.
+    var sections = [
+      { sectionId: 'sec-preprints', divIds: ['listing-in-review', 'listing-preprints'] },
+      { sectionId: 'sec-published', divIds: ['listing-in-press', 'listing-published-articles'] }
+    ];
+
+    function countEntries(divId) {
+      var div = document.getElementById(divId);
+      if (!div) return 0;
+      // Listing entries are <li> inside ul.list; year headers are <h3>, not <li>
+      return div.querySelectorAll('ul.list > li').length;
+    }
+
+    function addTallies() {
+      var allDone = true;
+      sections.forEach(function (s) {
+        var section = document.getElementById(s.sectionId);
+        if (!section) return;
+        var header = section.querySelector('h2');
+        if (!header || header.dataset.tallied) return;
+        var total = s.divIds.reduce(function (sum, id) {
+          return sum + countEntries(id);
+        }, 0);
+        if (total === 0) { allDone = false; return; } // not rendered yet; retry
+        var span = document.createElement('span');
+        span.className = 'section-count';
+        span.style.fontWeight = '400';
+        span.style.color = '#6c757d';
+        span.textContent = ' (' + total + ')';
+        header.appendChild(span);
+        header.dataset.tallied = 'true';
+      });
+      return allDone;
+    }
+
+    // Poll until the listings have populated (up to ~5s), instead of guessing a
+    // single delay. Quarto renders listing entries via JS after DOMContentLoaded.
+    function start() {
+      var tries = 0;
+      var timer = setInterval(function () {
+        tries++;
+        if (addTallies() || tries > 50) clearInterval(timer);
+      }, 100);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start);
+    } else {
+      start();
+    }
+  })();
+</script>
 
 
 
@@ -3085,7 +3132,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/rroyaute\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

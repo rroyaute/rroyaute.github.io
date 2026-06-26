@@ -29,7 +29,7 @@ listing:
     contents: publications.yaml
     template: publications.ejs
     filter-ui: false
-    sort: "date desc"
+    sort: "year desc"
     sort-ui: false
     categories: false
   - id: in-press
@@ -38,7 +38,7 @@ listing:
     contents: publications.yaml
     template: publications.ejs
     filter-ui: false
-    sort: "date desc"
+    sort: "year desc"
     sort-ui: false
     categories: false
   - id: published-articles
@@ -47,7 +47,7 @@ listing:
     contents: publications.yaml
     template: publications.ejs
     filter-ui: false
-    sort: "date desc"
+    sort: "year desc"
     sort-ui: false
     categories: false
   - id: thesis
@@ -56,7 +56,7 @@ listing:
     contents: publications.yaml
     template: publications.ejs
     filter-ui: false
-    sort: "date desc"
+    sort: "year desc"
     sort-ui: false
     categories: false  
 
@@ -64,7 +64,7 @@ listing:
 
 You can also find my papers on [Google Scholar](https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&hl=en), my [ORCID](https://orcid.org/0000-0002-5837-633X) page or on [HAL](https://cv.hal.science/raphael-royaute).
 
-## Preprints
+## Preprints {#sec-preprints}
 :::{#in-review}
 :::
 
@@ -72,7 +72,7 @@ You can also find my papers on [Google Scholar](https://scholar.google.ca/citati
 :::{#preprints}
 :::
 
-## Published Articles
+## Published Articles {#sec-published}
 
 :::{#in-press}
 :::
@@ -89,3 +89,65 @@ You can also find my papers on [Google Scholar](https://scholar.google.ca/citati
 
 
 
+
+```{=html}
+<script>
+  // Append an automatic "(N)" tally to the Preprints and Published Articles
+  // headers. Each header spans two listing divs, so we sum entries across both.
+  // Year sub-headings (h3.pub-year-header) are not entries, so they're excluded.
+  (function () {
+    // Quarto puts the section id on the <section>, and prefixes listing div
+    // ids with "listing-". We target the <h2> inside the section, and look up
+    // the listing divs by their real (prefixed) ids.
+    var sections = [
+      { sectionId: 'sec-preprints', divIds: ['listing-in-review', 'listing-preprints'] },
+      { sectionId: 'sec-published', divIds: ['listing-in-press', 'listing-published-articles'] }
+    ];
+
+    function countEntries(divId) {
+      var div = document.getElementById(divId);
+      if (!div) return 0;
+      // Listing entries are <li> inside ul.list; year headers are <h3>, not <li>
+      return div.querySelectorAll('ul.list > li').length;
+    }
+
+    function addTallies() {
+      var allDone = true;
+      sections.forEach(function (s) {
+        var section = document.getElementById(s.sectionId);
+        if (!section) return;
+        var header = section.querySelector('h2');
+        if (!header || header.dataset.tallied) return;
+        var total = s.divIds.reduce(function (sum, id) {
+          return sum + countEntries(id);
+        }, 0);
+        if (total === 0) { allDone = false; return; } // not rendered yet; retry
+        var span = document.createElement('span');
+        span.className = 'section-count';
+        span.style.fontWeight = '400';
+        span.style.color = '#6c757d';
+        span.textContent = ' (' + total + ')';
+        header.appendChild(span);
+        header.dataset.tallied = 'true';
+      });
+      return allDone;
+    }
+
+    // Poll until the listings have populated (up to ~5s), instead of guessing a
+    // single delay. Quarto renders listing entries via JS after DOMContentLoaded.
+    function start() {
+      var tries = 0;
+      var timer = setInterval(function () {
+        tries++;
+        if (addTallies() || tries > 50) clearInterval(timer);
+      }, 100);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start);
+    } else {
+      start();
+    }
+  })();
+</script>
+```

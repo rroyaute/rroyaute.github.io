@@ -33,14 +33,30 @@
     const y = it.year != null ? it.year : "Undated";
     yearCounts[y] = (yearCounts[y] || 0) + 1;
   }
-  // Track the year as we walk the (already sorted) list so we know
-  // when to print a new year header
-  let currentYear = null;
+
+  // Quarto's listing sort can be unreliable when entries lack a `date` field,
+  // which would otherwise interleave years and produce duplicate headers.
+  // To guarantee one header per year, sort Published items by year (desc)
+  // here in the template before rendering. Non-Published listings keep their
+  // given order.
+  const isPublished = items.length > 0 && items[0].type === 'Published';
+  let renderItems = items;
+  if (isPublished) {
+    renderItems = items.slice().sort(function (a, b) {
+      const ya = a.year != null ? a.year : -Infinity;
+      const yb = b.year != null ? b.year : -Infinity;
+      return yb - ya;
+    });
+  }
+
+  // Track which year headers have already been emitted, so each year appears
+  // exactly once even if the incoming order is ever imperfect.
+  const seenYears = {};
 %>
 <ul class="list">
-  <% for (const item of items) { %>
+  <% for (const item of renderItems) { %>
     <% const itemYear = item.year != null ? item.year : "Undated"; %>
-    <% if (item.type === 'Published' && itemYear !== currentYear) { currentYear = itemYear; %>
+    <% if (item.type === 'Published' && !seenYears[itemYear]) { seenYears[itemYear] = true; %>
       </ul>
       <h3 id="year-<%= itemYear %>" class="pub-year-header" data-pub-year="<%= itemYear %>">
         <%= itemYear %> <span class="pub-year-count">(<%= yearCounts[itemYear] %>)</span>
