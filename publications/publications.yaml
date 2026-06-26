@@ -1,4 +1,17 @@
 # Preprints
+- title: "Toxic cocktails in soils: evidence for synergistic effects of the imidacloprid-epoxiconazole mixture on earthworm life-history traits"
+  type: "Preprints"
+  author:
+    - Lisa Gollot
+    - Cleo Tebby
+    - Laura Frattaroli
+    - Rémy Beaudouin
+    - "<b>Raphaël Royauté</b>"
+    - Juliette Faburé
+  year: 2026
+  preprint: "https://hal.science/hal-05512403"
+  github: "https://github.com/LisaGllt/Ew-Growth-IdVar"
+  
 - title: "Genetic and environmental sources of behavioral individuality: a test of the standard model"
   type: "Preprints"
   author: 
@@ -28,7 +41,8 @@
   year: 2020
   preprint: "https://doi.org/10.1101/2020.05.14.088518"
 
-# In Press
+  
+# Published
 - title: "Uncovering hidden sensitivity: Inter-individual growth variation in earthworms under fungicide exposure"
   type: "Published"
   author: 
@@ -41,9 +55,8 @@
   journal: "<b>Environmental Toxicology and Chemistry</b>"
   pubclosed: "https://doi.org/10.1111/ele.70297"
   preprint: "https://ineris.hal.science/ineris-05428800v1"
-  github: "https://github.com/LisaGllt/Ew-Growth-IdVar"
-  
-# Published
+  github: "https://github.com/LisaGllt/Ew-Mix-TD"
+
 - title: "MoveTraits - A database for integrating animal behaviour into trait-based ecology"
   type: "Published"
   author: 
@@ -193,7 +206,7 @@
     - Sabine Duquesne
     - Vanessa Mazerolles
     - Yann Devos
-  year: 2025
+  year: 2024
   journal: "<b>Environment International</b>"
   pubopen: "https://doi.org/10.1016/j.envint.2024.108999"
 - title: "Individual flexibility in group foraging behaviour of reef manta rays (<i>Mobula alfredi</i>)"
@@ -265,7 +278,7 @@
     - Sohaib Younis
     - Julian Zobe
     - Thomas Nauss
-  year: 2023
+  year: 2024
   journal: "<b>Global Change Biology</b>"
   pubopen: "https://doi.org/10.1111/GCB.17056"
 - title: "Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology"

@@ -10,10 +10,43 @@
   .ai-lg {
     font-size: 1.2em;  /* Adjust as needed */
   }
+  .pub-year-header {
+    margin-top: 1.6rem;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.2rem;
+    list-style: none;
+  }
+  .pub-year-header .pub-year-count {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #6c757d;
+  }
 </style>
 
+<%
+  // Count how many items fall in each year (for the "(N)" in headers)
+  const yearCounts = {};
+  for (const it of items) {
+    const y = it.year != null ? it.year : "Undated";
+    yearCounts[y] = (yearCounts[y] || 0) + 1;
+  }
+  // Track the year as we walk the (already sorted) list so we know
+  // when to print a new year header
+  let currentYear = null;
+%>
 <ul class="list">
   <% for (const item of items) { %>
+    <% const itemYear = item.year != null ? item.year : "Undated"; %>
+    <% if (item.type === 'Published' && itemYear !== currentYear) { currentYear = itemYear; %>
+      </ul>
+      <h3 id="year-<%= itemYear %>" class="pub-year-header" data-pub-year="<%= itemYear %>">
+        <%= itemYear %> <span class="pub-year-count">(<%= yearCounts[itemYear] %>)</span>
+      </h3>
+      <ul class="list">
+    <% } %>
     <li <%= metadataAttrs(item) %>>
       <%= item.title %> 
       <br/>
@@ -106,5 +139,63 @@
     </li>
   <% } %>
 </ul>
+
+<script>
+  // The year headings are emitted by the listing template, which runs after
+  // Quarto has already built the table of contents. This walks the rendered
+  // year headings and adds a matching link into the right-hand TOC so each
+  // year is reachable from the sidebar.
+  (function () {
+    function buildYearTOC() {
+      var toc = document.querySelector('nav#TOC, nav[role="doc-toc"]');
+      if (!toc) return;
+      var headers = document.querySelectorAll('h3.pub-year-header[id]');
+      if (!headers.length) return;
+
+      var tocList = toc.querySelector('ul');
+      if (!tocList) {
+        tocList = document.createElement('ul');
+        toc.appendChild(tocList);
+      }
+
+      // Find the "Published Articles" TOC entry to nest years beneath it, if present
+      var parentLi = null;
+      tocList.querySelectorAll('a').forEach(function (a) {
+        if (/published articles/i.test(a.textContent)) parentLi = a.closest('li');
+      });
+
+      var nestList;
+      if (parentLi) {
+        nestList = parentLi.querySelector('ul');
+        if (!nestList) {
+          nestList = document.createElement('ul');
+          parentLi.appendChild(nestList);
+        }
+      } else {
+        nestList = tocList;
+      }
+
+      headers.forEach(function (h) {
+        if (nestList.querySelector('a[href="#' + h.id + '"]')) return;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        // Use just the year text, not the "(N)" count, for a clean sidebar
+        a.textContent = h.getAttribute('data-pub-year');
+        a.className = 'nav-link';
+        li.appendChild(a);
+        nestList.appendChild(li);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(buildYearTOC, 300);
+      });
+    } else {
+      setTimeout(buildYearTOC, 300);
+    }
+  })();
+</script>
 
 ```

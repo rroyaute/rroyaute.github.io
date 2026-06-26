@@ -1,6 +1,8 @@
 ---
 title: "Scientific Publications"
-page-layout: full
+page-layout: article
+toc: true
+toc-title: "Contents"
 description: "" 
 listing:
   - id: in-review
@@ -62,7 +64,7 @@ listing:
 
 You can also find my papers on [Google Scholar](https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&hl=en), my [ORCID](https://orcid.org/0000-0002-5837-633X) page or on [HAL](https://cv.hal.science/raphael-royaute).
 
-## Preprints (3)
+## Preprints
 :::{#in-review}
 :::
 
@@ -70,7 +72,7 @@ You can also find my papers on [Google Scholar](https://scholar.google.ca/citati
 :::{#preprints}
 :::
 
-## Published Articles (28)
+## Published Articles
 
 :::{#in-press}
 :::

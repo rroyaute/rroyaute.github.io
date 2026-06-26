@@ -108,9 +108,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-type','listing-author','listing-year','listing-preprint','listing-osf',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-type','listing-author','listing-year','listing-preprint','listing-github','listing-osf',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-type","listing-author","listing-year","listing-preprint","listing-osf"],
+      searchColumns: ["listing-title","listing-type","listing-author","listing-year","listing-preprint","listing-github","listing-osf"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -361,22 +361,22 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#preprints-3" id="toc-preprints-3" class="nav-link active" data-scroll-target="#preprints-3">Preprints (3)</a></li>
-  <li><a href="#published-articles-28" id="toc-published-articles-28" class="nav-link" data-scroll-target="#published-articles-28">Published Articles (28)</a></li>
+  <li><a href="#preprints" id="toc-preprints" class="nav-link active" data-scroll-target="#preprints">Preprints</a></li>
+  <li><a href="#published-articles" id="toc-published-articles" class="nav-link" data-scroll-target="#published-articles">Published Articles</a></li>
   <li><a href="#thesis" id="toc-thesis" class="nav-link" data-scroll-target="#thesis">Thesis</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -385,7 +385,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -398,8 +398,8 @@ window.Quarto = {
 
 
 <p>You can also find my papers on <a href="https://scholar.google.ca/citations?user=hRSXOB8AAAAJ&amp;hl=en">Google Scholar</a>, my <a href="https://orcid.org/0000-0002-5837-633X">ORCID</a> page or on <a href="https://cv.hal.science/raphael-royaute">HAL</a>.</p>
-<section id="preprints-3" class="level2">
-<h2 class="anchored" data-anchor-id="preprints-3">Preprints (3)</h2>
+<section id="preprints" class="level2">
+<h2 class="anchored" data-anchor-id="preprints">Preprints</h2>
 <div id="listing-in-review" class="quarto-listing quarto-listing-container-custom">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
@@ -412,11 +412,83 @@ window.Quarto = {
   .ai-lg {
     font-size: 1.2em;  /* Adjust as needed */
   }
+  .pub-year-header {
+    margin-top: 1.6rem;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.2rem;
+    list-style: none;
+  }
+  .pub-year-header .pub-year-count {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #6c757d;
+  }
 </style>
 
 <ul class="list">
   
 </ul>
+
+<script>
+  // The year headings are emitted by the listing template, which runs after
+  // Quarto has already built the table of contents. This walks the rendered
+  // year headings and adds a matching link into the right-hand TOC so each
+  // year is reachable from the sidebar.
+  (function () {
+    function buildYearTOC() {
+      var toc = document.querySelector('nav#TOC, nav[role="doc-toc"]');
+      if (!toc) return;
+      var headers = document.querySelectorAll('h3.pub-year-header[id]');
+      if (!headers.length) return;
+
+      var tocList = toc.querySelector('ul');
+      if (!tocList) {
+        tocList = document.createElement('ul');
+        toc.appendChild(tocList);
+      }
+
+      // Find the "Published Articles" TOC entry to nest years beneath it, if present
+      var parentLi = null;
+      tocList.querySelectorAll('a').forEach(function (a) {
+        if (/published articles/i.test(a.textContent)) parentLi = a.closest('li');
+      });
+
+      var nestList;
+      if (parentLi) {
+        nestList = parentLi.querySelector('ul');
+        if (!nestList) {
+          nestList = document.createElement('ul');
+          parentLi.appendChild(nestList);
+        }
+      } else {
+        nestList = tocList;
+      }
+
+      headers.forEach(function (h) {
+        if (nestList.querySelector('a[href="#' + h.id + '"]')) return;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        // Use just the year text, not the "(N)" count, for a clean sidebar
+        a.textContent = h.getAttribute('data-pub-year');
+        a.className = 'nav-link';
+        li.appendChild(a);
+        nestList.appendChild(li);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(buildYearTOC, 300);
+      });
+    } else {
+      setTimeout(buildYearTOC, 300);
+    }
+  })();
+</script>
 
 <div class="listing-no-matching d-none">
 No matching items
@@ -434,11 +506,80 @@ No matching items
   .ai-lg {
     font-size: 1.2em;  /* Adjust as needed */
   }
+  .pub-year-header {
+    margin-top: 1.6rem;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.2rem;
+    list-style: none;
+  }
+  .pub-year-header .pub-year-count {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #6c757d;
+  }
 </style>
 
 <ul class="list">
   
+    
+    
     <li data-index="0">
+      Toxic cocktails in soils: evidence for synergistic effects of the imidacloprid-epoxiconazole mixture on earthworm life-history traits 
+      <br>
+      <p>
+      <!-- paper info for not-yet-published papers -->
+      
+        <small class="text-muted">
+          2026. Lisa Gollot, Cleo Tebby, Laura Frattaroli, Rémy Beaudouin, <b>Raphaël Royauté</b>, Juliette Faburé. .
+        </small>
+      
+      
+      <!-- paper info for published papers -->
+      
+      
+      <br>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <a role="button" href="https://hal.science/hal-05512403" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="ai ai-doi ai-lg"></i> Preprint 
+        </a> 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <a role="button" href="https://github.com/LisaGllt/Ew-Growth-IdVar" type="button" class="btn btn-outline-secondary btn-xs"> 
+          <i class="bi bi-github ai-lg"></i> GitHub 
+        </a>
+      
+      
+      
+      
+      <br>
+      
+      
+      </p>
+      <hr>
+    </li>
+  
+    
+    
+    <li data-index="1">
       Genetic and environmental sources of behavioral individuality: a test of the standard model 
       <br>
       <p>
@@ -489,7 +630,9 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="1">
+    
+    
+    <li data-index="2">
       Sex-specific behavioral syndromes allow the independent evolution of behavioral dimorphism 
       <br>
       <p>
@@ -540,7 +683,9 @@ No matching items
       <hr>
     </li>
   
-    <li data-index="2">
+    
+    
+    <li data-index="3">
       Integration of intra-and inter-sexual selection signaling 
       <br>
       <p>
@@ -589,13 +734,71 @@ No matching items
   
 </ul>
 
+<script>
+  // The year headings are emitted by the listing template, which runs after
+  // Quarto has already built the table of contents. This walks the rendered
+  // year headings and adds a matching link into the right-hand TOC so each
+  // year is reachable from the sidebar.
+  (function () {
+    function buildYearTOC() {
+      var toc = document.querySelector('nav#TOC, nav[role="doc-toc"]');
+      if (!toc) return;
+      var headers = document.querySelectorAll('h3.pub-year-header[id]');
+      if (!headers.length) return;
+
+      var tocList = toc.querySelector('ul');
+      if (!tocList) {
+        tocList = document.createElement('ul');
+        toc.appendChild(tocList);
+      }
+
+      // Find the "Published Articles" TOC entry to nest years beneath it, if present
+      var parentLi = null;
+      tocList.querySelectorAll('a').forEach(function (a) {
+        if (/published articles/i.test(a.textContent)) parentLi = a.closest('li');
+      });
+
+      var nestList;
+      if (parentLi) {
+        nestList = parentLi.querySelector('ul');
+        if (!nestList) {
+          nestList = document.createElement('ul');
+          parentLi.appendChild(nestList);
+        }
+      } else {
+        nestList = tocList;
+      }
+
+      headers.forEach(function (h) {
+        if (nestList.querySelector('a[href="#' + h.id + '"]')) return;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        // Use just the year text, not the "(N)" count, for a clean sidebar
+        a.textContent = h.getAttribute('data-pub-year');
+        a.className = 'nav-link';
+        li.appendChild(a);
+        nestList.appendChild(li);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(buildYearTOC, 300);
+      });
+    } else {
+      setTimeout(buildYearTOC, 300);
+    }
+  })();
+</script>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
 </div>
 </section>
-<section id="published-articles-28" class="level2">
-<h2 class="anchored" data-anchor-id="published-articles-28">Published Articles (28)</h2>
+<section id="published-articles" class="level2">
+<h2 class="anchored" data-anchor-id="published-articles">Published Articles</h2>
 <div id="listing-in-press" class="quarto-listing quarto-listing-container-custom">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
@@ -608,11 +811,83 @@ No matching items
   .ai-lg {
     font-size: 1.2em;  /* Adjust as needed */
   }
+  .pub-year-header {
+    margin-top: 1.6rem;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.2rem;
+    list-style: none;
+  }
+  .pub-year-header .pub-year-count {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #6c757d;
+  }
 </style>
 
 <ul class="list">
   
 </ul>
+
+<script>
+  // The year headings are emitted by the listing template, which runs after
+  // Quarto has already built the table of contents. This walks the rendered
+  // year headings and adds a matching link into the right-hand TOC so each
+  // year is reachable from the sidebar.
+  (function () {
+    function buildYearTOC() {
+      var toc = document.querySelector('nav#TOC, nav[role="doc-toc"]');
+      if (!toc) return;
+      var headers = document.querySelectorAll('h3.pub-year-header[id]');
+      if (!headers.length) return;
+
+      var tocList = toc.querySelector('ul');
+      if (!tocList) {
+        tocList = document.createElement('ul');
+        toc.appendChild(tocList);
+      }
+
+      // Find the "Published Articles" TOC entry to nest years beneath it, if present
+      var parentLi = null;
+      tocList.querySelectorAll('a').forEach(function (a) {
+        if (/published articles/i.test(a.textContent)) parentLi = a.closest('li');
+      });
+
+      var nestList;
+      if (parentLi) {
+        nestList = parentLi.querySelector('ul');
+        if (!nestList) {
+          nestList = document.createElement('ul');
+          parentLi.appendChild(nestList);
+        }
+      } else {
+        nestList = tocList;
+      }
+
+      headers.forEach(function (h) {
+        if (nestList.querySelector('a[href="#' + h.id + '"]')) return;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        // Use just the year text, not the "(N)" count, for a clean sidebar
+        a.textContent = h.getAttribute('data-pub-year');
+        a.className = 'nav-link';
+        li.appendChild(a);
+        nestList.appendChild(li);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(buildYearTOC, 300);
+      });
+    } else {
+      setTimeout(buildYearTOC, 300);
+    }
+  })();
+</script>
 
 <div class="listing-no-matching d-none">
 No matching items
@@ -630,10 +905,32 @@ No matching items
   .ai-lg {
     font-size: 1.2em;  /* Adjust as needed */
   }
+  .pub-year-header {
+    margin-top: 1.6rem;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.2rem;
+    list-style: none;
+  }
+  .pub-year-header .pub-year-count {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #6c757d;
+  }
 </style>
 
 <ul class="list">
   
+    
+    
+      </ul>
+      <h3 id="year-2026" class="pub-year-header anchored" data-pub-year="2026">
+        2026 <span class="pub-year-count">(2)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="0">
       Uncovering hidden sensitivity: Inter-individual growth variation in earthworms under fungicide exposure 
       <br>
@@ -675,7 +972,7 @@ No matching items
       
       
       
-        <a role="button" href="https://github.com/LisaGllt/Ew-Growth-IdVar" type="button" class="btn btn-outline-secondary btn-xs"> 
+        <a role="button" href="https://github.com/LisaGllt/Ew-Mix-TD" type="button" class="btn btn-outline-secondary btn-xs"> 
           <i class="bi bi-github ai-lg"></i> GitHub 
         </a>
       
@@ -689,6 +986,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="1">
       MoveTraits - A database for integrating animal behaviour into trait-based ecology 
       <br>
@@ -748,6 +1047,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2025" class="pub-year-header anchored" data-pub-year="2025">
+        2025 <span class="pub-year-count">(2)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="2">
       The spiders that lost their personalities: assessing long-term behavioural individuality in social Stegodyphus dumicola 
       <br>
@@ -795,6 +1102,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="3">
       The promise of community-driven preprints in ecology and evolution 
       <br>
@@ -850,6 +1159,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2024" class="pub-year-header anchored" data-pub-year="2024">
+        2024 <span class="pub-year-count">(3)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="4">
       A conceptual framework for landscape-based environmental risk assessment (ERA) of pesticides 
       <br>
@@ -860,7 +1177,7 @@ No matching items
       <!-- paper info for published papers -->
       
         <small class="text-muted">
-          2025. Jose V Tarazona, Mercedes de Alba-Gonzalez, Carole Bedos, Pierre Benoit, Colette Bertrand, Olivier Crouzet, Cécile Dagès, Jean-Lou CM Dorne, Ana Fernandez-Agudo, Andreas Focks, Maria del Carmen Gonzalez-Caballero, Alexandra Kroll, Matthias Liess, Susana Loureiro, Manuel E Ortiz-Santaliestra, Jes J Rasmussen, <b>Raphaël Royauté</b>, Maj Rundlöf, Ralf B Schäfer, Stephen Short, Ayesha Siddique, José Paulo Sousa, Dave Spurgeon, Pierre-François Staub, Chris J Topping, Marc Voltz, Johan Axelman, Annette Aldrich, Sabine Duquesne, Vanessa Mazerolles, Yann Devos. <b>Environment International</b>.
+          2024. Jose V Tarazona, Mercedes de Alba-Gonzalez, Carole Bedos, Pierre Benoit, Colette Bertrand, Olivier Crouzet, Cécile Dagès, Jean-Lou CM Dorne, Ana Fernandez-Agudo, Andreas Focks, Maria del Carmen Gonzalez-Caballero, Alexandra Kroll, Matthias Liess, Susana Loureiro, Manuel E Ortiz-Santaliestra, Jes J Rasmussen, <b>Raphaël Royauté</b>, Maj Rundlöf, Ralf B Schäfer, Stephen Short, Ayesha Siddique, José Paulo Sousa, Dave Spurgeon, Pierre-François Staub, Chris J Topping, Marc Voltz, Johan Axelman, Annette Aldrich, Sabine Duquesne, Vanessa Mazerolles, Yann Devos. <b>Environment International</b>.
         </small>
       
       
@@ -897,6 +1214,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="5">
       Individual flexibility in group foraging behaviour of reef manta rays (<i>Mobula alfredi</i>) 
       <br>
@@ -948,6 +1267,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2023" class="pub-year-header anchored" data-pub-year="2023">
+        2023 <span class="pub-year-count">(4)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="6">
       Drift on holey landscapes as a dominant evolutionary process 
       <br>
@@ -999,6 +1326,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2024" class="pub-year-header anchored" data-pub-year="2024">
+        2024 <span class="pub-year-count">(3)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="7">
       Nature 4.0: A networked sensor system for integrated biodiversity monitoring 
       <br>
@@ -1009,7 +1344,7 @@ No matching items
       <!-- paper info for published papers -->
       
         <small class="text-muted">
-          2023. Dirk Zeuss, Lisa Bald, Jannis Gottwald, Marcel Becker, Hicham Bellafkir, Jörg Bendix, Phillip Bengel, Larissa T. Beumer, Roland Brandl, Martin Brändle, Stephan Dahlke, Nina Farwig, Bernd Freisleben, Nicolas Friess, Lea Heidrich, Sven Heue, Jonas Höchst, Hajo Holzmann, Patrick Lampe, Martin Leberecht, Kim Lindner, Juan F. Masello, Jonas Mielke Möglich, Markus  Mühling, Thomas Müller, Alexey Noskov, Lars Opgenoorth, Carina Peter, Petra Quillfeldt, Sascha Rösner, <b>Raphaël Royauté</b>, Christian M. Runge, Dana Schabo, Daniel Schneider, Bernhard Seeger, Elliot Shayle, Ralf Steinmetz, Pavel Tafo, Markus Vogelbacher, Stephan Wöllauer, Sohaib Younis, Julian Zobe, Thomas Nauss. <b>Global Change Biology</b>.
+          2024. Dirk Zeuss, Lisa Bald, Jannis Gottwald, Marcel Becker, Hicham Bellafkir, Jörg Bendix, Phillip Bengel, Larissa T. Beumer, Roland Brandl, Martin Brändle, Stephan Dahlke, Nina Farwig, Bernd Freisleben, Nicolas Friess, Lea Heidrich, Sven Heue, Jonas Höchst, Hajo Holzmann, Patrick Lampe, Martin Leberecht, Kim Lindner, Juan F. Masello, Jonas Mielke Möglich, Markus  Mühling, Thomas Müller, Alexey Noskov, Lars Opgenoorth, Carina Peter, Petra Quillfeldt, Sascha Rösner, <b>Raphaël Royauté</b>, Christian M. Runge, Dana Schabo, Daniel Schneider, Bernhard Seeger, Elliot Shayle, Ralf Steinmetz, Pavel Tafo, Markus Vogelbacher, Stephan Wöllauer, Sohaib Younis, Julian Zobe, Thomas Nauss. <b>Global Change Biology</b>.
         </small>
       
       
@@ -1046,6 +1381,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2023" class="pub-year-header anchored" data-pub-year="2023">
+        2023 <span class="pub-year-count">(4)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="8">
       Implementing Code Review in the Scientific Workflow: Insights from Ecology and Evolutionary Biology 
       <br>
@@ -1097,6 +1440,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="9">
       Fencing amplifies individual differences in movement with implications on survival for two migratory ungulates 
       <br>
@@ -1144,6 +1489,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="10">
       Classifying the activity states of small vertebrates using automated VHF telemetry 
       <br>
@@ -1199,6 +1546,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2022" class="pub-year-header anchored" data-pub-year="2022">
+        2022 <span class="pub-year-count">(2)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="11">
       Moving away from repeatability: a comment on Stuber et al. 
       <br>
@@ -1250,6 +1605,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="12">
       Phylogenetic conservation of behavioural variation and behavioural syndromes 
       <br>
@@ -1309,6 +1666,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2021" class="pub-year-header anchored" data-pub-year="2021">
+        2021 <span class="pub-year-count">(2)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="13">
       Biologging reveals individual variation in behavioural predictability in the wild 
       <br>
@@ -1360,6 +1725,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="14">
       Comparing ecological and evolutionary variability within datasets 
       <br>
@@ -1415,6 +1782,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2020" class="pub-year-header anchored" data-pub-year="2020">
+        2020 <span class="pub-year-count">(1)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="15">
       Behavioural syndromes shape evolutionary trajectories via conserved genetic architecture 
       <br>
@@ -1474,6 +1849,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2019" class="pub-year-header anchored" data-pub-year="2019">
+        2019 <span class="pub-year-count">(3)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="16">
       The heritability of behavior: a meta-analysis 
       <br>
@@ -1529,6 +1912,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="17">
       The mean matters: going beyond repeatability to interpret behavioural variation 
       <br>
@@ -1580,6 +1965,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="18">
       Current energy state interacts with the developmental environment to influence behavioural plasticity] 
       <br>
@@ -1631,6 +2018,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2018" class="pub-year-header anchored" data-pub-year="2018">
+        2018 <span class="pub-year-count">(2)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="19">
       Paceless life? A meta-analysis of the pace-of-life syndrome hypothesis 
       <br>
@@ -1686,6 +2081,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="20">
       Phenotypic integration in an extended phenotype: among‐individual variation in nest‐building traits of the alfalfa leafcutting bee (<i>Megachile rotundata</i>) 
       <br>
@@ -1741,6 +2138,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2017" class="pub-year-header anchored" data-pub-year="2017">
+        2017 <span class="pub-year-count">(2)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="21">
       When the mean no longer matters: Developmental diet affects behavioral variation but not population averages in the house cricket (<i>Acheta domesticus</i>) 
       <br>
@@ -1796,6 +2201,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="22">
       Genetic conservation and management of the California endemic  Torrey pine (*Pinus torreyana* Parry): Implications of genetic rescue in a genetically depauperate species 
       <br>
@@ -1843,6 +2250,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2015" class="pub-year-header anchored" data-pub-year="2015">
+        2015 <span class="pub-year-count">(2)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="23">
       Under the influence: sublethal exposure to an insecticide affects personality expression in a jumping spider 
       <br>
@@ -1898,6 +2313,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="24">
       Behaviour  metabolism and size: phenotypic modularity or integration in <i>Acheta domesticus</i>? 
       <br>
@@ -1949,6 +2366,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2014" class="pub-year-header anchored" data-pub-year="2014">
+        2014 <span class="pub-year-count">(2)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="25">
       Contaminants as a neglected source of behavioural variation 
       <br>
@@ -2000,6 +2425,8 @@ No matching items
       <hr>
     </li>
   
+    
+    
     <li data-index="26">
       Interpopulation variations in behavioral syndromes of a jumping spider from insecticide‐treated and insecticide‐free orchards 
       <br>
@@ -2051,6 +2478,14 @@ No matching items
       <hr>
     </li>
   
+    
+    
+      </ul>
+      <h3 id="year-2012" class="pub-year-header anchored" data-pub-year="2012">
+        2012 <span class="pub-year-count">(1)</span>
+      </h3>
+      <ul class="list">
+    
     <li data-index="27">
       Colonization dynamics of agroecosystem spider assemblages after snow-melt in Quebec (Canada) 
       <br>
@@ -2104,6 +2539,64 @@ No matching items
   
 </ul>
 
+<script>
+  // The year headings are emitted by the listing template, which runs after
+  // Quarto has already built the table of contents. This walks the rendered
+  // year headings and adds a matching link into the right-hand TOC so each
+  // year is reachable from the sidebar.
+  (function () {
+    function buildYearTOC() {
+      var toc = document.querySelector('nav#TOC, nav[role="doc-toc"]');
+      if (!toc) return;
+      var headers = document.querySelectorAll('h3.pub-year-header[id]');
+      if (!headers.length) return;
+
+      var tocList = toc.querySelector('ul');
+      if (!tocList) {
+        tocList = document.createElement('ul');
+        toc.appendChild(tocList);
+      }
+
+      // Find the "Published Articles" TOC entry to nest years beneath it, if present
+      var parentLi = null;
+      tocList.querySelectorAll('a').forEach(function (a) {
+        if (/published articles/i.test(a.textContent)) parentLi = a.closest('li');
+      });
+
+      var nestList;
+      if (parentLi) {
+        nestList = parentLi.querySelector('ul');
+        if (!nestList) {
+          nestList = document.createElement('ul');
+          parentLi.appendChild(nestList);
+        }
+      } else {
+        nestList = tocList;
+      }
+
+      headers.forEach(function (h) {
+        if (nestList.querySelector('a[href="#' + h.id + '"]')) return;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        // Use just the year text, not the "(N)" count, for a clean sidebar
+        a.textContent = h.getAttribute('data-pub-year');
+        a.className = 'nav-link';
+        li.appendChild(a);
+        nestList.appendChild(li);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(buildYearTOC, 300);
+      });
+    } else {
+      setTimeout(buildYearTOC, 300);
+    }
+  })();
+</script>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -2126,10 +2619,26 @@ No matching items
   .ai-lg {
     font-size: 1.2em;  /* Adjust as needed */
   }
+  .pub-year-header {
+    margin-top: 1.6rem;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.2rem;
+    list-style: none;
+  }
+  .pub-year-header .pub-year-count {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #6c757d;
+  }
 </style>
 
 <ul class="list">
   
+    
+    
     <li data-index="0">
       Factors influencing behavioural variation in apple orchard populations of the jumping spider <i>Eris militaris</i> (Araneae: Salticidae) 
       <br>
@@ -2179,6 +2688,64 @@ No matching items
   
 </ul>
 
+<script>
+  // The year headings are emitted by the listing template, which runs after
+  // Quarto has already built the table of contents. This walks the rendered
+  // year headings and adds a matching link into the right-hand TOC so each
+  // year is reachable from the sidebar.
+  (function () {
+    function buildYearTOC() {
+      var toc = document.querySelector('nav#TOC, nav[role="doc-toc"]');
+      if (!toc) return;
+      var headers = document.querySelectorAll('h3.pub-year-header[id]');
+      if (!headers.length) return;
+
+      var tocList = toc.querySelector('ul');
+      if (!tocList) {
+        tocList = document.createElement('ul');
+        toc.appendChild(tocList);
+      }
+
+      // Find the "Published Articles" TOC entry to nest years beneath it, if present
+      var parentLi = null;
+      tocList.querySelectorAll('a').forEach(function (a) {
+        if (/published articles/i.test(a.textContent)) parentLi = a.closest('li');
+      });
+
+      var nestList;
+      if (parentLi) {
+        nestList = parentLi.querySelector('ul');
+        if (!nestList) {
+          nestList = document.createElement('ul');
+          parentLi.appendChild(nestList);
+        }
+      } else {
+        nestList = tocList;
+      }
+
+      headers.forEach(function (h) {
+        if (nestList.querySelector('a[href="#' + h.id + '"]')) return;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        // Use just the year text, not the "(N)" count, for a clean sidebar
+        a.textContent = h.getAttribute('data-pub-year');
+        a.className = 'nav-link';
+        li.appendChild(a);
+        nestList.appendChild(li);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(buildYearTOC, 300);
+      });
+    } else {
+      setTimeout(buildYearTOC, 300);
+    }
+  })();
+</script>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -2200,11 +2767,83 @@ No matching items
   .ai-lg {
     font-size: 1.2em;  /* Adjust as needed */
   }
+  .pub-year-header {
+    margin-top: 1.6rem;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.2rem;
+    list-style: none;
+  }
+  .pub-year-header .pub-year-count {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #6c757d;
+  }
 </style>
 
 <ul class="list">
   
 </ul>
+
+<script>
+  // The year headings are emitted by the listing template, which runs after
+  // Quarto has already built the table of contents. This walks the rendered
+  // year headings and adds a matching link into the right-hand TOC so each
+  // year is reachable from the sidebar.
+  (function () {
+    function buildYearTOC() {
+      var toc = document.querySelector('nav#TOC, nav[role="doc-toc"]');
+      if (!toc) return;
+      var headers = document.querySelectorAll('h3.pub-year-header[id]');
+      if (!headers.length) return;
+
+      var tocList = toc.querySelector('ul');
+      if (!tocList) {
+        tocList = document.createElement('ul');
+        toc.appendChild(tocList);
+      }
+
+      // Find the "Published Articles" TOC entry to nest years beneath it, if present
+      var parentLi = null;
+      tocList.querySelectorAll('a').forEach(function (a) {
+        if (/published articles/i.test(a.textContent)) parentLi = a.closest('li');
+      });
+
+      var nestList;
+      if (parentLi) {
+        nestList = parentLi.querySelector('ul');
+        if (!nestList) {
+          nestList = document.createElement('ul');
+          parentLi.appendChild(nestList);
+        }
+      } else {
+        nestList = tocList;
+      }
+
+      headers.forEach(function (h) {
+        if (nestList.querySelector('a[href="#' + h.id + '"]')) return;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        // Use just the year text, not the "(N)" count, for a clean sidebar
+        a.textContent = h.getAttribute('data-pub-year');
+        a.className = 'nav-link';
+        li.appendChild(a);
+        nestList.appendChild(li);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(buildYearTOC, 300);
+      });
+    } else {
+      setTimeout(buildYearTOC, 300);
+    }
+  })();
+</script>
 
 <div class="listing-no-matching d-none">
 No matching items
