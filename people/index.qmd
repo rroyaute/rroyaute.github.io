@@ -34,6 +34,28 @@ Links:
 
 :::: {layout="[ 40, 60 ]"}
 ::: {#first-column}
+![](../images/LDasque.jpg){width="120px"}
+:::
+
+::: {#second-column}
+### Léa Dasque (Postdoctoral Researcher)
+Léa holds an MSc in Ecology and Evolution. During her PhD, she investigated the impact of the Fukushima nuclear accident on the health status of Japanese tree frogs. Her research combined field-based approaches with ecophysiological, reproductive, and molecular analyses to better understand the long-term effects of ionizing radiation on wildlife. Her current scientific interests focus on the impact of pesticides on life-history traits and behavior in earthworms.  
+
+Background: Ecophysiology, Ecotoxicology, Behavioral Ecology
+
+Project: [Eco-evolutionary dynamics](../projects#EEWORMS) 
+
+Co-supervisor: [Juliette Faburé (EcoSys)](https://www6.versailles-grignon.inrae.fr/ecosys/Personnes/Personnel-par-ordre-alphabetique/F/FABURE-Juliette)
+
+:::
+::::
+
+---
+
+<br /> 
+
+:::: {layout="[ 40, 60 ]"}
+::: {#first-column}
 ![](../images/NSilva.jpeg){width="120px"}
 :::
 
